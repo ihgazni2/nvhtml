@@ -26,7 +26,7 @@ import sys
 cwd = os.path.abspath('..')
 project_root = os.path.dirname(cwd)
 sys.path.insert(0, project_root)
-import nvhtml
+#import nvhtml
 #######################
 
 
