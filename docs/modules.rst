@@ -19,7 +19,7 @@ Package API
 nvhtml.engine
 -------------
 
-.. automodule:: nvhtml.engine
+.. automodule:: engine
     :member-order: bysource
     :members:
     :private-members:
@@ -30,7 +30,7 @@ nvhtml.engine
 nvhtml.lvsrch
 -------------
 
-.. automodule:: nvhtml.lvsrch
+.. automodule:: lvsrch
     :member-order: bysource
     :members:
     :private-members:
