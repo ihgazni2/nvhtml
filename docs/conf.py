@@ -26,6 +26,10 @@ import sys
 cwd = os.path.abspath('..')
 project_root = os.path.dirname(cwd)
 sys.path.insert(0, project_root)
+cwd = os.path.abspath('.')
+project_root = os.path.dirname(cwd)
+sys.path.insert(0, project_root)
+
 import nvhtml
 #######################
 
@@ -53,7 +57,10 @@ release = '0.5'
 # ones.
 extensions = [
     'sphinx.ext.autodoc', 
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
+    'sphinx.ext.doctest',
+    'sphinx.ext.intersphinx',
+    'sphinx.ext.ifconfig',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

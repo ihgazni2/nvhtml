@@ -7,11 +7,11 @@ nvhtml
 ======
 
 
-.. image:: https://raw.githubusercontent.com/dev1/nvhtml/master/logo/sublogo1.png
+.. image:: ./images/pypi.png
         :target: https://pypi.python.org/pypi/nvhtml
         :alt: Pypi Python Package Index Status
 
-.. image:: https://raw.githubusercontent.com/dev1/nvhtml/master/logo/sublogo2.png
+.. image:: ./images/rdocs.png
         :target: https://nvhtml.readthedocs.io/en/latest
         :alt: Documentation Status
 
