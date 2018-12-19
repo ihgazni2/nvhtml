@@ -16,6 +16,14 @@ nvhtml
         :alt: Documentation Status
 
 
+`Installation <./installation.rst>`_
+-------------------------------------
+    ::
+    
+    $ pip3 install nvhtml
+
+- refer to `Installation <./installation.rst>`_
+
 
 
 `Documentation <https://nvhtml.readthedocs.io>`_
@@ -29,9 +37,10 @@ License
 - MIT
 
 
-`Quickstart <./build/usage.html>`_
-----------------------------------
-- refer to `Usage <./usage.html>`_
+
+`Quickstart <./usage.rst>`_
+---------------------------
+- refer to `Usage <./usage.rst>`_
 
 
 Features
@@ -60,5 +69,6 @@ References
 * mlconjug(for docs template format)
 
  * https://github.com/SekouD/mlconjug/tree/master/docs
+
 
 
