@@ -5,16 +5,16 @@
 
 from setuptools import setup, find_packages
 
-with open('./docs/source/readme.rst') as readme_file:
+with open('./docs/readme.rst') as readme_file:
     readme = readme_file.read()
 
-with open('./docs/source/history.rst') as history_file:
+with open('./docs/history.rst') as history_file:
     history = history_file.read()
 
-with open('./docs/source/installation.rst') as installation_file:
+with open('./docs/installation.rst') as installation_file:
     installation = installation_file.read()
 
-with open('./docs/source/usage.rst') as usage_file:
+with open('./docs/usage.rst') as usage_file:
     usage = usage_file.read()
 
 requirements = [
