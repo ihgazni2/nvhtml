@@ -29,9 +29,9 @@ License
 - MIT
 
 
-`Quickstart <./build/usage.html>`_
-----------------------------------
-- refer to `Usage <./usage.html>`_
+`Quickstart <./_build/usage.html>`_
+-----------------------------------
+- refer to `Usage <./_build/usage.html>`_
 
 
 Features
