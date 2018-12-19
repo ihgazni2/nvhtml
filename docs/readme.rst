@@ -16,13 +16,13 @@ nvhtml
         :alt: Documentation Status
 
 
-`Installation <./installation.rst>`_
+`Installation <docs/installation.rst>`_
 -------------------------------------
     ::
     
     $ pip3 install nvhtml
 
-- refer to `Installation <./installation.rst>`_
+- refer to `Installation <docs/installation.rst>`_
 
 
 
