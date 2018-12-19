@@ -1,2 +1,2 @@
 recursive-include docs/ *.rst
-recursive-include docs/images
+recursive-include docs/images/
