@@ -4,6 +4,7 @@
 *.egg-info
 dist
 build
+_build
 .egg
 
 INIT/
