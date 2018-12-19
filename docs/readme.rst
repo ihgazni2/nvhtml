@@ -16,8 +16,8 @@ nvhtml
         :alt: Documentation Status
 
 
-Install
--------
+`Installation <./installation.rst>`_
+-------------------------------------
     ::
     
     $ pip3 install nvhtml
