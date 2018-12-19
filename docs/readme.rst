@@ -40,7 +40,7 @@ License
 
 `Quickstart <./usage.rst>`_
 ---------------------------
-- refer to `Usage <./useage.rst>`_
+- refer to `Usage <./usage.rst>`_
 
 
 Features
