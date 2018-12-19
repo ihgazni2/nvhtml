@@ -16,6 +16,14 @@ nvhtml
         :alt: Documentation Status
 
 
+Install
+-------
+    ::
+    
+    $ pip3 install nvhtml
+
+- refer to `Installation <./installation.rst>`_
+
 
 
 `Documentation <https://nvhtml.readthedocs.io>`_
@@ -27,6 +35,7 @@ License
 -------
 
 - MIT
+
 
 
 `Quickstart <./usage.rst>`_
