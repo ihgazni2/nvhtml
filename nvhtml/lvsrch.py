@@ -2,7 +2,10 @@ import elist.elist as elel
 from nvhtml import engine
 from nvhtml import utils
 
+
 def arguments(**kwargs):
+    '''
+    '''
     if("source" in kwargs):
         source = kwargs['source']
     else:
@@ -17,7 +20,10 @@ def arguments(**kwargs):
         show = True
     return((source,which,show))
 
+
 def srch(tag,root,*args,**kwargs):
+    '''
+    '''
     source,which,show = arguments(**kwargs)
     args=list(args)
     lngth = args.__len__()

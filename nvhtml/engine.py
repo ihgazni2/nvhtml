@@ -1,14 +1,3 @@
-import copy
-import lxml
-import lxml.sax
-import lxml.etree as lxe
-import elist.elist as elel
-from xml.sax.handler import ContentHandler
-import html
-import re
-
-from nvhtml import utils
-
 
 '''
     Toolset for lxml
@@ -25,6 +14,23 @@ from nvhtml import utils
     
     
 '''
+
+
+import copy
+import lxml
+import lxml.sax
+import lxml.etree as lxe
+import elist.elist as elel
+from xml.sax.handler import ContentHandler
+import html
+import re
+from nvhtml import utils
+
+
+
+
+
+
 
 def pathlist(node):
     '''

@@ -1,5 +1,5 @@
-nvhtml package
-==============
+Package
+=======
 
 Subpackages
 -----------
@@ -9,14 +9,6 @@ Subpackages
 
 Submodules
 ----------
-
-nvhtml.code\_gen module
------------------------
-
-.. automodule:: nvhtml.code_gen
-    :members:
-    :undoc-members:
-    :show-inheritance:
 
 nvhtml.consts module
 --------------------
