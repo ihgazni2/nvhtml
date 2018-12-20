@@ -2,6 +2,10 @@
 Package API
 ===========
 
+.. toctree::
+   :maxdepth: 2
+
+
 :: 
 
     from lxml.etree import HTML as LXHTML
