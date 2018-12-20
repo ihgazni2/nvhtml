@@ -31,8 +31,8 @@ print(project_root)
 
 
 import nvhtml
-import lxml
-from nvhtml import *
+import nvhtml.engine
+import nvhtml.lvsrch
 #######################
 
 
