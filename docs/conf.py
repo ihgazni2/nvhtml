@@ -31,6 +31,7 @@ print(project_root)
 
 
 import nvhtml
+from nvhtml import *
 #######################
 
 
