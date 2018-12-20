@@ -3,7 +3,6 @@ Package API
 ===========
 
 .. toctree::
-   :maxdepth: 2
 
 
 :: 
