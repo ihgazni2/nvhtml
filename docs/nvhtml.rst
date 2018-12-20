@@ -6,8 +6,6 @@ Subpackages
 
 .. toctree::
 
-    nvhtml.ATTRS
-    nvhtml.TAGS
 
 Submodules
 ----------
