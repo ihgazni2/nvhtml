@@ -7,7 +7,7 @@ Welcome to nvhtml's documentation!
 ==================================
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 5
    :caption: Contents:
 
    readme

@@ -24,7 +24,11 @@ Package API
 engine
 ------
 
-.. automodule:: engine
+.. toctree::
+   :maxdepth: 4
+
+
+.. automodule:: nvhtml.engine
     :member-order: bysource
     :members:
     :undoc-members:

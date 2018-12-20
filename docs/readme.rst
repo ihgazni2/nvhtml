@@ -17,7 +17,7 @@ ReadMe
 
 
 `Installation <https://nvhtml.readthedocs.io/en/latest/installation/>`_
--------------------------------------
+-----------------------------------------------------------------------
     ::
     
     $ pip3 install nvhtml
@@ -39,7 +39,7 @@ License
 
 
 `Quickstart <https://nvhtml.readthedocs.io/en/latest/usage/>`_
----------------------------
+--------------------------------------------------------------
 - refer to `Usage <https://nvhtml.readthedocs.io/en/latest/usage/>`_
 
 
