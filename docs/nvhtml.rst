@@ -20,7 +20,9 @@ nvhtml.engine module
 .. automodule:: nvhtml.engine
     :members:
     :undoc-members:
-    :show-inheritance:
+    :private-members:
+
+
 
 nvhtml.fs module
 ----------------
@@ -36,7 +38,8 @@ nvhtml.lvsrch module
 .. automodule:: nvhtml.lvsrch
     :members:
     :undoc-members:
-    :show-inheritance:
+    :private-members:
+
 
 nvhtml.txt module
 -----------------
