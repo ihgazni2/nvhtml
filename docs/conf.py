@@ -31,6 +31,7 @@ print(project_root)
 
 
 import nvhtml
+import lxml
 from nvhtml import *
 #######################
 
