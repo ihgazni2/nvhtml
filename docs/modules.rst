@@ -10,6 +10,7 @@ Package API
 
     from lxml.etree import HTML as LXHTML
     from lxml.etree import XML as LXML
+    import lxml.sax
     from xdict.jprint import pdir,pobj
     
     from nvhtml import txt
@@ -23,7 +24,7 @@ Package API
 engine
 ------
 
-.. automodule:: nvhtml.engine
+.. automodule:: engine
     :member-order: bysource
     :members:
     :undoc-members:
