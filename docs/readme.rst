@@ -3,7 +3,7 @@
         :alt: nvhtml PyPi Home Page
 
 ======
-nvhtml
+ReadMe
 ======
 
 
@@ -16,13 +16,13 @@ nvhtml
         :alt: Documentation Status
 
 
-`Installation <./installation.rst>`_
+`Installation <https://nvhtml.readthedocs.io/en/latest/installation/>`_
 -------------------------------------
     ::
     
     $ pip3 install nvhtml
 
-- refer to `Installation <./installation.rst>`_
+- refer to `Installation <https://nvhtml.readthedocs.io/en/latest/installation/>`_
 
 
 
@@ -38,9 +38,9 @@ License
 
 
 
-`Quickstart <./usage.rst>`_
+`Quickstart <https://nvhtml.readthedocs.io/en/latest/usage/>`_
 ---------------------------
-- refer to `Usage <./usage.rst>`_
+- refer to `Usage <https://nvhtml.readthedocs.io/en/latest/usage/>`_
 
 
 Features
