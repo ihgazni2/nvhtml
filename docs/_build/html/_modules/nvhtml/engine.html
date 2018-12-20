@@ -60,7 +60,7 @@
 <span class="sd">    </span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<div class="viewcode-block" id="pathlist"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.pathlist">[docs]</a><span class="k">def</span> <span class="nf">pathlist</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="pathlist"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.pathlist">[docs]</a><span class="k">def</span> <span class="nf">pathlist</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get a list of tags ,the tags-path  of a lxml.etree._Element</span>
 <span class="sd">        </span>
@@ -83,7 +83,7 @@
     <span class="n">pl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">tag</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="between_levels_cond_func"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.between_levels_cond_func">[docs]</a><span class="k">def</span> <span class="nf">between_levels_cond_func</span><span class="p">(</span><span class="n">ele</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
+<div class="viewcode-block" id="between_levels_cond_func"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.between_levels_cond_func">[docs]</a><span class="k">def</span> <span class="nf">between_levels_cond_func</span><span class="p">(</span><span class="n">ele</span><span class="p">,</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | To check if the pathlist-lngth of  a lxml.etree._Element is between start and end</span>
 <span class="sd">        </span>
@@ -108,7 +108,7 @@
     <span class="n">lv</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">return</span><span class="p">((</span><span class="n">lv</span><span class="o">&gt;=</span><span class="n">start</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">lv</span><span class="o">&lt;</span><span class="n">end</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="xpath"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.xpath">[docs]</a><span class="k">def</span> <span class="nf">xpath</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="xpath"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.xpath">[docs]</a><span class="k">def</span> <span class="nf">xpath</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Use xpath to get lxml.etree._Elements </span>
 <span class="sd">        </span>
@@ -141,7 +141,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span><span class="p">(</span><span class="nb">tuple</span><span class="p">(</span><span class="n">elel</span><span class="o">.</span><span class="n">select_seqs</span><span class="p">(</span><span class="nb">all</span><span class="p">,</span><span class="n">args</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="xpath_levels"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.xpath_levels">[docs]</a><span class="k">def</span> <span class="nf">xpath_levels</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="xpath_levels"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.xpath_levels">[docs]</a><span class="k">def</span> <span class="nf">xpath_levels</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Use xpath to get lxml.etree._Elements, whose depth between range(start,end)</span>
 <span class="sd">        </span>
@@ -177,7 +177,7 @@
     <span class="n">selected</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">cond_select_values_all</span><span class="p">(</span><span class="nb">all</span><span class="p">,</span><span class="n">cond_func</span> <span class="o">=</span> <span class="n">between_levels_cond_func</span><span class="p">,</span><span class="n">cond_func_args</span><span class="o">=</span><span class="p">[</span><span class="n">start</span><span class="p">,</span><span class="n">end</span><span class="p">])</span>
     <span class="k">return</span><span class="p">(</span><span class="n">selected</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="plget"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.plget">[docs]</a><span class="k">def</span> <span class="nf">plget</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="plget"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.plget">[docs]</a><span class="k">def</span> <span class="nf">plget</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get lxml.etree._Elements using pathlist</span>
 <span class="sd">        </span>
@@ -229,7 +229,7 @@
         <span class="n">whiches</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">return</span><span class="p">(</span><span class="n">xpath</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="n">xp</span><span class="p">,</span><span class="o">*</span><span class="n">whiches</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="source"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.source">[docs]</a><span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">codec</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="source"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.source">[docs]</a><span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">codec</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the source-txt  of a lxml.etree._Element</span>
 <span class="sd">        </span>
@@ -256,7 +256,7 @@
         <span class="n">rslt</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">unescape</span><span class="p">(</span><span class="n">rslt</span><span class="p">)</span>
         <span class="k">return</span><span class="p">(</span><span class="n">rslt</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="txtize"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.txtize">[docs]</a><span class="k">def</span> <span class="nf">txtize</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+<div class="viewcode-block" id="txtize"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.txtize">[docs]</a><span class="k">def</span> <span class="nf">txtize</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Return a list of source-txts of lxml.etree._Elements</span>
 <span class="sd">    </span>
@@ -276,7 +276,7 @@
     <span class="n">txts</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">mapv</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span><span class="n">source</span><span class="p">,[])</span>
     <span class="k">return</span><span class="p">(</span><span class="n">txts</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="text_intag"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.text_intag">[docs]</a><span class="k">def</span> <span class="nf">text_intag</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="text_intag"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.text_intag">[docs]</a><span class="k">def</span> <span class="nf">text_intag</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the source-txt  between start-tag and end-tag,</span>
 <span class="sd">        | but not include descedants text(NOT itertext),</span>
@@ -314,7 +314,7 @@
     <span class="n">s</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">txts</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="is_leaf"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.is_leaf">[docs]</a><span class="k">def</span> <span class="nf">is_leaf</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="is_leaf"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.is_leaf">[docs]</a><span class="k">def</span> <span class="nf">is_leaf</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Is leaf-node or not(have children)</span>
 <span class="sd">        </span>
@@ -327,7 +327,7 @@
     <span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">eles</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="parent"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.parent">[docs]</a><span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="parent"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.parent">[docs]</a><span class="k">def</span> <span class="nf">parent</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get parent-node</span>
 <span class="sd">        </span>
@@ -338,7 +338,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getparent</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="grand_parent"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.grand_parent">[docs]</a><span class="k">def</span> <span class="nf">grand_parent</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="grand_parent"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.grand_parent">[docs]</a><span class="k">def</span> <span class="nf">grand_parent</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get grand-parent-node</span>
 <span class="sd">        </span>
@@ -349,7 +349,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">getparent</span><span class="p">()</span><span class="o">.</span><span class="n">getparent</span><span class="p">())</span></div>
 
-<div class="viewcode-block" id="ancestor"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.ancestor">[docs]</a><span class="k">def</span> <span class="nf">ancestor</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">which</span><span class="p">,</span><span class="n">pl</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="ancestor"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.ancestor">[docs]</a><span class="k">def</span> <span class="nf">ancestor</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">which</span><span class="p">,</span><span class="n">pl</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get ancestor</span>
 <span class="sd">        </span>
@@ -376,7 +376,7 @@
         <span class="n">which</span> <span class="o">=</span> <span class="n">which</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="k">return</span><span class="p">(</span><span class="n">node</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="ancestors"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.ancestors">[docs]</a><span class="k">def</span> <span class="nf">ancestors</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="ancestors"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.ancestors">[docs]</a><span class="k">def</span> <span class="nf">ancestors</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get ancestor</span>
 <span class="sd">        </span>
@@ -421,7 +421,7 @@
     <span class="n">ances</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">mapv</span><span class="p">(</span><span class="n">whiches</span><span class="p">,</span><span class="n">map_func</span><span class="p">,[</span><span class="n">node</span><span class="p">,</span><span class="n">pl</span><span class="p">])</span>
     <span class="k">return</span><span class="p">(</span><span class="n">ances</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="children"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.children">[docs]</a><span class="k">def</span> <span class="nf">children</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="children"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.children">[docs]</a><span class="k">def</span> <span class="nf">children</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get children</span>
 <span class="sd">        </span>
@@ -463,7 +463,7 @@
     <span class="n">childs</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">select_seqs</span><span class="p">(</span><span class="n">childs</span><span class="p">,</span><span class="n">whiches</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">childs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="child"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.child">[docs]</a><span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">which</span><span class="p">):</span>
+<div class="viewcode-block" id="child"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.child">[docs]</a><span class="k">def</span> <span class="nf">child</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">which</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get child</span>
 <span class="sd">        </span>
@@ -489,7 +489,7 @@
         <span class="k">pass</span>
     <span class="k">return</span><span class="p">(</span><span class="n">chld</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="sibseq"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.sibseq">[docs]</a><span class="k">def</span> <span class="nf">sibseq</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="sibseq"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.sibseq">[docs]</a><span class="k">def</span> <span class="nf">sibseq</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the sequence-number of siblings(share the same parent)</span>
 <span class="sd">        </span>
@@ -542,7 +542,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="siblings"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.siblings">[docs]</a><span class="k">def</span> <span class="nf">siblings</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="siblings"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.siblings">[docs]</a><span class="k">def</span> <span class="nf">siblings</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get siblings(share the same parent)</span>
 <span class="sd">        </span>
@@ -581,7 +581,7 @@
         <span class="n">childs</span> <span class="o">=</span> <span class="n">children</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">childs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="samepl_siblings"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.samepl_siblings">[docs]</a><span class="k">def</span> <span class="nf">samepl_siblings</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="samepl_siblings"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.samepl_siblings">[docs]</a><span class="k">def</span> <span class="nf">samepl_siblings</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get siblings(share the same parent) which have the same pathlist </span>
 <span class="sd">        </span>
@@ -628,7 +628,7 @@
     <span class="n">sibs</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">cond_select_values_all</span><span class="p">(</span><span class="n">sibs</span><span class="p">,</span><span class="n">cond_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">node</span><span class="p">:(</span><span class="n">pathlist</span><span class="p">(</span><span class="n">node</span><span class="p">)</span> <span class="o">==</span> <span class="n">pl</span><span class="p">))</span>
     <span class="k">return</span><span class="p">(</span><span class="n">sibs</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="samepl_sibseq"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.samepl_sibseq">[docs]</a><span class="k">def</span> <span class="nf">samepl_sibseq</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="samepl_sibseq"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.samepl_sibseq">[docs]</a><span class="k">def</span> <span class="nf">samepl_sibseq</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the sequence-number of siblings which have the same pathlist </span>
 <span class="sd">        </span>
@@ -666,7 +666,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="lsib"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.lsib">[docs]</a><span class="k">def</span> <span class="nf">lsib</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="lsib"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.lsib">[docs]</a><span class="k">def</span> <span class="nf">lsib</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the left sibling </span>
 <span class="sd">        </span>
@@ -698,7 +698,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span><span class="p">(</span><span class="n">sibs</span><span class="p">[</span><span class="n">lseq</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="rsib"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.rsib">[docs]</a><span class="k">def</span> <span class="nf">rsib</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="rsib"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.rsib">[docs]</a><span class="k">def</span> <span class="nf">rsib</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the right sibling </span>
 <span class="sd">        </span>
@@ -731,7 +731,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span><span class="p">(</span><span class="n">sibs</span><span class="p">[</span><span class="n">rseq</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="preceding_sibs"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.preceding_sibs">[docs]</a><span class="k">def</span> <span class="nf">preceding_sibs</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="preceding_sibs"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.preceding_sibs">[docs]</a><span class="k">def</span> <span class="nf">preceding_sibs</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the left-side siblings </span>
 <span class="sd">        </span>
@@ -744,7 +744,7 @@
     <span class="n">sibs</span> <span class="o">=</span> <span class="n">siblings</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">sibs</span><span class="p">[:</span><span class="n">curr_seq</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="following_sibs"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.following_sibs">[docs]</a><span class="k">def</span> <span class="nf">following_sibs</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="following_sibs"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.following_sibs">[docs]</a><span class="k">def</span> <span class="nf">following_sibs</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the right-side siblings </span>
 <span class="sd">        </span>
@@ -757,7 +757,7 @@
     <span class="n">sibs</span> <span class="o">=</span> <span class="n">siblings</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">sibs</span><span class="p">[(</span><span class="n">curr_seq</span><span class="o">+</span><span class="mi">1</span><span class="p">):])</span></div>
 
-<div class="viewcode-block" id="lcin"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.lcin">[docs]</a><span class="k">def</span> <span class="nf">lcin</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="lcin"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.lcin">[docs]</a><span class="k">def</span> <span class="nf">lcin</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the left cousin (adjancent to the left,but have different parent)</span>
 <span class="sd">        </span>
@@ -794,7 +794,7 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="rcin"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.rcin">[docs]</a><span class="k">def</span> <span class="nf">rcin</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="rcin"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.rcin">[docs]</a><span class="k">def</span> <span class="nf">rcin</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the right cousin (adjancent to the right,but have different parent)</span>
 <span class="sd">        </span>
@@ -834,7 +834,7 @@
         <span class="k">return</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="rootnode"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.rootnode">[docs]</a><span class="k">def</span> <span class="nf">rootnode</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="rootnode"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.rootnode">[docs]</a><span class="k">def</span> <span class="nf">rootnode</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get all the lxml.etree._Elements in the same layer(have the same pathlist lngth)</span>
 <span class="sd">        </span>
@@ -852,7 +852,7 @@
             <span class="n">p</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">getparent</span><span class="p">()</span>
     <span class="k">return</span><span class="p">(</span><span class="n">prev</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="layer"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.layer">[docs]</a><span class="k">def</span> <span class="nf">layer</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="layer"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.layer">[docs]</a><span class="k">def</span> <span class="nf">layer</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get all the lxml.etree._Elements in the same layer(have the same pathlist lngth)</span>
 <span class="sd">        </span>
@@ -886,7 +886,7 @@
     <span class="k">return</span><span class="p">(</span><span class="n">lyr</span><span class="p">)</span></div>
     
 
-<div class="viewcode-block" id="depth"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.depth">[docs]</a><span class="k">def</span> <span class="nf">depth</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="depth"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.depth">[docs]</a><span class="k">def</span> <span class="nf">depth</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the depth of lxml.etree._Element(depth = the-lngth-of-pathlist - 1)</span>
 <span class="sd">        </span>
@@ -899,7 +899,7 @@
     <span class="n">pl</span> <span class="o">=</span> <span class="n">pathlist</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="breadth"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.breadth">[docs]</a><span class="k">def</span> <span class="nf">breadth</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="breadth"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.breadth">[docs]</a><span class="k">def</span> <span class="nf">breadth</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the breadth of lxml.etree._Element in the layer</span>
 <span class="sd">        </span>
@@ -923,7 +923,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="loc"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.loc">[docs]</a><span class="k">def</span> <span class="nf">loc</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="loc"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.loc">[docs]</a><span class="k">def</span> <span class="nf">loc</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the location(breadth,depth) of lxml.etree._Element in the desc-matrix</span>
 <span class="sd">        </span>
@@ -942,7 +942,7 @@
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">return</span><span class="p">((</span><span class="n">breadth</span><span class="p">(</span><span class="n">node</span><span class="p">),</span><span class="n">depth</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span></div>
 
-<div class="viewcode-block" id="samepl_breadth"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.samepl_breadth">[docs]</a><span class="k">def</span> <span class="nf">samepl_breadth</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="samepl_breadth"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.samepl_breadth">[docs]</a><span class="k">def</span> <span class="nf">samepl_breadth</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get the sequence-number of lxml.etree._Element in the elements having the same pathlist (whole layer ,NOT just the siblings)</span>
 <span class="sd">        </span>
@@ -973,7 +973,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">pass</span></div>
 
-<div class="viewcode-block" id="descendants"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.descendants">[docs]</a><span class="k">def</span> <span class="nf">descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="descendants"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.descendants">[docs]</a><span class="k">def</span> <span class="nf">descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get Descendants</span>
 <span class="sd">        </span>
@@ -1024,16 +1024,16 @@
     <span class="k">return</span><span class="p">(</span><span class="n">dscdnts</span><span class="p">)</span></div>
 
 <span class="c1">#</span>
-<span class="k">def</span> <span class="nf">extract_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">rel</span><span class="o">=</span><span class="s2">&quot;False&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="extract_pls"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.extract_pls">[docs]</a><span class="k">def</span> <span class="nf">extract_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">rel</span><span class="o">=</span><span class="s2">&quot;False&quot;</span><span class="p">):</span>
     <span class="n">pls</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">mapv</span><span class="p">(</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">pathlist</span><span class="p">,[])</span>
     <span class="k">if</span><span class="p">(</span><span class="n">rel</span><span class="o">==</span><span class="kc">True</span><span class="p">):</span>
         <span class="n">lngth</span> <span class="o">=</span> <span class="n">pathlist</span><span class="p">(</span><span class="n">node</span><span class="p">)</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>
         <span class="n">pls</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">mapv</span><span class="p">(</span><span class="n">pls</span><span class="p">,</span><span class="k">lambda</span> <span class="n">rslt</span><span class="p">:</span><span class="n">rslt</span><span class="p">[</span><span class="n">lngth</span><span class="p">:],[])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">pls</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">pls</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="descendants_pls"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.descendants_pls">[docs]</a><span class="k">def</span> <span class="nf">descendants_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="descendants_pls"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.descendants_pls">[docs]</a><span class="k">def</span> <span class="nf">descendants_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get Descendant pathlists</span>
 <span class="sd">        </span>
@@ -1075,7 +1075,7 @@
     <span class="n">dscdnts</span> <span class="o">=</span> <span class="n">descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">extract_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">rel</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="leaf_descendants"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.leaf_descendants">[docs]</a><span class="k">def</span> <span class="nf">leaf_descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="leaf_descendants"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.leaf_descendants">[docs]</a><span class="k">def</span> <span class="nf">leaf_descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Same as descendants, but only leaf-decendants</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -1083,7 +1083,7 @@
     <span class="n">dscdnts</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">cond_select_values_all</span><span class="p">(</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">cond_func</span> <span class="o">=</span> <span class="n">is_leaf</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">dscdnts</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="leaf_descendants_pls"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.leaf_descendants_pls">[docs]</a><span class="k">def</span> <span class="nf">leaf_descendants_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="leaf_descendants_pls"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.leaf_descendants_pls">[docs]</a><span class="k">def</span> <span class="nf">leaf_descendants_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Same as descendants_pls, but only leaf-decendants</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -1091,7 +1091,7 @@
     <span class="n">dscdnts</span> <span class="o">=</span> <span class="n">leaf_descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">extract_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">rel</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="nonleaf_descendants"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.nonleaf_descendants">[docs]</a><span class="k">def</span> <span class="nf">nonleaf_descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="nonleaf_descendants"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.nonleaf_descendants">[docs]</a><span class="k">def</span> <span class="nf">nonleaf_descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Same as descendants, but only nonleaf-decendants</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -1099,7 +1099,7 @@
     <span class="n">dscdnts</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">cond_select_values_all</span><span class="p">(</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">cond_func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">node</span><span class="p">:</span><span class="ow">not</span><span class="p">(</span><span class="n">is_leaf</span><span class="p">(</span><span class="n">node</span><span class="p">)))</span>
     <span class="k">return</span><span class="p">(</span><span class="n">dscdnts</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="nonleaf_descendants_pls"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.nonleaf_descendants_pls">[docs]</a><span class="k">def</span> <span class="nf">nonleaf_descendants_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="nonleaf_descendants_pls"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.nonleaf_descendants_pls">[docs]</a><span class="k">def</span> <span class="nf">nonleaf_descendants_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Same as descendants_pls, but only nonleaf-decendants</span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -1107,7 +1107,7 @@
     <span class="n">dscdnts</span> <span class="o">=</span> <span class="n">nonleaf_descendants</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">extract_pls</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="n">dscdnts</span><span class="p">,</span><span class="n">rel</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="disconnect"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.disconnect">[docs]</a><span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
+<div class="viewcode-block" id="disconnect"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.disconnect">[docs]</a><span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="n">node</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Disconnect </span>
 
@@ -1142,15 +1142,15 @@
 
 <span class="c1">#dom tree</span>
 
-<span class="k">def</span> <span class="nf">layer_wfs_handler</span><span class="p">(</span><span class="n">each_node</span><span class="p">,</span><span class="n">pls</span><span class="p">,</span><span class="n">breadth</span><span class="p">):</span>
+<div class="viewcode-block" id="layer_wfs_handler"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.layer_wfs_handler">[docs]</a><span class="k">def</span> <span class="nf">layer_wfs_handler</span><span class="p">(</span><span class="n">each_node</span><span class="p">,</span><span class="n">pls</span><span class="p">,</span><span class="n">breadth</span><span class="p">):</span>
     <span class="n">pl</span> <span class="o">=</span> <span class="n">pathlist</span><span class="p">(</span><span class="n">each_node</span><span class="p">)</span>
     <span class="n">which</span> <span class="o">=</span> <span class="n">pls</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
     <span class="n">pls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
     <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">each_node</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">default_wfs_handler</span><span class="p">(</span><span class="n">each_node</span><span class="p">,</span><span class="n">pls</span><span class="p">,</span><span class="n">breadth</span><span class="p">):</span>
+<div class="viewcode-block" id="default_wfs_handler"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.default_wfs_handler">[docs]</a><span class="k">def</span> <span class="nf">default_wfs_handler</span><span class="p">(</span><span class="n">each_node</span><span class="p">,</span><span class="n">pls</span><span class="p">,</span><span class="n">breadth</span><span class="p">):</span>
     <span class="n">pl</span> <span class="o">=</span> <span class="n">pathlist</span><span class="p">(</span><span class="n">each_node</span><span class="p">)</span>
     <span class="n">which</span> <span class="o">=</span> <span class="n">pls</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
     <span class="n">pls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pl</span><span class="p">)</span>
@@ -1165,9 +1165,9 @@
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;tail&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">each_node</span><span class="o">.</span><span class="n">tail</span>
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;text_intag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">text_intag</span><span class="p">(</span><span class="n">each_node</span><span class="p">)</span>
     <span class="n">d</span><span class="p">[</span><span class="s1">&#39;node&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">each_node</span>
-    <span class="k">return</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">d</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">init_cls_wfs_arguments</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="init_cls_wfs_arguments"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.init_cls_wfs_arguments">[docs]</a><span class="k">def</span> <span class="nf">init_cls_wfs_arguments</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="k">if</span><span class="p">(</span><span class="s2">&quot;until&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">):</span>
         <span class="n">until</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;until&quot;</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1188,10 +1188,10 @@
         <span class="n">yield_curr_next_unhandled</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;yield_curr_next_unhandled&#39;</span><span class="p">]</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">yield_curr_next_unhandled</span> <span class="o">=</span> <span class="kc">False</span>
-    <span class="k">return</span><span class="p">((</span><span class="n">handler</span><span class="p">,</span><span class="n">until</span><span class="p">,</span><span class="n">yield_d</span><span class="p">,</span><span class="n">yield_currlv</span><span class="p">,</span><span class="n">yield_curr_next_unhandled</span><span class="p">))</span>
+    <span class="k">return</span><span class="p">((</span><span class="n">handler</span><span class="p">,</span><span class="n">until</span><span class="p">,</span><span class="n">yield_d</span><span class="p">,</span><span class="n">yield_currlv</span><span class="p">,</span><span class="n">yield_curr_next_unhandled</span><span class="p">))</span></div>
 
 
-<div class="viewcode-block" id="WFS"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.WFS">[docs]</a><span class="k">class</span> <span class="nc">WFS</span><span class="p">():</span>
+<div class="viewcode-block" id="WFS"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.WFS">[docs]</a><span class="k">class</span> <span class="nc">WFS</span><span class="p">():</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get description-matrix of a lxml.etree._Element root</span>
 <span class="sd">          </span>
@@ -1304,7 +1304,7 @@
                 <span class="k">break</span></div>
 
 
-<div class="viewcode-block" id="wfs_traverse"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.wfs_traverse">[docs]</a><span class="k">def</span> <span class="nf">wfs_traverse</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<div class="viewcode-block" id="wfs_traverse"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.wfs_traverse">[docs]</a><span class="k">def</span> <span class="nf">wfs_traverse</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Same as class WFS ,just return the object(include .mat and .root)</span>
 <span class="sd">        | using default_wfs_handler</span>
@@ -1312,7 +1312,7 @@
     <span class="n">rslt</span> <span class="o">=</span> <span class="n">WFS</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">rslt</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="wfspls"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.wfspls">[docs]</a><span class="k">def</span> <span class="nf">wfspls</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<div class="viewcode-block" id="wfspls"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.wfspls">[docs]</a><span class="k">def</span> <span class="nf">wfspls</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | pathlist-sequence of  width-first-traverse  </span>
 <span class="sd">          </span>
@@ -1365,7 +1365,7 @@
     <span class="k">return</span><span class="p">(</span><span class="n">pls</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="loc2node"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.loc2node">[docs]</a><span class="k">def</span> <span class="nf">loc2node</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<div class="viewcode-block" id="loc2node"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.loc2node">[docs]</a><span class="k">def</span> <span class="nf">loc2node</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get node Via breadth,depth</span>
 
@@ -1398,7 +1398,7 @@
     
 <span class="c1">#sax</span>
 
-<div class="viewcode-block" id="DFS"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.DFS">[docs]</a><span class="k">class</span> <span class="nc">DFS</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">):</span>
+<div class="viewcode-block" id="DFS"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.DFS">[docs]</a><span class="k">class</span> <span class="nc">DFS</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Get sax-style deep-first-traverse  of a lxml.etree._Element root</span>
 <span class="sd">          </span>
@@ -1466,7 +1466,7 @@
 <span class="sd">            &gt;&gt;&gt;</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="DFS.attrl2tl"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.DFS.attrl2tl">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">attrl2tl</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attrl</span><span class="p">):</span>
         <span class="n">tl</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">attrl</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()):</span>
@@ -1475,8 +1475,8 @@
                 <span class="n">tl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([]))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">tl</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">attr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">attr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">tl</span><span class="p">)</span>
-    <span class="nd">@classmethod</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">tl</span><span class="p">)</span></div>
+<div class="viewcode-block" id="DFS.attrl2dl"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.DFS.attrl2dl">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">attrl2dl</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attrl</span><span class="p">):</span>
         <span class="n">dl</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">attrl</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()):</span>
@@ -1487,7 +1487,7 @@
                 <span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
                 <span class="n">d</span><span class="p">[</span><span class="n">attr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">attr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
                 <span class="n">dl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">dl</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">dl</span><span class="p">)</span></div>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span><span class="p">(</span><span class="s2">&quot;attrib_pl&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">attrib_pl</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;attrib_pl&#39;</span><span class="p">]</span>
@@ -1501,11 +1501,11 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">currdatal</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">texts_inseq</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tags</span> <span class="o">=</span> <span class="nb">set</span><span class="p">({})</span>
-<div class="viewcode-block" id="DFS.startElementNS"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.DFS.startElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">startElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">qname</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+<div class="viewcode-block" id="DFS.startElementNS"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.DFS.startElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">startElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">qname</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currdatal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currpl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qname</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currattribl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">())</span></div>
-<div class="viewcode-block" id="DFS.endElementNS"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.DFS.endElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">endElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ns_name</span><span class="p">,</span> <span class="n">qname</span><span class="p">):</span>
+<div class="viewcode-block" id="DFS.endElementNS"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.DFS.endElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">endElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ns_name</span><span class="p">,</span> <span class="n">qname</span><span class="p">):</span>
         <span class="c1">#####</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">qname</span><span class="p">)</span>
         <span class="c1">#####</span>
@@ -1527,13 +1527,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">attribs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dl</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currattribl</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span></div>
         <span class="c1">#####</span>
-<div class="viewcode-block" id="DFS.characters"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.DFS.characters">[docs]</a>    <span class="k">def</span> <span class="nf">characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="DFS.characters"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.DFS.characters">[docs]</a>    <span class="k">def</span> <span class="nf">characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">pl</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currpl</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currdatal</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">pl</span><span class="p">,</span><span class="n">data</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">texts_inseq</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">pl</span><span class="p">,</span><span class="n">data</span><span class="p">))</span></div></div>
 
 
-<div class="viewcode-block" id="dfs_traverse"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.dfs_traverse">[docs]</a><span class="k">def</span> <span class="nf">dfs_traverse</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<div class="viewcode-block" id="dfs_traverse"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.dfs_traverse">[docs]</a><span class="k">def</span> <span class="nf">dfs_traverse</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Same as class DFS ,just return the object(include .pls , .attribs ,.datas, .texts_inseq, .tags......)</span>
 <span class="sd">        | using default_wfs_handler</span>
@@ -1542,7 +1542,7 @@
     <span class="n">lxml</span><span class="o">.</span><span class="n">sax</span><span class="o">.</span><span class="n">saxify</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">rslt</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">rslt</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="dfspls"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.dfspls">[docs]</a><span class="k">def</span> <span class="nf">dfspls</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+<div class="viewcode-block" id="dfspls"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.dfspls">[docs]</a><span class="k">def</span> <span class="nf">dfspls</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | pathlist-sequence of  depth-first-traverse  </span>
 <span class="sd">          </span>
@@ -1589,8 +1589,8 @@
 
 
 
-<div class="viewcode-block" id="BEAUTIFY"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.BEAUTIFY">[docs]</a><span class="k">class</span> <span class="nc">BEAUTIFY</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">):</span>
-    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="BEAUTIFY"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY">[docs]</a><span class="k">class</span> <span class="nc">BEAUTIFY</span><span class="p">(</span><span class="n">ContentHandler</span><span class="p">):</span>
+<div class="viewcode-block" id="BEAUTIFY.indent"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.indent">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">indent</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">pl</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="k">if</span><span class="p">(</span><span class="s2">&quot;fixed_indent&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">):</span>
             <span class="n">fixed_indent</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;fixed_indent&#39;</span><span class="p">]</span>
@@ -1605,8 +1605,8 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">sc</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">reduce_left</span><span class="p">(</span><span class="n">pl</span><span class="p">,</span><span class="k">lambda</span> <span class="n">lngth</span><span class="p">,</span><span class="n">ele</span><span class="p">:(</span><span class="n">lngth</span><span class="o">+</span><span class="n">ele</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()),</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pl</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span>
             <span class="n">padding</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\x20</span><span class="s2">&quot;</span> <span class="o">*</span> <span class="n">sc</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">padding</span><span class="p">)</span>
-    <span class="nd">@classmethod</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">padding</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BEAUTIFY.attr2tl"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.attr2tl">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">attr2tl</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">attrl</span><span class="p">):</span>
         <span class="n">tl</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">attrl</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()):</span>
@@ -1615,36 +1615,36 @@
                 <span class="n">tl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">tuple</span><span class="p">([]))</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">tl</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">attr</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span><span class="n">attr</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">tl</span><span class="p">)</span>
-    <span class="nd">@classmethod</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">tl</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BEAUTIFY.attrt2s"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.attrt2s">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">attrt2s</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">t</span><span class="p">):</span>
         <span class="n">k</span> <span class="o">=</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="s1">&#39;=&quot;&#39;</span><span class="o">+</span><span class="n">v</span><span class="o">+</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span>
-    <span class="nd">@classmethod</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="s1">&#39;=&quot;&#39;</span><span class="o">+</span><span class="n">v</span><span class="o">+</span><span class="s1">&#39;&quot;&#39;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BEAUTIFY.attrtl2str"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.attrtl2str">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">attrtl2str</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">tl</span><span class="p">):</span>
         <span class="k">if</span><span class="p">(</span><span class="n">tl</span><span class="o">.</span><span class="fm">__len__</span><span class="p">()</span> <span class="o">==</span><span class="mi">0</span><span class="p">):</span>
             <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">arr</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">mapv</span><span class="p">(</span><span class="n">tl</span><span class="p">,</span><span class="bp">cls</span><span class="o">.</span><span class="n">attrt2s</span><span class="p">,[])</span>
             <span class="n">s</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\x20</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-    <span class="nd">@classmethod</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BEAUTIFY.creat_start_tag_str"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.creat_start_tag_str">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">creat_start_tag_str</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">tlattr</span><span class="p">,</span><span class="n">padding</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&lt;&quot;</span><span class="o">+</span><span class="n">tag</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\x20</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="bp">cls</span><span class="o">.</span><span class="n">attrtl2str</span><span class="p">(</span><span class="n">tlattr</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x20</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span><span class="s2">&quot;&gt;&quot;</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">padding</span><span class="o">+</span><span class="n">s</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nd">@classmethod</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">padding</span><span class="o">+</span><span class="n">s</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BEAUTIFY.creat_end_tag_str"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.creat_end_tag_str">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">creat_end_tag_str</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">tag</span><span class="p">,</span><span class="n">padding</span><span class="p">):</span>
         <span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&lt;/&quot;</span><span class="o">+</span><span class="n">tag</span><span class="o">+</span><span class="s2">&quot;&gt;&quot;</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">padding</span><span class="o">+</span><span class="n">s</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nd">@classmethod</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">padding</span><span class="o">+</span><span class="n">s</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
+<div class="viewcode-block" id="BEAUTIFY.creat_text_node_str"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.creat_text_node_str">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">creat_text_node_str</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span><span class="n">s</span><span class="p">,</span><span class="n">padding</span><span class="p">):</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
         <span class="n">lines</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">mapv</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="k">lambda</span> <span class="n">ele</span><span class="p">:(</span><span class="n">padding</span><span class="o">+</span><span class="n">ele</span><span class="p">),[])</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">elel</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">s</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span></div>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currpl</span> <span class="o">=</span><span class="p">[]</span>
@@ -1653,16 +1653,16 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">highlight</span> <span class="o">=</span> <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;highlight&#39;</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">highlight</span> <span class="o">=</span> <span class="p">{}</span>
-<div class="viewcode-block" id="BEAUTIFY.startElementNS"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.BEAUTIFY.startElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">startElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">qname</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
+<div class="viewcode-block" id="BEAUTIFY.startElementNS"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.startElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">startElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">qname</span><span class="p">,</span> <span class="n">attributes</span><span class="p">):</span>
         <span class="n">tlattr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attr2tl</span><span class="p">(</span><span class="n">attributes</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
         <span class="n">padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currpl</span><span class="p">,</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">creat_start_tag_str</span><span class="p">(</span><span class="n">qname</span><span class="p">,</span><span class="n">tlattr</span><span class="p">,</span><span class="n">padding</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currpl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">qname</span><span class="p">)</span></div>
-<div class="viewcode-block" id="BEAUTIFY.endElementNS"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.BEAUTIFY.endElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">endElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ns_name</span><span class="p">,</span> <span class="n">qname</span><span class="p">):</span>
+<div class="viewcode-block" id="BEAUTIFY.endElementNS"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.endElementNS">[docs]</a>    <span class="k">def</span> <span class="nf">endElementNS</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ns_name</span><span class="p">,</span> <span class="n">qname</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">currpl</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currpl</span><span class="p">,</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">creat_end_tag_str</span><span class="p">(</span><span class="n">qname</span><span class="p">,</span><span class="n">padding</span><span class="p">)</span></div>
-<div class="viewcode-block" id="BEAUTIFY.characters"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.BEAUTIFY.characters">[docs]</a>    <span class="k">def</span> <span class="nf">characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="BEAUTIFY.characters"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.BEAUTIFY.characters">[docs]</a>    <span class="k">def</span> <span class="nf">characters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">padding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">indent</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">currpl</span><span class="p">,</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
         <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\x20</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1676,7 +1676,7 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">+</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">s</span><span class="p">)</span></div></div>
 
 
-<div class="viewcode-block" id="beautify"><a class="viewcode-back" href="../../modules.html#nvhtml.engine.beautify">[docs]</a><span class="k">def</span> <span class="nf">beautify</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="beautify"><a class="viewcode-back" href="../../nvhtml.html#nvhtml.engine.beautify">[docs]</a><span class="k">def</span> <span class="nf">beautify</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">        | Beautity html output</span>
 <span class="sd">        </span>
@@ -1759,7 +1759,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../readme.html">nvhtml</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Package API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">nvhtml</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../authors.html">Credits</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../history.html">History</a></li>
