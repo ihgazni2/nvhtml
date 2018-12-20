@@ -3,7 +3,7 @@ Package API
 ===========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
 
 :: 
@@ -41,5 +41,13 @@ lvsrch
     :undoc-members:
     :private-members:
     :show-inheritance:
+
+
+Indices and tables
+==================
+ 
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 
