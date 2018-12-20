@@ -1,4 +1,4 @@
-.. image:: ./images/logo.png
+.. image:: ./docs/images/logo.png
         :target: https://pypi.python.org/pypi/nvhtml
         :alt: nvhtml PyPi Home Page
 
@@ -7,17 +7,17 @@ ReadMe
 ======
 
 
-.. image:: ./images/pypi.png
+.. image:: ./docs/images/pypi.png
         :target: https://pypi.python.org/pypi/nvhtml
         :alt: Pypi Python Package Index Status
 
-.. image:: ./images/rdocs.png
+.. image:: ./docs/images/rdocs.png
         :target: https://nvhtml.readthedocs.io/en/latest
         :alt: Documentation Status
 
 
-`Installation <./installation.rst>`_
--------------------------------------
+`Installation <./docs/installation.rst>`_
+-----------------------------------------
     ::
     
     $ pip3 install nvhtml
@@ -38,9 +38,9 @@ License
 
 
 
-`Quickstart <./usage.rst>`_
----------------------------
-- refer to `Usage <./usage.rst>`_
+`Quickstart <./docs/usage.rst>`_
+---------------------------------
+- refer to `Usage <./docs/usage.rst>`_
 
 
 Features
