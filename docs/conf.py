@@ -56,7 +56,6 @@ release = '0.5'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 
-import autoapi
 
 extensions = [
     'sphinx.ext.autodoc', 
@@ -65,7 +64,6 @@ extensions = [
     'sphinx.ext.intersphinx',
     'sphinx.ext.ifconfig',
     'sphinx.ext.inheritance_diagram',
-    'autoapi.sphinx'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
