@@ -1,7 +1,7 @@
-nvhtml
-======
+Package APIs
+============
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 4
 
    nvhtml
