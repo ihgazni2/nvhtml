@@ -1,14 +1,10 @@
-nnvhtml
-=======
 
 Subpackages
------------
+===========
 
 .. toctree::
+    :maxdepth: 4
 
-
-Submodules
-----------
 
 nvhtml.consts module
 --------------------
