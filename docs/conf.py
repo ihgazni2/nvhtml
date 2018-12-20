@@ -29,7 +29,8 @@ print(project_root)
 #sys.path.insert(0, cwd)
 #print(cwd)
 
-
+#creat a requirements.txt
+#and then fill https://readthedocs.org/dashboard/nvhtml/advanced/#Archivo de requerimientos:
 import nvhtml
 #######################
 
