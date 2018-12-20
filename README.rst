@@ -22,7 +22,7 @@ ReadMe
     
     $ pip3 install nvhtml
 
-- refer to `Installation <./installation.rst>`_
+- refer to `Installation <./docs/installation.rst>`_
 
 
 
