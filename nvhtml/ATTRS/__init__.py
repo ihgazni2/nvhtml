@@ -1,2 +1,2 @@
-__all__ = ['attrsrch','eles','txts','attrs']
+__all__ = ['attrsrch','eles','txts','attrs','suffixes']
 
