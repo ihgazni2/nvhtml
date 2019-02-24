@@ -1,4 +1,4 @@
-from nvhtml.ATTR.attrsrch import *
+from nvhtml.ATTRS.attrsrch import *
 
 def href(root,*args,**kwargs):
     hrefs = srcha4attribs(root,"href",*args,**kwargs)
