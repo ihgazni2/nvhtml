@@ -1638,6 +1638,7 @@ class BEAUTIFY(ContentHandler):
         padding = self.indent(self.currpl,**self.kwargs)
         s = data.replace("\r","")
         s = s.strip("\n").strip("\x20").strip("\n")
+        print(s)
         if(s ==""):
             pass
         else:
