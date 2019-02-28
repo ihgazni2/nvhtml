@@ -4,8 +4,8 @@ def allcls(root,*args,**kwargs):
     clses = srcha4txts(root,"class",*args,**kwargs)
     return(clses)
 
-def cls(root,*args,**kwargs):
-    txts= srchav4txts("class",*args,**kwargs)
+def cls(root,value,*args,**kwargs):
+    txts= srchav4txts("class",value,root,*args,**kwargs)
     if("which" in kwargs):
         which = int(kwargs['which'])
     else:
