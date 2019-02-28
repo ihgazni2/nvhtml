@@ -1638,11 +1638,11 @@ class BEAUTIFY(ContentHandler):
         padding = self.indent(self.currpl,**self.kwargs)
         s = data.replace("\r","")
         s = s.strip("\n").strip("\x20").strip("\n")
-        print(s)
         if(s ==""):
             pass
         else:
             s = self.creat_text_node_str(s,padding)
+            print(s)
             regex = re.compile("(.*\n)([\x20]*?)")
             m = regex.search(s)
             s = m.group(1)
