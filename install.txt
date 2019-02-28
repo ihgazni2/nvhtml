@@ -1,1 +1,1 @@
-/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.12-py3.6.egg
+/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.13-py3.6.egg
