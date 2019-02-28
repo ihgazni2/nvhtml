@@ -1,5 +1,16 @@
 from nvhtml.ATTRS.attrsrch import *
 
-def cls(root,*args,**kwargs):
+def allcls(root,*args,**kwargs):
     clses = srcha4txts(root,"class",*args,**kwargs)
     return(clses)
+
+def cls(root,*args,**kwargs):
+    txts= attrsrch.srchav4txts("class",*args,**kwargs)
+    if("which" in kwargs):
+        which = int(kwargs['which'])
+    else:
+        which = 0
+    if(which == "all"):
+        return(txts)
+    else:
+        return(txts[which])
