@@ -25,7 +25,7 @@ def srchav4eles(attrib,value,root,*args,**kwargs):
     else:
         mode = "multi"
     eles = srcha4eles(root,attrib,*args,**kwargs)
-    attribs = srch4attribs(attrib,value,root,*args,**kwargs)
+    attribs = srcha4attribs(root,attrib,*args,**kwargs)
     if(mode == "loose"):
         indexes = elel.cond_select_indexes_all(attribs,cond_func=lambda ele:(value in ele))
     elif(mode == "multi"):                    
