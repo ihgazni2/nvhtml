@@ -5,7 +5,7 @@ def allcls(root,*args,**kwargs):
     return(clses)
 
 def cls(root,*args,**kwargs):
-    txts= attrsrch.srchav4txts("class",*args,**kwargs)
+    txts= srchav4txts("class",*args,**kwargs)
     if("which" in kwargs):
         which = int(kwargs['which'])
     else:
