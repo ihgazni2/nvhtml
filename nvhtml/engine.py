@@ -1646,7 +1646,6 @@ class BEAUTIFY(ContentHandler):
             allms = regex.findall(s)
             allms = elel.mapv(allms,lambda s:s[0])
             s = elel.join(allms,"")
-            print(s)
             self.s = self.s + html.escape(s)
 
 
