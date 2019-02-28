@@ -1642,10 +1642,11 @@ class BEAUTIFY(ContentHandler):
             pass
         else:
             s = self.creat_text_node_str(s,padding)
-            print(s)
             regex = re.compile("(.*\n)([\x20]*?)")
-            m = regex.search(s)
-            s = m.group(1)
+            allms = regex.findall(s)
+            allms = elel.mapv(allms,lambda s:s[0])
+            s = elel.join(allms,"")
+            print(s)
             self.s = self.s + html.escape(s)
 
 
