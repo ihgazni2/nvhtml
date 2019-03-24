@@ -46,6 +46,7 @@ License
 Features
 --------
 
+- html to sqlite
 - search html via tags-pathlist 
 - search html via breadth,depth
 - search html via tag
