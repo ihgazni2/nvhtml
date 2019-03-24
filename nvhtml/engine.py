@@ -310,6 +310,8 @@ def parent(node):
     '''
     return(node.getparent())
 
+
+
 def grand_parent(node):
     '''
         | Get grand-parent-node
@@ -888,12 +890,21 @@ def breadth(node):
             #4
             
     '''
+    if(node == None):
+        return(None)
+    else:
+        pass
     lyr = layer(node)
     for i in range(lyr.__len__()):
         if(lyr[i] == node):
             return(i)
         else:
             pass
+
+def parent_breadth(node):
+    p = parent(node)
+    return(breadth(p))
+
 
 def loc(node):
     '''
@@ -1128,6 +1139,7 @@ def default_wfs_handler(each_node,pls,breadth):
     pls.append(pl)
     d = {}
     d['pl'] = pl
+    d['pbreadth'] = parent_breadth(each_node)
     d['samepl_sibseq'] = samepl_sibseq(each_node)
     d['samepl_breadth'] = which
     d['tag'] = str(each_node.tag)
