@@ -2,6 +2,28 @@
 Usage
 =====
 
+Command Line
+------------
+    
+    ::
+    
+        nvhtml_beauty -input opis.html
+        vim opis.html.out.html
+        
+        # nvhtml_beauty -h
+        usage: nvhtml_beauty [-h] [-input INPUT_HTML_FILE] [-output OUTPUT_HTML_FILE] [-codec INPUT_CODEC]
+
+        optional arguments:
+          -h,           --help                      show this help message and exit
+          -input        --input_html_file           input html file name
+          -output       --output_html_file          output html file name
+          -codec        --input_codec               input html file codec
+
+        
+
+
+
+
 Examples
 --------
 
