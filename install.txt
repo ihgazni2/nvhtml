@@ -1,2 +1,3 @@
-/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.17-py3.6.egg
+/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.18-py3.6.egg
 /usr/local/bin/nvhtml_beauty
+/usr/local/bin/nvhtml_tag
