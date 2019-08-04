@@ -4,6 +4,9 @@ Usage
 
 Command Line
 ------------
+
+beautify
+^^^^^^^^
     
     ::
     
@@ -20,7 +23,43 @@ Command Line
           -codec        --input_codec               input html file codec
 
         
+tag search with depth
+^^^^^^^^^^^^^^^^^^^^^
+    
+    ::
+    
+        NVHTML-BENCH# nvhtml_tag -h
+        usage: nvhtml_tag [-h] [-input INPUT_HTML_FILE] [-codec INPUT_CODEC]
+                          [-tag HTML_TAG] [-which WHICH_TAG]
+                          [-sdepth START_LEVEL_DEPTH] [-edepth END_LEVEL_DEPTH]
+        
+        optional arguments:
+          -h,                     --help                show this help message and exit
+          -input                  --input_html_file     input html file name
+          -codec                  --input_codec         input html file codec
+          -tag                    --html_tag            html tag for search
+          -which                  --which_tag           sequence of tag-array
+          -sdepth                 --start_level_depth   start level depth
+          -edepth                 --end_level_depth     end level depth
+        NVHTML-BENCH#
 
+        NVHTML-BENCH# nvhtml_tag -input opis.html.out.html -tag img -sdepth 3 -edepth 6
+        <img alt="Twitter" src="https://opistobranquis.info/wp-content/themes/tempera/images/socials/Twitter.png">
+        </img>
+        
+        <img alt="Facebook" src="https://opistobranquis.info/wp-content/themes/tempera/images/socials/Facebook.png">
+        </img>
+        
+        <img alt="Twitter" src="https://opistobranquis.info/wp-content/themes/tempera/images/socials/Twitter.png">
+        </img>
+        
+        <img alt="Facebook" src="https://opistobranquis.info/wp-content/themes/tempera/images/socials/Facebook.png">
+        </img>
+        
+        <img style="float: right; display: none" class="loading" src="https://opistobranquis.info/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16">
+        </img>
+        
+        NVHTML-BENCH#    
 
 
 
