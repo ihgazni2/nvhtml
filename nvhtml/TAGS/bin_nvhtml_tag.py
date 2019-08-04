@@ -17,7 +17,7 @@ parser.add_argument('-codec','--input_codec', default="utf-8",help="input html f
 
 parser.add_argument('-tag','--html_tag', default="img",help="html tag for search")
 
-parser.add_argument('-which','--html_tag', default=None,help="html tag for search")
+parser.add_argument('-which','--which_tag', default=None,help="sequence of tag-array")
 
 parser.add_argument('-sdepth','--start_level_depth', default=None,help="start level depth")
 
