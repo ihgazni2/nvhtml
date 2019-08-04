@@ -12,19 +12,41 @@ from efdir import fs
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-input','--input_html_file', default="",help="input html file name")
-parser.add_argument('-output','--output_html_file', default="",help="output html file name")
+#parser.add_argument('-output','--output_html_file', default="",help="output html file name")
 parser.add_argument('-codec','--input_codec', default="utf-8",help="input html file codec")
+
+parser.add_argument('-tag','--html_tag', default="img",help="html tag for search")
+
+parser.add_argument('-which','--html_tag', default=None,help="html tag for search")
+
+parser.add_argument('-sdepth','--start_level_depth', default=None,help="start level depth")
+
+parser.add_argument('-edepth','--end_level_depth', default=None,help="end level depth")
 
 
 args = parser.parse_args()
 
+levels = []
+if(args.start_level_depth != None):
+   levels.append(int(args.start_level_depth))
+   if(args.end_level_depth != None):
+       levels.append(int(args.end_level_depth))
+   else:
+       pass
+else:
+    pass
+
+
+
+
 def main():
     html_str = fs.rfile(args.input_html_file,codec=args.input_codec)
     root = LXHTML(html_str)
-    html_str = engine.beautify(root)
-    fn = args.input_html_file+".out.html"
-    fs.wfile(fn,html_str)
+    entries = lvsrch.srch(args.html_tag,root,*levels,which=args.which_tag)
 
 
+
+#apt-get install xml-twig-tools
+#go get github.com/ericchiang/pup
 
 
