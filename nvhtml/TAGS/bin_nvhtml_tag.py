@@ -44,9 +44,13 @@ def main():
     root = LXHTML(html_str)
     entries = lvsrch.srch(args.html_tag,root,*levels,which=args.which_tag)
 
+#css selector
+##apt install html-xml-utils
+##cat opis.html.out.html | hxselect img
+##go get github.com/ericchiang/pup
 
-#apt install html-xml-utils
-#apt-get install xml-twig-tools
-#go get github.com/ericchiang/pup
+#xpath
+##apt-get install xml-twig-tools
+
 
 
