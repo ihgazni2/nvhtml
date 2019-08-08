@@ -42,6 +42,7 @@ setup(
          'console_scripts': [
                                 'nvhtml_beauty=nvhtml.bin:main',
                                 'nvhtml_tag=nvhtml.TAGS.bin_nvhtml_tag:main'
+                                'nvhtml_tgpth=nvhtml.TAGS.bin_nvhtml_tgpth:main'
                             ]
     },
     packages=find_packages(),

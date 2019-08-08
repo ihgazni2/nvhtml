@@ -24,8 +24,8 @@ args = parser.parse_args()
 def main():
     html_str = fs.rfile(args.input_html_file,codec=args.input_codec)
     root = LXHTML(html_str)
-    entries = lvsrch.srch(args.html_tag,root,which=args.which_tag)
-    fn = args.input_html_file+"."+args.html_tag +".html"
+    html_str = engine.beautify(root)
+    fn = args.input_html_file+"."+"beauty" +".html"
     fs.wfile(fn,html_str)
 
 
