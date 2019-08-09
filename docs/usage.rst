@@ -62,6 +62,67 @@ tag search with depth
         NVHTML-BENCH#    
 
 
+search with tags-path
+^^^^^^^^^^^^^^^^^^^^^
+    
+    ::
+        
+        NVHTML-BENCH# nvhtml_tgpth -input opis.html  -tgpth html.body.di
+        [
+         'div',
+         'div',
+         'div',
+         'div'
+        ]
+        
+        
+        NVHTML-BENCH# nvhtml_tgpth -input opis.html  -tgpth html.body.div
+        [
+         0,
+         1,
+         2,
+         3
+        ]
+        
+        NVHTML-BENCH#
+        NVHTML-BENCH# nvhtml_tgpth -input opis.html  -tgpth html.body.div.3
+        <div id="cookie-banner">
+        
+            <div id="cookie-banner-container">
+        
+                <div class="left">
+                                                Our website uses cookies. By accessing our website and
+                    <br>
+                    </br>
+                    agreeing to this policy, you consent to our use of cookies.
+                </div>
+        
+                <div class="right">
+        
+                    <a class="accept" href="#">
+                        ACCEPT
+                    </a>
+        
+                    <a class="more-info" href="https://opistobranquis.info/1HWEw">
+                                                                MORE INFO
+                    </a>
+        
+                </div>
+        
+            </div>
+        </div>
+        NVHTML-BENCH#
+
+
+        usage: nvhtml_tgpth [-h] [-input INPUT_HTML_FILE] [-codec INPUT_CODEC]
+                            [-tgpth TAG_PATH]
+        
+        optional arguments:
+          -h,        --help                                  show this help message and exit
+          -input     --input_html_file INPUT_HTML_FILE       input html file name
+          -codec     --input_codec INPUT_CODEC               input html file codec
+          -tgpth     --tag_path TAG_PATH                      html tag dot path
+
 
 Examples
 --------
