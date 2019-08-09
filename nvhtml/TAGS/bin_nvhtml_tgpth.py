@@ -136,7 +136,7 @@ def get_next_layer_tags(nodes):
         tmp = eles[i]
         rslt.extend(tmp)
     tags = elel.mapv(rslt,lambda ele:ele.tag)
-    return(tags)
+    return((tags,rslt))
 
 
 
@@ -167,19 +167,19 @@ def main():
         nodes,tail = get_pre_tail_nodes(pth,root)
         if(tail == ""): 
             #end with a ".", means search next layer tags
-            opts = get_next_layer_tags(nodes)
+            opts,final_nodes = get_next_layer_tags(nodes)
             pobj(opts)
         else:
-            tags = get_next_layer_tags(nodes)
-            seqs = get_seqs(tags,tail)
+            tags,final_nodes = get_next_layer_tags(nodes)
+            seqs = get_seqs(tags,tail)           #how many samepl_seqs
             lngth = seqs.__len__()
             if(lngth == 0):
                 opts  = get_options(tags,tail)
                 pobj(opts)
             elif(lngth == 1):
                 breadth = seqs[0]
-                nds = node.xpath(tail)
-                elel.for_each(nds,lambda nd:print(engine.beautify(nd)))
+                nd = final_nodes[0].xpath(tail)
+                print(engine.beautify(nd))
             else:
                 pobj(elel.init_range(0,lngth,1))
     else:
