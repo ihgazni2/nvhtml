@@ -147,6 +147,7 @@ def main():
     #print(pth)
     #
     nodes,tail = get_pre_tail_nodes(pth,root)
+    print(nodes,tail)
     #
     #print(nodes,tail)
     #
@@ -164,7 +165,7 @@ def main():
             nds = node.xpath(tail)
             elel.for_each(nds,lambda nd:print(engine.beautify(nd)))
         else:
-            pobj(elel.elel.init_range(0,lngth,1))
+            pobj(elel.init_range(0,lngth,1))
 
 
 
