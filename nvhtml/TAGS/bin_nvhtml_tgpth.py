@@ -115,7 +115,13 @@ def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
     pth = args.tag_path
+    #
+    print(pth)
+    #
     nodes,tail = parse_dot_path(pth,root)
+    #
+    print(nodes,tail)
+    #
     if(tail == None):
         print(engine.beautify(nodes[0]))
     else:
@@ -133,3 +139,6 @@ def main():
             pobj(elel.elel.init_range(0,lngth,1))
 
 
+
+
+#nvhtml_tgpth -input opis.html  -tgpth html.body.div
