@@ -12,26 +12,38 @@ import argparse
 from efdir import fs
 import elist.elist as elel
 import estring.estring as eses
-
+import spaint.spaint as spaint
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-input','--input_html_file', default="",help="input html file name")
 parser.add_argument('-codec','--input_codec', default="utf-8",help="input html file codec")
 parser.add_argument('-tgpth','--tag_path', default=".",help="html tag dot path")
 
+#    '''
+#        >>> get_dot_path_segs(".")
+#        (['//'], '')
+#        >>>
+#        >>> get_dot_path_segs(".html")
+#        (['//'], 'html')
+#        >>> get_dot_path_segs("html.")
+#        (['/html'], '')
+#        >>> get_dot_path_segs("html")
+#        ([], 'html')
+#        >>>
+#        >>> get_dot_path_segs(".a.b.3.c.d.5.e.f")
+#        (['//a/b', 3, 'c/d', 5, 'e'], 'f')
+#        >>>
+#        >>> get_dot_path_segs("a.b.3.c.d.5.e.f")
+#        (['/a/b', 3, 'c/d', 5, 'e'], 'f')
+#        >>>
+#        >>> get_dot_path_segs("a.b.3.c.d.5.e.f.")
+#        (['/a/b', 3, 'c/d', 5, 'e/f'], '')
+#        >>>
+#    '''
+
+
 
 def get_dot_path_segs(pth):
-    '''
-        >>> get_dot_path_segs(".a.b.3.c.d.5.e.f")
-        (['//a/b', 3, 'c/d', 5, 'e'], 'f')
-        >>>
-        >>> get_dot_path_segs("a.b.3.c.d.5.e.f")
-        (['/a/b', 3, 'c/d', 5, 'e'], 'f')
-        >>>
-        >>> get_dot_path_segs("a.b.3.c.d.5.e.f.")
-        (['/a/b', 3, 'c/d', 5, 'e/f'], '')
-        >>>
-    '''
     arr =  pth.split(".")
     tail = arr[-1]
     arr  =  arr[:-1]
@@ -51,17 +63,21 @@ def get_dot_path_segs(pth):
             except:
                 seg  = seg + tag + "/"
             else:
-                seg = seg.rstrip("/")
+                seg = eses.rstrip(seg,"/",1)
                 segs.append(seg)
                 segs.append(int(tag))
                 seg = ""
         if(seg == ""):
             pass
         else:
-            seg = seg.rstrip("/")
+            seg = eses.rstrip(seg,"/",1)
             segs.append(seg)
-        if(segs[0][:2]=="//"):
-            pass
+        if(segs[0][0]=="/"):
+            cond = (segs[0].__len__() == 1)
+            if(cond):
+                segs[0] = segs[0] = "/" + segs[0]
+            else:
+                pass
         else:
             segs[0] = "/" + segs[0]
     return((segs,tail))
@@ -91,7 +107,10 @@ def get_pre_tail_nodes(pth,root):
     if(xpath ==  ""):
         nodes = [node]
     else:
-        nodes = engine.xpath(node,xpath)
+        if(xpath == "//"):
+            nodes = [node]
+        else:
+            nodes = engine.xpath(node,xpath)
     return((nodes,tail))
 
 
@@ -147,12 +166,14 @@ def main():
     #print(pth)
     #
     nodes,tail = get_pre_tail_nodes(pth,root)
-    print(nodes,tail)
     #
     #print(nodes,tail)
     #
-    if(tail == None):
-        print(engine.beautify(nodes[0]))
+    if(tail == ""):
+        for i in range(nodes.__len__()):
+            spaint.slpaint('<!------------------------------------------>','yellow')
+            print(engine.beautify(nodes[i])
+            spaint.slpaint('<!------------------------------------------>','yellow')
     else:
         tags = get_next_layer_tags(nodes)
         seqs = get_seqs(tags,tail)
