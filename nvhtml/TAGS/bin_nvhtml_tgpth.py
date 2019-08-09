@@ -188,6 +188,7 @@ def main():
             return(None)
         elif(root.tag.startswith(tail)):
             pobj([root.tag])
+            return(None)
         else:
             pass
     else:
