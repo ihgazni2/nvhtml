@@ -158,18 +158,24 @@ def get_options(tags,tail):
 args = parser.parse_args()
 
 
-def is_direct_root_path(pth):
+def is_direct_root_path(pth,root):
     arr = pth.split(".")
     tail =  arr[-1]
     arr = arr[:-1]
-    if(arr[0] == ""):
-        arr = arr[1:]
-    else:
-        pass
-    if(arr.__len__()==0):
-        return(True)
-    else:
+    if(tail != root.tag):
         return(False)
+    else:
+        if(arr.__len__()==0):
+            return(True)
+        else:
+            if(arr[0] == ""):
+                arr = arr[1:]
+            else:
+                pass
+            if(arr.__len__()==0):
+                return(True)
+            else:
+                return(False)
 
 
 def main():
