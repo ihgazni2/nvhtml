@@ -162,31 +162,28 @@ def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
     pth = args.tag_path
-    #
-    #print(pth)
-    #
-    nodes,tail = get_pre_tail_nodes(pth,root)
-    #
-    #print(nodes,tail)
-    #
-    if(tail == ""): 
-        #end with a ".", means search next layer tags
-        opts = get_next_layer_tags(nodes)
-        pobj(opts)
-    else:
-        tags = get_next_layer_tags(nodes)
-        seqs = get_seqs(tags,tail)
-        lngth = seqs.__len__()
-        if(lngth == 0):
-            opts  = get_options(tags,tail)
+    if(pth != "."):
+        #
+        nodes,tail = get_pre_tail_nodes(pth,root)
+        if(tail == ""): 
+            #end with a ".", means search next layer tags
+            opts = get_next_layer_tags(nodes)
             pobj(opts)
-        elif(lngth == 1):
-            breadth = seqs[0]
-            nds = node.xpath(tail)
-            elel.for_each(nds,lambda nd:print(engine.beautify(nd)))
         else:
-            pobj(elel.init_range(0,lngth,1))
-
+            tags = get_next_layer_tags(nodes)
+            seqs = get_seqs(tags,tail)
+            lngth = seqs.__len__()
+            if(lngth == 0):
+                opts  = get_options(tags,tail)
+                pobj(opts)
+            elif(lngth == 1):
+                breadth = seqs[0]
+                nds = node.xpath(tail)
+                elel.for_each(nds,lambda nd:print(engine.beautify(nd)))
+            else:
+                pobj(elel.init_range(0,lngth,1))
+    else:
+        pobj([root.tag])
 
 
 
