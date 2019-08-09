@@ -32,7 +32,7 @@ setup_requirements = [
 
 setup(
     name='nvhtml',
-    version='0.0.19',
+    version='0.0.20',
     description="A Python library manipulate html",
     long_description=readme + '\n\n' + installation + '\n\n' + usage + '\n\n' + history,
     author="dli",
@@ -41,7 +41,7 @@ setup(
     entry_points = {
          'console_scripts': [
                                 'nvhtml_beauty=nvhtml.bin:main',
-                                'nvhtml_tag=nvhtml.TAGS.bin_nvhtml_tag:main'
+                                'nvhtml_tag=nvhtml.TAGS.bin_nvhtml_tag:main',
                                 'nvhtml_tgpth=nvhtml.TAGS.bin_nvhtml_tgpth:main'
                             ]
     },
