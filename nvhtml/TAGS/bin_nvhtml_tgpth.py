@@ -204,7 +204,7 @@ def main():
         #
         if(tail == ""): 
             lngth = nodes.__len__()
-            if(lngth > 1):
+            if(lngth > 1):   #如果当前xpath路径得到的元素不唯一
                 pobj(elel.init_range(0,lngth,1))
             else:
                 #end with a ".", means search next layer tags
