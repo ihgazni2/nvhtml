@@ -85,8 +85,8 @@ def get_next_layer_tags_via_xpath(root,xpath):
 def get_next_layer_tags(nodes):
     eles = elel.mapv(nodes,lambda ele:ele.getchildren())
     rslt = []
-    for i in range(arr.__len__()):
-        tmp = arr[i]
+    for i in range(eles.__len__()):
+        tmp = eles[i]
         rslt.extend(tmp)
     tags = elel.mapv(rslt,lambda ele:ele.tag)
     return(tags)
