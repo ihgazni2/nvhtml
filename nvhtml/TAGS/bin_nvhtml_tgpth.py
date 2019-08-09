@@ -203,9 +203,13 @@ def main():
         nodes,tail = get_pre_tail_nodes(pth,root)
         #
         if(tail == ""): 
-            #end with a ".", means search next layer tags
-            opts,final_nodes = get_next_layer_tags(nodes)
-            pobj(opts)
+            lngth = nodes.__len__()
+            if(lngth > 1):
+                pobj(elel.init_range(0,lngth,1))
+            else:
+                #end with a ".", means search next layer tags
+                opts,final_nodes = get_next_layer_tags(nodes)
+                pobj(opts)
         else:
             tags,final_nodes = get_next_layer_tags(nodes)
             seqs = get_seqs(tags,tail)           #how many samepl_seqs
