@@ -158,13 +158,36 @@ def get_options(tags,tail):
 args = parser.parse_args()
 
 
+def is_direct_root_path(pth):
+    arr = pth.split(".")
+    tail =  arr[-1]
+    arr = arr[:-1]
+    if(arr[0] == ""):
+        arr = arr[1:]
+    else:
+        pass
+    if(arr.__len__()==0):
+        return(True)
+    else:
+        return(False)
+
+
 def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
     pth = args.tag_path
+    #direct root path
+    cond = is_direct_root_path(pth)
+    if(cond):
+        print(engine.beautify(root))
+        return(None)
+    else:
+        pass
+    #
     if(pth != "."):
         #
         nodes,tail = get_pre_tail_nodes(pth,root)
+        #
         if(tail == ""): 
             #end with a ".", means search next layer tags
             opts,final_nodes = get_next_layer_tags(nodes)
