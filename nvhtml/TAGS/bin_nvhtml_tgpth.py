@@ -150,8 +150,12 @@ def get_options(tags,tail):
     rslt = []
     for i in range(tags.__len__()):
         tag = tags[i]
+        tag = str(tag)
         cond = tag.startswith(tail)
-        rslt.append(tag)
+        if(cond):
+            rslt.append(tag)
+        else:
+            pass
     return(rslt)
 
 
