@@ -108,6 +108,9 @@ def get_options(tags,tail):
     return(rslt)
 
 
+args = parser.parse_args()
+
+
 def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
