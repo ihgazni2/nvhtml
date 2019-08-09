@@ -178,7 +178,7 @@ def main():
                 pobj(opts)
             elif(lngth == 1):
                 breadth = seqs[0]
-                nd = final_nodes[breadth].xpath(tail)
+                nd = final_nodes[breadth]
                 print(engine.beautify(nd))
             else:
                 pobj(elel.init_range(0,lngth,1))
