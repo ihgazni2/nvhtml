@@ -36,31 +36,34 @@ def get_dot_path_segs(pth):
     tail = arr[-1]
     arr  =  arr[:-1]
     segs = []
-    if(arr[0] ==  ""):
-        arr[0] =  "/"
-    else:
+    if(arr.__len__() == 0):
         pass
-    seg = ""
-    for i in range(arr.__len__()):
-        tag = arr[i]
-        try:
-            int(tag)
-        except:
-            seg  = seg + tag + "/"
+    else:
+        if(arr[0] ==  ""):
+            arr[0] =  "/"
+        else:
+            pass
+        seg = ""
+        for i in range(arr.__len__()):
+            tag = arr[i]
+            try:
+                int(tag)
+            except:
+                seg  = seg + tag + "/"
+            else:
+                seg = seg.rstrip("/")
+                segs.append(seg)
+                segs.append(int(tag))
+                seg = ""
+        if(seg == ""):
+            pass
         else:
             seg = seg.rstrip("/")
             segs.append(seg)
-            segs.append(int(tag))
-            seg = ""
-    if(seg == ""):
-        pass
-    else:
-        seg = seg.rstrip("/")
-        segs.append(seg)
-    if(segs[0][:2]=="//"):
-        pass
-    else:
-        segs[0] = "/" + segs[0]
+        if(segs[0][:2]=="//"):
+            pass
+        else:
+            segs[0] = "/" + segs[0]
     return((segs,tail))
 
 
@@ -73,6 +76,7 @@ def get_pre_tail_nodes(pth,root):
     segs,tail = get_dot_path_segs(pth)
     #
     node = root
+    xpath = ""
     #
     for i in range(0,segs.__len__()):
         seg = segs[i]
