@@ -120,11 +120,11 @@ def main():
     root = LXHTML(html_str)
     pth = args.tag_path
     #
-    print(pth)
+    #print(pth)
     #
     nodes,tail = parse_dot_path(pth,root)
     #
-    print(nodes,tail)
+    #print(nodes,tail)
     #
     if(tail == None):
         print(engine.beautify(nodes[0]))
