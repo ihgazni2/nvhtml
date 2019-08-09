@@ -163,16 +163,16 @@ def is_single_path(pth,root):
     tail =  arr[-1]
     arr = arr[:-1]
     if(arr.__len__()==0):
-        return(True)
+        return((True,tail))
     else:
         if(arr[0] == ""):
             arr = arr[1:]
         else:
             pass
         if(arr.__len__()==0):
-            return(True)
+            return((True,tail))
         else:
-            return(False)
+            return((False,tail))
 
 
 
@@ -181,7 +181,7 @@ def main():
     root = LXHTML(html_str)
     pth = args.tag_path
     #direct root path
-    cond = is_single_path(pth,root)
+    cond,tail= is_single_path(pth,root)
     if(cond):
         if(root.tag == tail):
             print(engine.beautify(root))
