@@ -183,7 +183,7 @@ def main():
     root = LXHTML(html_str)
     pth = args.tag_path
     #direct root path
-    cond = is_direct_root_path(pth)
+    cond = is_direct_root_path(pth,root)
     if(cond):
         print(engine.beautify(root))
         return(None)
