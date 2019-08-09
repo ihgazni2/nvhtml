@@ -20,57 +20,74 @@ parser.add_argument('-codec','--input_codec', default="utf-8",help="input html f
 parser.add_argument('-tgpth','--tag_path', default=".",help="html tag dot path")
 
 
-
-
-
-
-
-def parse_dot_path(pth,root):
+def get_dot_path_segs(pth):
     '''
+        >>> get_dot_path_segs(".a.b.3.c.d.5.e.f")
+        (['//a/b', 3, 'c/d', 5, 'e'], 'f')
+        >>>
+        >>> get_dot_path_segs("a.b.3.c.d.5.e.f")
+        (['/a/b', 3, 'c/d', 5, 'e'], 'f')
+        >>>
+        >>> get_dot_path_segs("a.b.3.c.d.5.e.f.")
+        (['/a/b', 3, 'c/d', 5, 'e/f'], '')
+        >>>
     '''
-    node = root
-    arr = pth.split(".")
-    head = arr[0]
+    arr =  pth.split(".")
     tail = arr[-1]
-    if(head == "."):
-        xpath = "//"
+    arr  =  arr[:-1]
+    segs = []
+    if(arr[0] ==  ""):
+        arr[0] =  "/"
     else:
-        xpath = ""
-    try:
-        int(tail)
-    except:
-        arr = arr[:-1]
-    else:
-        tail = None
-    #
-    #print(arr)
-    #print(tail)
-    #
-    for i in range(0,arr.__len__()-1):
+        pass
+    seg = ""
+    for i in range(arr.__len__()):
         tag = arr[i]
         try:
             int(tag)
         except:
-            xpath = xpath  + tag + "/"
+            seg  = seg + tag + "/"
         else:
-            xpath = xpath.rstrip("/")
+            seg = seg.rstrip("/")
+            segs.append(seg)
+            segs.append(int(tag))
+            seg = ""
+    if(seg == ""):
+        pass
+    else:
+        seg = seg.rstrip("/")
+        segs.append(seg)
+    if(segs[0][:2]=="//"):
+        pass
+    else:
+        segs[0] = "/" + segs[0]
+    return((segs,tail))
+
+
+
+
+def get_pre_tail_nodes(pth,root):
+    '''
+    '''
+    #
+    segs,tail = get_dot_path_segs(pth)
+    #
+    node = root
+    #
+    for i in range(0,segs.__len__()):
+        seg = segs[i]
+        try:
+            int(seg)
+        except:
+            xpath = seg
+        else:
             nodes = engine.xpath(node,xpath)
             node = nodes[int(tag)]
             xpath = ""
-    #
-    print(node,xpath)
-    #
-    tag = arr[i]
-    try:
-        int(tag)
-    except:
-        xpath = xpath  + tag 
-        nodes = engine.xpath(node,xpath)
-    else:
-        xpath = xpath.rstrip("/")
-        nodes = engine.xpath(node,xpath)
-        node = nodes[int(tag)]
+    if(xpath ==  ""):
         nodes = [node]
+    else:
+        nodes = engine.xpath(node,xpath)
     return((nodes,tail))
 
 
@@ -125,7 +142,7 @@ def main():
     #
     #print(pth)
     #
-    nodes,tail = parse_dot_path(pth,root)
+    nodes,tail = get_pre_tail_nodes(pth,root)
     #
     #print(nodes,tail)
     #
