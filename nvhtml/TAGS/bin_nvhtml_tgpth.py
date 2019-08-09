@@ -169,11 +169,10 @@ def main():
     #
     #print(nodes,tail)
     #
-    if(tail == ""):
-        for i in range(nodes.__len__()):
-            spaint.slpaint('<!------------------------------------------>','yellow')
-            print(engine.beautify(nodes[i])
-            spaint.slpaint('<!------------------------------------------>','yellow')
+    if(tail == ""): 
+        #end with a ".", means search next layer tags
+        opts = get_next_layer_tags(nodes)
+        pobj(opts)
     else:
         tags = get_next_layer_tags(nodes)
         seqs = get_seqs(tags,tail)
