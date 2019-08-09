@@ -57,6 +57,9 @@ def parse_dot_path(pth,root):
             nodes = engine.xpath(node,xpath)
             node = nodes[int(tag)]
             xpath = ""
+    #
+    print(node)
+    #
     tag = arr[i]
     try:
         int(tag)
