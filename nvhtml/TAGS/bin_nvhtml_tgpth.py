@@ -183,7 +183,7 @@ def main():
     #direct root path
     cond = is_single_path(pth,root)
     if(cond):
-        if(root.tag == tail)
+        if(root.tag == tail):
             print(engine.beautify(root))
             return(None)
         elif(root.tag.startswith(tail)):
