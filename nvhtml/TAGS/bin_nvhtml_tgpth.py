@@ -158,24 +158,22 @@ def get_options(tags,tail):
 args = parser.parse_args()
 
 
-def is_direct_root_path(pth,root):
+def is_single_path(pth,root):
     arr = pth.split(".")
     tail =  arr[-1]
     arr = arr[:-1]
-    if(tail != root.tag):
-        return(False)
+    if(arr.__len__()==0):
+        return(True)
     else:
+        if(arr[0] == ""):
+            arr = arr[1:]
+        else:
+            pass
         if(arr.__len__()==0):
             return(True)
         else:
-            if(arr[0] == ""):
-                arr = arr[1:]
-            else:
-                pass
-            if(arr.__len__()==0):
-                return(True)
-            else:
-                return(False)
+            return(False)
+
 
 
 def main():
@@ -183,10 +181,15 @@ def main():
     root = LXHTML(html_str)
     pth = args.tag_path
     #direct root path
-    cond = is_direct_root_path(pth,root)
+    cond = is_single_path(pth,root)
     if(cond):
-        print(engine.beautify(root))
-        return(None)
+        if(root.tag == tail)
+            print(engine.beautify(root))
+            return(None)
+        elif(root.tag.startswith(tail)):
+            pobj([root.tag])
+        else:
+            pass
     else:
         pass
     #
