@@ -43,8 +43,8 @@ def parse_dot_path(pth,root):
     else:
         tail = None
     #
-    print(arr)
-    print(tail)
+    #print(arr)
+    #print(tail)
     #
     for i in range(0,arr.__len__()-1):
         tag = arr[i]
@@ -58,7 +58,7 @@ def parse_dot_path(pth,root):
             node = nodes[int(tag)]
             xpath = ""
     #
-    print(node)
+    print(node,xpath)
     #
     tag = arr[i]
     try:
