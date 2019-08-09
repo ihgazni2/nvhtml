@@ -179,6 +179,14 @@ def is_single_path(pth,root):
             return((False,tail))
 
 
+def is_number_str(s):
+    try:
+        int(s)
+    except:
+        return(False)
+    else:
+        return(True)
+
 
 def main():
     html_str = fs.rfile(args.input_html_file)
@@ -210,6 +218,10 @@ def main():
                 #end with a ".", means search next layer tags
                 opts,final_nodes = get_next_layer_tags(nodes)
                 pobj(opts)
+        elif(is_number_str(tail)):
+            seq = is_number_str(tail)
+            nd = nodes[seq]
+            print(engine.beautify(nd))
         else:
             tags,final_nodes = get_next_layer_tags(nodes)
             seqs = get_seqs(tags,tail)           #how many samepl_seqs
