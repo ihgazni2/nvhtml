@@ -42,6 +42,10 @@ def parse_dot_path(pth,root):
         arr = arr[:-1]
     else:
         tail = None
+    #
+    print(arr)
+    print(tail)
+    #
     for i in range(0,arr.__len__()-1):
         tag = arr[i]
         try:
