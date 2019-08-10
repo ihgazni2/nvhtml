@@ -46,9 +46,11 @@ def handle_each_ele(ele,root,wkdir):
     for k in ele:
         v = ele[k]
         if(k in CMMN_HIDDEN_ATTRS):
+            v = str(v)
             ele_dir = curr_dir + "/." + k
             fs.wfile(ele_dir,v)
         elif(k in CMMN_NORMAL_ATTRS):
+            v = str(v)
             ele_dir = curr_dir + "/" + k
             fs.wfile(ele_dir,v)
         else:
