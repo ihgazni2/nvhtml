@@ -30,7 +30,7 @@ def main():
     root = LXHTML(html_str)
     wfs = engine.WFS(root)
     mat = wfs.mat
-    loc = args.mat_loc.strip.replace(" ","").split(",")
+    loc = args.mat_loc.strip().replace(" ","").split(",")
     breadth = loc[1]
     depth = loc[0]
     d = mat[depth,breadth]
