@@ -1148,7 +1148,7 @@ def default_wfs_handler(each_node,pls,breadth):
     d['text'] = each_node.text
     d['tail'] = each_node.tail
     d['text_intag'] = text_intag(each_node)
-    d['node'] = each_node
+    #d['node'] = each_node
     return(d)
 
 def init_cls_wfs_arguments(**kwargs):
