@@ -1125,7 +1125,7 @@ def disconnect(node):
 
 #dom tree
 
-def layer_wfs_handler(each_node,pls,breadth):
+def layer_wfs_handler(each_node,pls,breadth,pbreadth):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
@@ -1133,13 +1133,14 @@ def layer_wfs_handler(each_node,pls,breadth):
     d['node'] = each_node
     return(d)
 
-def default_wfs_handler(each_node,pls,breadth):
+def default_wfs_handler(each_node,pls,breadth,pbreadth):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
     d = {}
     d['pl'] = pl
-    d['pbreadth'] = parent_breadth(each_node)
+    # d['pbreadth'] = parent_breadth(each_node)
+    d['pbreadth'] = pbreadth
     d['samepl_sibseq'] = samepl_sibseq(each_node)
     d['samepl_breadth'] = which
     d['tag'] = str(each_node.tag)
@@ -1252,7 +1253,7 @@ class WFS():
         handler,until,yield_d,yield_currlv,yield_curr_next_unhandled = init_cls_wfs_arguments(**kwargs)
         self.root = root
         self.mat = []
-        unhandled = [root]
+        unhandled = [{'node':root,'pbreadth':None}]
         next_unhandled = []
         self.depth = -1
         while(unhandled.__len__()>0):
@@ -1264,9 +1265,11 @@ class WFS():
                 self.mat.append(curr_level)
                 pls = []
                 for i in range(0,unhandled.__len__()):
-                    each_node = unhandled[i]
-                    childs = each_node.getchildren()
-                    d = handler(each_node,pls,i)
+                    each_node = unhandled[i]['node']
+                    pbreadth = unhandled[i]['pbreadth'] 
+                    child_nodes = each_node.getchildren()
+                    childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i})
+                    d = handler(each_node,pls,i,pbreadth)
                     ######
                     #yield_d and (yield (d,i))
                     #######
