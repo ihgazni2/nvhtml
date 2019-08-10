@@ -32,7 +32,7 @@ def handle_each_ele(ele,root,wkdir):
     pl = ele['pl']
     tail = pl[-1]
     if(tail[0]=="<"):
-        outter_html = "<!--" + ele.text +"-->"
+        outter_html = "<!--" + ele['text'] +"-->"
     else:
         pth = elel.join(pl,"/")
         nds = engine.xpath(root,"/"+pth)
@@ -59,7 +59,6 @@ def handle_each_ele(ele,root,wkdir):
                 attrib = {}
             else:
                pass
-            print(k,attrib)
             for ak in attrib:
                 av = attrib[ak]
                 av = str(av)
