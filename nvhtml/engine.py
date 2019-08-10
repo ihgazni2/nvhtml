@@ -52,7 +52,12 @@ def pathlist(node):
     '''
     pl = [each.tag for each in node.iterancestors()]
     pl.reverse()
-    pl.append(node.tag)
+    tag = node.tag
+    if(isinstance(tag,str)):
+        pass
+    else:
+        tag = "<comment>"
+    pl.append(tag)
     return(pl)
 
 def between_levels_cond_func(ele,start,end):
