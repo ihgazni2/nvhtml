@@ -28,7 +28,7 @@ args = parser.parse_args()
 def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
-    wfs = engine.wfs(root)
+    wfs = engine.WFS(root)
     mat = wfs.mat
     if(args.mode == "mat"):
         fs.wjson(args.input_html_file+".list.json",mat)
