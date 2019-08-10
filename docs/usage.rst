@@ -22,6 +22,72 @@ beautify
           -output       --output_html_file          output html file name
           -codec        --input_codec               input html file codec
 
+
+search with loc
+^^^^^^^^^^^^^^^
+     
+    ::
+        
+        NVHTML-BENCH# nvhtml_loc -h
+        usage: nvhtml_loc [-h] [-input INPUT_HTML_FILE] [-codec INPUT_CODEC]
+                          [-loc MAT_LOC]
+        
+        optional arguments:
+          -h,     --help                 show this help message and exit
+          -input  --input_html_file      input html file name
+          -codec  --input_codec          input html file codec
+          -loc    --mat_loc              depth,breadth
+
+
+        NVHTML-BENCH# nvhtml_loc -input opis.html -loc 11,2
+        <------json-----
+        {
+         'pl':
+               [
+                'html',
+                'body',
+                'div',
+                'div',
+                'header',
+                'div',
+                'nav',
+                'div',
+                'ul',
+                'li',
+                'ul',
+                'li'
+               ],
+         'breadth': 2,
+         'depth': 11,
+         'pbreadth': 2,
+         'samepl_sibseq': 0,
+         'samepl_breadth': 0,
+         'tag': 'li',
+         'sibseq': 0,
+         'attrib':
+                   {
+                    'id': 'menu-item-22951',
+                    'class': 'menu-item menu-item-type-post_type menu-item-object-page menu-item-22951'
+                   },
+         'text': None,
+         'tail': '\n\t',
+         'text_intag': ''
+        }
+        ------json---->
+        
+        <----------html--------------
+        <li id="menu-item-22951" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22951">
+            <a href="https://opistobranquis.info/en/home/presentacio/">
+                <span>
+                    Presentation
+                </span>
+            </a>
+        </li>
+        
+        <----------html--------------
+
+
+
         
 tag search with depth
 ^^^^^^^^^^^^^^^^^^^^^
