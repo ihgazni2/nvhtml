@@ -1139,7 +1139,8 @@ def default_wfs_handler(each_node,pls,breadth,pbreadth):
     pls.append(pl)
     d = {}
     d['pl'] = pl
-    # d['pbreadth'] = parent_breadth(each_node)
+    d['breadth'] = breadth
+    d['depth'] = len(pl) - 1
     d['pbreadth'] = pbreadth
     d['samepl_sibseq'] = samepl_sibseq(each_node)
     d['samepl_breadth'] = which
