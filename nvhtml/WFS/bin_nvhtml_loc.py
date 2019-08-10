@@ -33,7 +33,7 @@ def main():
     loc = args.mat_loc.strip().replace(" ","").split(",")
     breadth = loc[1]
     depth = loc[0]
-    d = mat[depth,breadth]
+    d = mat[depth][breadth]
     pl = d["pl"]
     tail = pl[-1]
     samepl_breadth = d['samepl_breadth']
