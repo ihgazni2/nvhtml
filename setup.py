@@ -44,6 +44,7 @@ setup(
                                 'nvhtml_tag=nvhtml.TAGS.bin_nvhtml_tag:main',
                                 'nvhtml_tgpth=nvhtml.TAGS.bin_nvhtml_tgpth:main',
                                 'nvhtml_wfs_json=nvhtml.WFS.bin_nvhtml_wfs_json:main',
+                                'nvhtml_loc=nvhtml.WFS.bin_nvhtml_loc:main',
                             ]
     },
     packages=find_packages(),
