@@ -1,2 +1,0 @@
-
-(adsbygoogle = window.adsbygoogle || []).push({});
