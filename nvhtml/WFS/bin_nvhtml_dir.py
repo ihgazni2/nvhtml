@@ -38,6 +38,9 @@ def handle_each_ele(ele,root,wkdir):
         nds = engine.xpath(root,"/"+pth)
         nd = nds[ele['samepl_breadth']]
         outter_html = engine.beautify(nd)
+    #
+    print(outter_html)
+    #
     pl_str = elel.join(pl,"/")
     pl_str = "/"  + pl_str
     ele['pl'] = pl_str
