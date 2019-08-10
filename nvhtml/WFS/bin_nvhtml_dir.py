@@ -13,14 +13,14 @@ from efdir import fs
 import elist.elist as elel
 import estring.estring as eses
 import spaint.spaint as spaint
-
+from lxml.etree import tostring as nd2str
 
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-input','--input_html_file', default="",help="input html file name")
 parser.add_argument('-codec','--input_codec', default="utf-8",help="input html file codec")
 parser.add_argument('-wkdir','--work_dir', default=".",help="workdir")
-
+parser.add_argument('-beautify','--beautify', default=False,help="beautify")
 
 args = parser.parse_args()
 
@@ -37,7 +37,10 @@ def handle_each_ele(ele,root,wkdir):
         pth = elel.join(pl,"/")
         nds = engine.xpath(root,"/"+pth)
         nd = nds[ele['samepl_breadth']]
-        outter_html = engine.beautify(nd)
+        if(args.beautify):
+            outter_html = engine.beautify(nd)
+        else:
+            outter_html = nd2str(nd)
     pl_str = elel.join(pl,"/")
     pl_str = "/"  + pl_str
     ele['pl'] = pl_str
