@@ -24,7 +24,7 @@ parser.add_argument('-wkdir','--work_dir', default=".",help="workdir")
 
 args = parser.parse_args()
 
-CMMN_HIDDEN_ATTRS = ['pl','depth', 'breadth','pbreadth' 'sibseq', 'samepl_total','samepl_sibseq', 'samepl_breadth']
+CMMN_HIDDEN_ATTRS = ['pl','depth', 'breadth','pbreadth','sibseq', 'samepl_total','samepl_sibseq', 'samepl_breadth']
 CMMN_NORMAL_ATTRS = ['tag', 'text', 'tail','text_intag']
 CMMN_CALC_ATTRS = ['outter_html']
 
@@ -32,15 +32,12 @@ def handle_each_ele(ele,root,wkdir):
     pl = ele['pl']
     tail = pl[-1]
     if(tail[0]=="<"):
-        outter_html = "<!--" + d.text +"-->"
+        outter_html = "<!--" + ele.text +"-->"
     else:
         pth = elel.join(pl,"/")
         nds = engine.xpath(root,"/"+pth)
         nd = nds[ele['samepl_breadth']]
         outter_html = engine.beautify(nd)
-    #
-    print(outter_html)
-    #
     pl_str = elel.join(pl,"/")
     pl_str = "/"  + pl_str
     ele['pl'] = pl_str
@@ -49,11 +46,11 @@ def handle_each_ele(ele,root,wkdir):
     for k in ele:
         v = ele[k]
         if(k in CMMN_HIDDEN_ATTRS):
-            v = str(v)
+            v=str(v)
             ele_dir = curr_dir + "/." + k
             fs.wfile(ele_dir,v)
         elif(k in CMMN_NORMAL_ATTRS):
-            v = str(v)
+            v=str(v)
             ele_dir = curr_dir + "/" + k
             fs.wfile(ele_dir,v)
         else:
@@ -61,14 +58,15 @@ def handle_each_ele(ele,root,wkdir):
             if(attrib == None):
                 attrib = {}
             else:
-                pass
+               pass
+            print(k,attrib)
             for ak in attrib:
                 av = attrib[ak]
+                av = str(av)
                 ele_dir = curr_dir + "/attrib." + ak
                 fs.wfile(ele_dir,av)
         ele_dir = curr_dir + "/" + 'outter_html'
         fs.wfile(ele_dir,outter_html)
-
 
 
 def main():
