@@ -555,7 +555,7 @@ def siblings(node,*args,**kwargs):
     '''
     p = node.getparent()
     if(p == None):
-        return(node)
+        return([node])
     else:
         childs = children(p,*args,**kwargs)
     return(childs)
@@ -604,7 +604,7 @@ def samepl_siblings(node,*args,**kwargs):
     '''
     pl = pathlist(node)
     sibs = siblings(node,*args,**kwargs)
-    sibs = elel.cond_select_values_all(sibs,cond_func=lambda node:(pathlist(node) == pl))
+    sibs = elel.cond_select_values_all(sibs,cond_func=lambda node:(pathlist(node) == pl),pl)
     return(sibs)
 
 def samepl_sibseq(node,*args,**kwargs):
