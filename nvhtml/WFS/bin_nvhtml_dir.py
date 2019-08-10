@@ -28,7 +28,7 @@ CMMN_HIDDEN_ATTRS = ['pl','depth', 'breadth','pbreadth' 'sibseq', 'samepl_total'
 CMMN_NORMAL_ATTRS = ['tag', 'text', 'tail','text_intag']
 CMMN_CALC_ATTRS = ['outter_html']
 
-def handle_each_ele(ele,wkdir):
+def handle_each_ele(ele,root,wkdir):
     pl = ele['pl']
     tail = pl[-1]
     if(tail[0]=="<"):
@@ -68,4 +68,4 @@ def main():
     wfs = engine.WFS(root)
     mat = wfs.mat
     wkdir = args.work_dir
-    elel.mat_mapv(mat,handle_each_ele,[wkdir])
+    elel.mat_mapv(mat,handle_each_ele,[root,wkdir])
