@@ -31,8 +31,8 @@ def main():
     wfs = engine.WFS(root)
     mat = wfs.mat
     loc = args.mat_loc.strip().replace(" ","").split(",")
-    breadth = loc[1]
-    depth = loc[0]
+    breadth = int(loc[1])
+    depth = int(loc[0])
     d = mat[depth][breadth]
     pl = d["pl"]
     tail = pl[-1]
