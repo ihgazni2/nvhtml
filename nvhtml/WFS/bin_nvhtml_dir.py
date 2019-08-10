@@ -55,6 +55,10 @@ def handle_each_ele(ele,root,wkdir):
             fs.wfile(ele_dir,v)
         else:
             attrib = v
+            if(attrib == None):
+                attrib = {}
+            else:
+                pass
             for ak in attrib:
                 av = attrib[ak]
                 ele_dir = curr_dir + "/attrib." + ak
