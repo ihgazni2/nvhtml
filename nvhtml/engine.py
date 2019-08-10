@@ -604,7 +604,7 @@ def samepl_siblings(node,*args,**kwargs):
     '''
     pl = pathlist(node)
     sibs = siblings(node,*args,**kwargs)
-    sibs = elel.cond_select_values_all(sibs,cond_func=lambda node:(pathlist(node) == pl),cond_func_args=[pl])
+    sibs = elel.cond_select_values_all(sibs,cond_func=lambda node,pl:(pathlist(node) == pl),cond_func_args=[pl])
     return(sibs)
 
 def samepl_sibseq(node,*args,**kwargs):
