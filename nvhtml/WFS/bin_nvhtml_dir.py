@@ -24,7 +24,7 @@ parser.add_argument('-beautify','--beautify', default=False,help="beautify")
 
 args = parser.parse_args()
 
-CMMN_HIDDEN_ATTRS = ['pl','depth', 'breadth','pbreadth','sibseq', 'samepl_total','samepl_sibseq', 'samepl_breadth']
+CMMN_HIDDEN_ATTRS = ['pl','depth', 'breadth','pbreadth','sibseq', 'samepl_total','samepl_siblings_total','samepl_sibseq', 'samepl_breadth']
 CMMN_NORMAL_ATTRS = ['tag', 'text', 'tail','text_intag']
 CMMN_CALC_ATTRS = ['outter_html']
 
@@ -40,7 +40,7 @@ def handle_each_ele(ele,root,wkdir):
         if(args.beautify):
             outter_html = engine.beautify(nd)
         else:
-            outter_html = nd2str(nd).encode("utf-8")
+            outter_html = nd2str(nd).decode("utf-8")
     pl_str = elel.join(pl,"/")
     pl_str = "/"  + pl_str
     ele['pl'] = pl_str

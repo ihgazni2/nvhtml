@@ -1130,7 +1130,7 @@ def disconnect(node):
 
 #dom tree
 
-def layer_wfs_handler(each_node,pls,breadth,pbreadth):
+def layer_wfs_handler(each_node,pls,breadth,pbreadth,root):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
@@ -1138,7 +1138,9 @@ def layer_wfs_handler(each_node,pls,breadth,pbreadth):
     d['node'] = each_node
     return(d)
 
-def default_wfs_handler(each_node,pls,breadth,pbreadth):
+
+
+def default_wfs_handler(each_node,pls,breadth,pbreadth,root):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
@@ -1149,6 +1151,10 @@ def default_wfs_handler(each_node,pls,breadth,pbreadth):
     d['pbreadth'] = pbreadth
     d['samepl_sibseq'] = samepl_sibseq(each_node)
     d['samepl_breadth'] = which
+    ####
+    d['samepl_siblings_total'] = samepl_siblings(each_node).__len__()
+    d['samepl_total'] = None
+    ####
     d['tag'] = str(each_node.tag)
     d['sibseq'] = sibseq(each_node)
     d['attrib'] = dict(each_node.attrib)
@@ -1275,7 +1281,7 @@ class WFS():
                     pbreadth = unhandled[i]['pbreadth'] 
                     child_nodes = each_node.getchildren()
                     childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i})
-                    d = handler(each_node,pls,i,pbreadth)
+                    d = handler(each_node,pls,i,pbreadth,root)
                     ######
                     #yield_d and (yield (d,i))
                     #######
@@ -1290,6 +1296,12 @@ class WFS():
                     ########
                     #yield_curr_next_unhandled and (yield (next_unhandled,i))
                     #######
+                #####
+                for i in range(0,curr_level.__len__()):
+                    d = curr_level[i]
+                    d['samepl_total'] = pls.count(d['pl'])
+
+                #####
                 unhandled = next_unhandled
                 next_unhandled = []
                 self.depth = self.depth + 1
