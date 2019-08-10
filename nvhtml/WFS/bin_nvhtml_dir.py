@@ -40,7 +40,7 @@ def handle_each_ele(ele,root,wkdir):
         if(args.beautify):
             outter_html = engine.beautify(nd)
         else:
-            outter_html = nd2str(nd)
+            outter_html = nd2str(nd).encode("utf-8")
     pl_str = elel.join(pl,"/")
     pl_str = "/"  + pl_str
     ele['pl'] = pl_str
