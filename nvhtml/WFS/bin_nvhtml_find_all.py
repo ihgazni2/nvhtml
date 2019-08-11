@@ -38,13 +38,14 @@ def main():
     wfs = engine.WFS(root)
     mat = wfs.mat
     attr_names,freqs= htmldb.sort_attr_names(mat)
+    tbl = eded.kvlist2d(attr_names,freqs)
     mat = htmldb.fmt_mat(mat,root)
     columns = elel.concat(htmldb.CMMN_COLUMNS,attr_names)
     dfmat = htmldb.get_dfmat(mat,columns)
     df = htmldb.get_df(dfmat,columns)
     attr = args.attrib
     if(attr == None):
-        htmldb.show_attr_freq(mat)
+        pobj(tbl)
     else:
         l = htmldb.find_all_via_attr(df,attr)
         pobj(l)
