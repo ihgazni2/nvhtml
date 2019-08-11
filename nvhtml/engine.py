@@ -1130,7 +1130,7 @@ def disconnect(node):
 
 #dom tree
 
-def layer_wfs_handler(each_node,pls,breadth,pbreadth,root):
+def layer_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
@@ -1140,7 +1140,7 @@ def layer_wfs_handler(each_node,pls,breadth,pbreadth,root):
 
 
 
-def default_wfs_handler(each_node,pls,breadth,pbreadth,root):
+def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
@@ -1152,8 +1152,8 @@ def default_wfs_handler(each_node,pls,breadth,pbreadth,root):
     d['samepl_sibseq'] = samepl_sibseq(each_node)
     d['samepl_breadth'] = which
     ####
-    d['samepl_siblings_total'] = samepl_siblings(each_node).__len__()
-    d['samepl_total'] = None
+    #d['samepl_siblings_total'] = samepl_siblings(each_node).__len__()
+    #d['samepl_total'] = None
     ####
     d['tag'] = str(each_node.tag)
     d['sibseq'] = sibseq(each_node)
@@ -1162,6 +1162,7 @@ def default_wfs_handler(each_node,pls,breadth,pbreadth,root):
     d['tail'] = each_node.tail
     d['text_intag'] = text_intag(each_node)
     #d['node'] = each_node
+    d['mkdir_pth'] = p_mkdir_pth + "/" +d['tag'] + "."+str(d['breadth'])
     return(d)
 
 def init_cls_wfs_arguments(**kwargs):
@@ -1265,7 +1266,7 @@ class WFS():
         handler,until,yield_d,yield_currlv,yield_curr_next_unhandled = init_cls_wfs_arguments(**kwargs)
         self.root = root
         self.mat = []
-        unhandled = [{'node':root,'pbreadth':None}]
+        unhandled = [{'node':root,'pbreadth':None,'p_mkdir_pth':""}]
         next_unhandled = []
         self.depth = -1
         while(unhandled.__len__()>0):
@@ -1279,10 +1280,13 @@ class WFS():
                 for i in range(0,unhandled.__len__()):
                     each_node = unhandled[i]['node']
                     pbreadth = unhandled[i]['pbreadth'] 
+                    p_mkdir_pth = unhandled[i]['p_mkdir_path']
+                    d = handler(each_node,pls,i,pbreadth,root,p_mkdir_pth)
+                    cp_mkdir_pth = d['mkdir_pth']
+                    ######################################
                     child_nodes = each_node.getchildren()
-                    childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i})
-                    d = handler(each_node,pls,i,pbreadth,root)
-                    ######
+                    childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i,"mkdir_pth":cp_mkdir_pth})
+                    ###########################
                     #yield_d and (yield (d,i))
                     #######
                     curr_level.append(d)
@@ -1297,10 +1301,9 @@ class WFS():
                     #yield_curr_next_unhandled and (yield (next_unhandled,i))
                     #######
                 #####
-                for i in range(0,curr_level.__len__()):
-                    d = curr_level[i]
-                    d['samepl_total'] = pls.count(d['pl'])
-
+                #for i in range(0,curr_level.__len__()):
+                #    d = curr_level[i]
+                #    d['samepl_total'] = pls.count(d['pl'])
                 #####
                 unhandled = next_unhandled
                 next_unhandled = []

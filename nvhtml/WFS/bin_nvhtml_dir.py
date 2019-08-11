@@ -44,17 +44,17 @@ def handle_each_ele(ele,root,wkdir):
     pl_str = elel.join(pl,"/")
     pl_str = "/"  + pl_str
     ele['pl'] = pl_str
-    curr_dir = wkdir + pl_str
-    samepl_siblings_total =  ele['samepl_siblings_total']
-    samepl_sibseq = str(ele['samepl_sibseq'])
-    if(samepl_siblings_total>1):
-        curr_dir = curr_dir + "." + samepl_sibseq
-    else:
-        pass
+    ##############################
+    #############################
+    mkdir_pth = ele['mkdir_pth']
+    curr_dir = wkdir + mkdir_pth
+    #samepl_siblings_total =  ele['samepl_siblings_total']
+    #samepl_sibseq = str(ele['samepl_sibseq'])
+    #if(samepl_siblings_total>1):
+    #    curr_dir = curr_dir + "." + samepl_sibseq
+    #else:
+    #    pass
     fs.mkdir(curr_dir)
-    ###
-    pobj(ele)
-    ###
     for k in ele:
         v = ele[k]
         if(k in CMMN_HIDDEN_ATTRS):
