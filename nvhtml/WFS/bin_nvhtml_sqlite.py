@@ -38,7 +38,7 @@ def main():
     mat = wfs.mat
     attr_names,freqs= htmldb.sort_attr_names(mat)
     mat = htmldb.fmt_mat(mat,root)
-    columns = elel.concat(CMMN_COLUMNS,attr_names)
+    columns = elel.concat(htmldb.CMMN_COLUMNS,attr_names)
     dfmat = htmldb.get_dfmat(mat,columns)
     df = htmldb.get_df(dfmat,columns)
     dbname = wkdir+"/" +args.input_html_file +"." + args.database_name
