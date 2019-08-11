@@ -43,4 +43,7 @@ def main():
     df = htmldb.get_df(dfmat,columns)
     dbname = wkdir+"/" +args.input_html_file +"." + args.database_name
     tbname = args.table_name
-    htmldb.df2sqlite(df,dbname,tbname)
+    cnx = htmldb.df2sqlite(df,dbname,tbname)
+    cnx.close()
+    print("db":dbname)
+    print("table":tbname)
