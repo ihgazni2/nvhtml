@@ -1285,7 +1285,7 @@ class WFS():
                     cp_mkdir_pth = d['mkdir_pth']
                     ######################################
                     child_nodes = each_node.getchildren()
-                    childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i,"mkdir_pth":cp_mkdir_pth})
+                    childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i,"p_mkdir_pth":cp_mkdir_pth})
                     ###########################
                     #yield_d and (yield (d,i))
                     #######
