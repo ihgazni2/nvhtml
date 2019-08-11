@@ -899,12 +899,15 @@ def breadth(node):
         return(None)
     else:
         pass
-    lyr = layer(node)
-    for i in range(lyr.__len__()):
-        if(lyr[i] == node):
-            return(i)
-        else:
-            pass
+    #lyr = layer(node)
+    #for i in range(lyr.__len__()):
+    #    if(lyr[i] == node):
+    #        return(i)
+    #    else:
+    #        pass
+    p = parent(node)
+    breadth = p.index(node)
+    return(breadth)
 
 def parent_breadth(node):
     p = parent(node)

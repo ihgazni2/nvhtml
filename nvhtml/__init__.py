@@ -1,2 +1,2 @@
-__all__ = ['engine','lvsrch','txt','utils','fs','consts']
+__all__ = ['engine','lvsrch','txt','utils','fs','consts','htmldb']
 
