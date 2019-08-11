@@ -11,6 +11,7 @@ import spaint.spaint as spaint
 from lxml.etree import tostring as nd2str
 
 import sqlite3
+#https://www.sqlite.org/lang_expr.html#regexp
 import qtable.qtable as qtb
 import estring.estring as eses
 from pandas.io import sql
