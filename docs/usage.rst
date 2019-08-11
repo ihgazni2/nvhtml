@@ -5,11 +5,13 @@ Usage
 Command Line
 ------------
 
+
+
 beautify
 ^^^^^^^^
     
     ::
-    
+       
         nvhtml_beauty -input opis.html
         vim opis.html.out.html
         
@@ -188,6 +190,99 @@ search with tags-path
           -input     --input_html_file INPUT_HTML_FILE       input html file name
           -codec     --input_codec INPUT_CODEC               input html file codec
           -tgpth     --tag_path TAG_PATH                      html tag dot path
+
+
+html to db
+^^^^^^^^^^
+    
+    ::
+        
+        NVHTML-BENCH# nvhtml_sqlite -input opis.html
+        db:  ./opis.html.sqlite.db
+        table:  tb_html
+        NVHTML-BENCH#
+
+
+        NVHTML-BENCH# sqlite3 opis.html.sqlite.db
+        SQLite version 3.22.0 2018-01-22 18:45:57
+        Enter ".help" for usage hints.
+        sqlite>
+        sqlite> .table
+        tb_html
+        sqlite>
+        sqlite> .schema tb_html
+        CREATE TABLE IF NOT EXISTS "tb_html" (
+        "index" INTEGER,
+          "_pl" TEXT,
+          "_breadth" TEXT,
+          "_depth" TEXT,
+          "_pbreadth" TEXT,
+          "_samepl_sibseq" TEXT,
+          "_samepl_breadth" TEXT,
+          "_tag" TEXT,
+          "_sibseq" TEXT,
+          "_text" TEXT,
+          "_tail" TEXT,
+          "class" TEXT,
+          "href" TEXT,
+          "id" TEXT,
+          "style" TEXT,
+          "type" TEXT,
+          "src" TEXT,
+          "rel" TEXT,
+          "target" TEXT,
+          "title" TEXT,
+          "content" TEXT,
+          "alt" TEXT,
+          "media" TEXT,
+          "name" TEXT,
+          "align" TEXT,
+          "property" TEXT,
+          "role" TEXT,
+          "value" TEXT,
+          "data-shared" TEXT,
+          "hreflang" TEXT,
+          "for" TEXT,
+          "aria-current" TEXT,
+          "colspan" TEXT,
+          "method" TEXT,
+          "action" TEXT,
+          "sizes" TEXT,
+          "placeholder" TEXT,
+          "height" TEXT,
+          "width" TEXT,
+          "http-equiv" TEXT,
+          "autocomplete" TEXT,
+          "data-layout" TEXT,
+          "data-orig-file" TEXT,
+          "data-href" TEXT,
+          "lang" TEXT,
+          "data-image-title" TEXT,
+          "data-recalc-dims" TEXT,
+          "data-attachment-id" TEXT,
+          "data-text" TEXT,
+          "data-flxmap" TEXT,
+          "size" TEXT,
+          "data-image-description" TEXT,
+          "data-medium-file" TEXT,
+          "async" TEXT,
+          "language" TEXT,
+          "srcset" TEXT,
+          "data-comments-opened" TEXT,
+          "data-large-file" TEXT,
+          "data-via" TEXT,
+          "defer" TEXT,
+          "data-permalink" TEXT,
+          "data-image-meta" TEXT,
+          "data-noptimize" TEXT,
+          "data-url" TEXT,
+          "data-orig-size" TEXT
+        );
+        CREATE INDEX "ix_tb_html_index"ON "tb_html" ("index");
+        sqlite>
+
+
+
 
 
 html to dir
