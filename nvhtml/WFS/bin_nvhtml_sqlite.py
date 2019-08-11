@@ -41,7 +41,7 @@ def main():
     columns = elel.concat(htmldb.CMMN_COLUMNS,attr_names)
     dfmat = htmldb.get_dfmat(mat,columns)
     df = htmldb.get_df(dfmat,columns)
-    dbname = args.wkdir+"/" +args.input_html_file +"." + args.database_name
+    dbname = args.work_dir+"/" +args.input_html_file +"." + args.database_name
     tbname = args.table_name
     cnx = htmldb.df2sqlite(df,dbname,tbname)
     cnx.close()
