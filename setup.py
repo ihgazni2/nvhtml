@@ -47,7 +47,7 @@ setup(
                                 'nvhtml_loc=nvhtml.WFS.bin_nvhtml_loc:main',
                                 'nvhtml_dir=nvhtml.WFS.bin_nvhtml_dir:main',
                                 'nvhtml_sqlite=nvhtml.WFS.bin_nvhtml_sqlite:main',
-                                'nvhtml_find_all=nvhtml.WFS.bin_nvhtml_attr:find_all',
+                                'nvhtml_find_all=nvhtml.WFS.bin_nvhtml_find_all:main',
                             ]
     },
     packages=find_packages(),
