@@ -1,7 +1,8 @@
-/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.21-py3.6.egg
+/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.22-py3.6.egg
 /usr/local/bin/nvhtml_beauty
 /usr/local/bin/nvhtml_dir
 /usr/local/bin/nvhtml_loc
+/usr/local/bin/nvhtml_sqlite
 /usr/local/bin/nvhtml_tag
 /usr/local/bin/nvhtml_tgpth
 /usr/local/bin/nvhtml_wfs_json
