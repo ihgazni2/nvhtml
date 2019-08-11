@@ -184,7 +184,7 @@ def df_col(df,colname):
 
 
 def df2sqlite(df,dbname,tbname="tb_html"):
-    df.df = df_internal
+    df_internal = df.df
     cnx = sqlite3.connect(dbname)
     sql.to_sql(df_internal, name=tbname, con=cnx)
     return(cnx)
