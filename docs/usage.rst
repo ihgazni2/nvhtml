@@ -190,6 +190,96 @@ search with tags-path
           -tgpth     --tag_path TAG_PATH                      html tag dot path
 
 
+html to dir
+^^^^^^^^^^^
+    
+    ::
+        
+        NVHTML-BENCH# mkdir TMP
+        NVHTML-BENCH# nvhtml_dir -input opis.html -wkdir TMP
+
+        NVHTML-BENCH# tree -fdL 4 TMP | head
+        TMP
+        └── TMP/html.0
+            ├── TMP/html.0/body.1
+            │   ├── TMP/html.0/body.1/<comment>.91
+            │   ├── TMP/html.0/body.1/div.90
+            │   │   ├── TMP/html.0/body.1/div.90/<comment>.4
+            │   │   ├── TMP/html.0/body.1/div.90/<comment>.7
+            │   │   ├── TMP/html.0/body.1/div.90/div.0
+            │   │   ├── TMP/html.0/body.1/div.90/div.1
+            │   │   ├── TMP/html.0/body.1/div.90/div.2
+        NVHTML-BENCH#
+        NVHTML-BENCH# tree -fdL 4 TMP | tail
+                ├── TMP/html.0/head.0/style.45
+                ├── TMP/html.0/head.0/style.55
+                ├── TMP/html.0/head.0/style.56
+                ├── TMP/html.0/head.0/style.57
+                ├── TMP/html.0/head.0/style.58
+                ├── TMP/html.0/head.0/style.78
+                ├── TMP/html.0/head.0/style.79
+                └── TMP/html.0/head.0/title.7
+        
+        138 directories
+
+        NVHTML-BENCH# ls -l TMP/html.0/body.1/div.90/div.2
+        total 36
+        drwxr-xr-x 3 root root 4096 Aug 11 02:49 a.3
+        drwxr-xr-x 3 root root 4096 Aug 11 02:49 a.4
+        -rw-r--r-- 1 root root    7 Aug 11 02:49 attrib.class
+        -rw-r--r-- 1 root root    7 Aug 11 02:49 attrib.id
+        -rw-r--r-- 1 root root  538 Aug 11 02:49 outter_html
+        -rw-r--r-- 1 root root    3 Aug 11 02:49 tag
+        -rw-r--r-- 1 root root    1 Aug 11 02:49 tail
+        -rw-r--r-- 1 root root    4 Aug 11 02:49 text
+        -rw-r--r-- 1 root root    8 Aug 11 02:49 text_intag
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/attrib.id
+        srights
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/attrib.class
+        socials
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/outter_html
+        <div class="socials" id="srights">
+                                <a target="_blank" href="https://twitter.com/InfoOpk" class="socialicons social
+        -Twitter external" title="Twitter">
+                                        <img alt="Twitter" src="https://opistobranquis.info/wp-content/themes/t
+        empera/images/socials/Twitter.png"/>
+                                </a>
+                                <a target="_blank" href="https://www.facebook.com/OPK.Opistobranquis/" class="s
+        ocialicons social-Facebook external" title="Facebook">
+                                        <img alt="Facebook" src="https://opistobranquis.info/wp-content/themes/
+        tempera/images/socials/Facebook.png"/>
+                                </a></div>
+        NVHTML-BENCH#
+
+        NVHTML-BENCH# ls -al TMP/html.0/body.1/div.90/div.2 | egrep " \.[a-z]"
+        -rw-r--r--  1 root root    1 Aug 11 02:49 .breadth
+        -rw-r--r--  1 root root    1 Aug 11 02:49 .depth
+        -rw-r--r--  1 root root   27 Aug 11 02:49 .mkdir_pth
+        -rw-r--r--  1 root root    2 Aug 11 02:49 .pbreadth
+        -rw-r--r--  1 root root   18 Aug 11 02:49 .pl
+        -rw-r--r--  1 root root    1 Aug 11 02:49 .samepl_breadth
+        -rw-r--r--  1 root root    1 Aug 11 02:49 .samepl_sibseq
+        -rw-r--r--  1 root root    1 Aug 11 02:49 .sibseq
+        NVHTML-BENCH#
+        NVHTML-BENCH#
+        NVHTML-BENCH#
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.breadth
+        2
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.depth
+        3
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.pbreadth
+        90
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.pl
+        /html/body/div/div
+        NVHTML-BENCH#
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.samepl_breadth
+        2
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.samepl_sibseq
+        2
+        NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.sibseq
+        2
+        NVHTML-BENCH#
+
 Examples
 --------
 
