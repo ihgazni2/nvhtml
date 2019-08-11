@@ -1155,7 +1155,8 @@ def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
     #d['samepl_siblings_total'] = samepl_siblings(each_node).__len__()
     #d['samepl_total'] = None
     ####
-    d['tag'] = str(each_node.tag)
+    #d['tag'] = str(each_node.tag)
+    d['tag'] = str(pl[-1])
     d['sibseq'] = sibseq(each_node)
     d['attrib'] = dict(each_node.attrib)
     d['text'] = each_node.text
