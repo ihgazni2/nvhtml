@@ -52,6 +52,9 @@ def handle_each_ele(ele,root,wkdir):
     else:
         pass
     fs.mkdir(curr_dir)
+    ###
+    pobj(ele)
+    ###
     for k in ele:
         v = ele[k]
         if(k in CMMN_HIDDEN_ATTRS):
