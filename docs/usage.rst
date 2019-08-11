@@ -203,6 +203,7 @@ html to db
         NVHTML-BENCH#
 
 
+
         NVHTML-BENCH# sqlite3 opis.html.sqlite.db
         SQLite version 3.22.0 2018-01-22 18:45:57
         Enter ".help" for usage hints.
@@ -282,7 +283,23 @@ html to db
         sqlite>
 
 
-
+        sqlite>
+        sqlite> SELECT src FROM tb_html WHERE  _tag=="img" AND src like "%acebook.png";
+        https://opistobranquis.info/wp-content/themes/tempera/images/socials/Facebook.png
+        https://opistobranquis.info/wp-content/themes/tempera/images/socials/Facebook.png
+        https://opistobranquis.info/wp-content/themes/tempera/images/socials/Facebook.png
+        https://opistobranquis.info/wp-content/themes/tempera/images/socials/Facebook.png
+        sqlite>
+        sqlite>
+        sqlite>
+        sqlite>
+        sqlite> SELECT href FROM tb_html WHERE  _tag=="link" AND href like "%.com";
+        //s0.wp.com
+        //c0.wp.com
+        //i0.wp.com
+        //i1.wp.com
+        //i2.wp.com
+        sqlite>
 
 
 html to dir
