@@ -24,7 +24,7 @@ parser.add_argument('-beautify','--beautify', default=False,help="beautify")
 
 args = parser.parse_args()
 
-CMMN_HIDDEN_ATTRS = ['pl','depth', 'breadth','pbreadth','sibseq', 'samepl_total','samepl_siblings_total','samepl_sibseq', 'samepl_breadth']
+CMMN_HIDDEN_ATTRS = ['pl','depth', 'breadth','pbreadth','sibseq', 'samepl_total','samepl_siblings_total','samepl_sibseq', 'samepl_breadth','mkdir_pth']
 CMMN_NORMAL_ATTRS = ['tag', 'text', 'tail','text_intag']
 CMMN_CALC_ATTRS = ['outter_html']
 
