@@ -45,6 +45,8 @@ def main():
     df = htmldb.get_df(dfmat,columns)
     attr = args.attrib
     if(attr == None):
+        print("common attribs:")
+        pobj(htmldb.CMMN_COLUMNS)
         print("attrib_names:frequency")
         pobj(tbl)
     else:
