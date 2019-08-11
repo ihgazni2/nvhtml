@@ -1280,7 +1280,7 @@ class WFS():
                 for i in range(0,unhandled.__len__()):
                     each_node = unhandled[i]['node']
                     pbreadth = unhandled[i]['pbreadth'] 
-                    p_mkdir_pth = unhandled[i]['p_mkdir_path']
+                    p_mkdir_pth = unhandled[i]['p_mkdir_pth']
                     d = handler(each_node,pls,i,pbreadth,root,p_mkdir_pth)
                     cp_mkdir_pth = d['mkdir_pth']
                     ######################################
