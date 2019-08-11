@@ -5,8 +5,6 @@ Usage
 Command Line
 ------------
 
-
-
 beautify
 ^^^^^^^^
     
@@ -391,6 +389,101 @@ html to dir
         NVHTML-BENCH# more TMP/html.0/body.1/div.90/div.2/.sibseq
         2
         NVHTML-BENCH#
+
+
+
+
+find all
+^^^^^^^^
+
+    ::
+
+        NVHTML-BENCH# nvhtml_find_all -input opis.html -attrib "http-equiv"
+        [
+         'X-UA-Compatible',
+         'Content-Type'
+        ]
+        NVHTML-BENCH#
+        NVHTML-BENCH# nvhtml_find_all -input opis.html -attrib "href" | egrep "jorunna-e"
+         'https://opistobranquis.info/en/guia/nudibranchia/doridina/doridoidei/doridoidea/jorunna-efe/',
+         'https://opistobranquis.info/en/guia/nudibranchia/doridina/doridoidei/doridoidea/jorunna-evansi/',
+        NVHTML-BENCH#
+
+        NVHTML-BENCH# nvhtml_find_all -input opis.html
+        common attribs:
+        [
+         '_pl',
+         '_breadth',
+         '_depth',
+         '_pbreadth',
+         '_samepl_sibseq',
+         '_samepl_breadth',
+         '_tag',
+         '_sibseq',
+         '_text',
+         '_tail'
+        ]
+        attrib_names:frequency
+        {
+         'class': 947,
+         'href': 810,
+         'id': 181,
+         'style': 80,
+         'type': 78,
+         'src': 55,
+         'rel': 49,
+         'target': 41,
+         'title': 36,
+         'content': 23,
+         'alt': 19,
+         'media': 17,
+         'name': 15,
+         'align': 13,
+         'property': 12,
+         'role': 9,
+         'value': 7,
+         'hreflang': 4,
+         'data-shared': 4,
+         'colspan': 3,
+         'for': 3,
+         'aria-current': 3,
+         'sizes': 3,
+         'action': 3,
+         'method': 3,
+         'placeholder': 2,
+         'width': 2,
+         'http-equiv': 2,
+         'height': 2,
+         'data-permalink': 1,
+         'data-recalc-dims': 1,
+         'srcset': 1,
+         'size': 1,
+         'data-layout': 1,
+         'data-orig-size': 1,
+         'language': 1,
+         'data-medium-file': 1,
+         'data-href': 1,
+         'data-image-description': 1,
+         'data-image-title': 1,
+         'data-orig-file': 1,
+         'defer': 1,
+         'data-flxmap': 1,
+         'data-noptimize': 1,
+         'data-image-meta': 1,
+         'lang': 1,
+         'data-url': 1,
+         'data-large-file': 1,
+         'autocomplete': 1,
+         'data-via': 1,
+         'async': 1,
+         'data-comments-opened': 1,
+         'data-attachment-id': 1,
+         'data-text': 1
+        }
+        NVHTML-BENCH#
+
+
+
 
 Examples
 --------
