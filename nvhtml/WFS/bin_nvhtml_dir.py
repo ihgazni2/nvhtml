@@ -45,6 +45,12 @@ def handle_each_ele(ele,root,wkdir):
     pl_str = "/"  + pl_str
     ele['pl'] = pl_str
     curr_dir = wkdir + pl_str
+    samepl_siblings_total =  ele['samepl_siblings_total']
+    samepl_sibseq = str(ele['samepl_sibseq'])
+    if(samepl_siblings_total>1):
+        curr_dir = curr_dir + "." + 
+    else:
+        pass
     fs.mkdir(curr_dir)
     for k in ele:
         v = ele[k]
