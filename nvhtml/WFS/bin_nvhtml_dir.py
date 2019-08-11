@@ -48,7 +48,7 @@ def handle_each_ele(ele,root,wkdir):
     samepl_siblings_total =  ele['samepl_siblings_total']
     samepl_sibseq = str(ele['samepl_sibseq'])
     if(samepl_siblings_total>1):
-        curr_dir = curr_dir + "." + 
+        curr_dir = curr_dir + "." + samepl_sibseq
     else:
         pass
     fs.mkdir(curr_dir)
