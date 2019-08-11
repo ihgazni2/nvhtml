@@ -106,7 +106,7 @@ def handle_each_ele(ele,root,beautify=False):
     return(d)
 
 
-def fmt_mat(mat):
+def fmt_mat(mat,root):
     for i in range(mat.__len__()):
         for j in range(mat[i].__len__()):
             ele = mat[i][j]
