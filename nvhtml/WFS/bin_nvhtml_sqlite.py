@@ -45,5 +45,5 @@ def main():
     tbname = args.table_name
     cnx = htmldb.df2sqlite(df,dbname,tbname)
     cnx.close()
-    print("db":dbname)
-    print("table":tbname)
+    print("db: ",dbname)
+    print("table: ",tbname)
