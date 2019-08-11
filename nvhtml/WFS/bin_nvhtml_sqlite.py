@@ -1,3 +1,4 @@
+import os
 
 from lxml.etree import HTML as LXHTML
 from lxml.etree import XML as LXML
@@ -42,6 +43,7 @@ def main():
     dfmat = htmldb.get_dfmat(mat,columns)
     df = htmldb.get_df(dfmat,columns)
     dbname = args.work_dir+"/" +args.input_html_file +"." + args.database_name
+    os.system("rm "+dbname)
     tbname = args.table_name
     cnx = htmldb.df2sqlite(df,dbname,tbname)
     cnx.close()
