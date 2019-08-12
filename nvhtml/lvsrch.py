@@ -183,8 +183,8 @@ def datalist(root,*args,**kwargs):
 def dd(root,*args,**kwargs):
     return(srch("dd",root,*args,**kwargs))
 
-def del_(root,*args,**kwargs):
-    return(srch("del_",root,*args,**kwargs))
+def del(root,*args,**kwargs):
+    return(srch("del",root,*args,**kwargs))
 
 def details(root,*args,**kwargs):
     return(srch("details",root,*args,**kwargs))
