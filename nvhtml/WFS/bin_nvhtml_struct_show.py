@@ -28,7 +28,7 @@ def main():
     mat = scan_s1(mat)
     mat =  scan_s2(mat)
     mat =  scan_s3(mat)
-    if(args.enable_color.lower() == "false" | args.enable_color.lower() == "no"):
+    if((args.enable_color.lower() == "false") | (args.enable_color.lower() == "no")):
         color = False
     else:
         color = True
