@@ -5,9 +5,12 @@ Usage
 Command Line
 ------------
 
-vertical
-^^^^^^^^
-       
+vertical show
+^^^^^^^^^^^^^
+ 
+with color
+~~~~~~~~~~
+
     ::
         
         NVHTML-BENCH# nvhtml_struct_show -input disp.html
@@ -22,14 +25,24 @@ vertical
         |      |     | div | div |
         --------------------------
 
-.. image:: ./images/nvhtml_struct_show.1.png
-    
+
+
+.. image:: ./images/nvhtml_struct_show.0.png
+
+
+no color
+~~~~~~~~
+
     ::
 
         #if two big, disable color , and open it in editor such as notepad ++
         NVHTML-BENCH# nvhtml_struct_show -input opis.html -color "no" > html_txt_tb
         
 .. image:: ./images/nvhtml_struct_show.1.png
+
+
+
+
 
 beautify
 ^^^^^^^^
