@@ -32,5 +32,8 @@ def main():
         color = False
     else:
         color = True
+    #
+    print("color: ",color)
+    #
     disp_mat = scan_disp_mat_s0(disp_mat,mat,color=color)
     show_tag_tb(disp_mat)
