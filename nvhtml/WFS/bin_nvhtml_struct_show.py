@@ -7,6 +7,7 @@ from nvhtml.struct_show import *
 
 
 
+
 parser = argparse.ArgumentParser()
 parser.add_argument('-input','--input_html_file', default="",help="input html file name")
 parser.add_argument('-codec','--input_codec', default="utf-8",help="input html file codec")

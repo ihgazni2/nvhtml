@@ -13,12 +13,13 @@ import lxml.sax
 import argparse
 from efdir import fs
 import elist.elist as elel
+import edict.edict as eded
 import estring.estring as eses
 import spaint.spaint as spaint
 
-import qtable.qtable as qtb
-from pandas.io import sql
-import sqlite3
+#import qtable.qtable as qtb
+#from pandas.io import sql
+#import sqlite3
 
 import math
 import copy
