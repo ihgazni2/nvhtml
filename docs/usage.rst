@@ -5,11 +5,37 @@ Usage
 Command Line
 ------------
 
+vertical
+^^^^^^^^
+       
+    ::
+        
+        NVHTML-BENCH# nvhtml_struct_show -input disp.html
+        color:  True
+        --------------------------
+        |          html          |
+        --------------------------
+        | head |      body       |
+        --------------------------
+        |      | div |    div    |
+        --------------------------
+        |      |     | div | div |
+        --------------------------
+
+.. image:: ./images/nvhtml_struct_show.1.png
+    
+    ::
+
+        #if two big, disable color , and open it in editor such as notepad ++
+        NVHTML-BENCH# nvhtml_struct_show -input opis.html -color "no" > html_txt_tb
+        
+.. image:: ./images/nvhtml_struct_show.1.png
+
 beautify
 ^^^^^^^^
     
     ::
-       
+
         nvhtml_beauty -input opis.html
         vim opis.html.out.html
         
