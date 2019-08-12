@@ -42,6 +42,7 @@ def get_ansi_colors_vl():
 ANSI_COLORS_VL = get_ansi_colors_vl()
 
 TAGS,_ = eded.d2kvlist(TAG_DESCS)
+TAGS.append('<comment>')
 
 TAG_COLOR_MD = eded.kvlist2d(TAGS,ANSI_COLORS_VL)
 
