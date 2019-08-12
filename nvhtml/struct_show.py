@@ -289,7 +289,7 @@ def scan_disp_mat_s0(disp_mat,mat,color=False):
 
 
 def get_orig_length(line):
-    line = re.sub("\x1b\[.*?0m","",lines[1])
+    line = re.sub("\x1b\[.*?0m","",line)
     return(len(line))
 
 def show_tag_tb(disp_mat):
