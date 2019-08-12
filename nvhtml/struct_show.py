@@ -268,7 +268,7 @@ def scan_s3(mat):
             
 
 #
-def scan_disp_mat_s0(disp_mat,mat,color=False):
+def scan_disp_mat_s0(disp_mat,mat,color_enable=False):
     depth = len(disp_mat)
     for i in range(0,depth):
         layer = disp_mat[i]
@@ -283,7 +283,7 @@ def scan_disp_mat_s0(disp_mat,mat,color=False):
                 ele = s
             else:
                 ele = s
-            if(color):
+            if(color_enable):
                 disp_mat[i][j]= spaint.slpaint(ele,color,rtrn=True)
             else:
                 disp_mat[i][j]= ele
