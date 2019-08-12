@@ -35,5 +35,5 @@ def main():
     #
     print("color: ",color)
     #
-    disp_mat = scan_disp_mat_s0(disp_mat,mat,color=color)
+    disp_mat = scan_disp_mat_s0(disp_mat,mat,color_enable=color)
     show_tag_tb(disp_mat)
