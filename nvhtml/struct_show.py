@@ -43,6 +43,7 @@ ANSI_COLORS_VL = get_ansi_colors_vl()
 
 TAGS,_ = eded.d2kvlist(TAG_DESCS)
 TAGS.append('<comment>')
+TAGS.append('svg')
 
 TAG_COLOR_MD = eded.kvlist2d(TAGS,ANSI_COLORS_VL)
 
@@ -244,7 +245,12 @@ def modi_display_str_s0(ele):
     post = math.ceil(lefted /2)
     s = " "*pre + ele['tag'] + " "*post
     ele['display_str'] = s
-    ele['display_color'] = TAG_COLOR_MD[ele['tag']]
+    try:
+        ele['display_color'] = TAG_COLOR_MD[ele['tag']]
+    except:
+        ele['display_color'] = 15
+    else:
+        pass
     return(ele)
 
 
