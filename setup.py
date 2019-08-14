@@ -14,7 +14,7 @@ with open('./docs/history.rst') as history_file:
 with open('./docs/installation.rst') as installation_file:
     installation = installation_file.read()
 
-with open('./docs/usage.rst') as usage_file:
+with open('./docs/usage.rst',encoding="utf8") as usage_file:
     usage = usage_file.read()
 
 requirements = [
@@ -32,7 +32,7 @@ setup_requirements = [
 
 setup(
     name='nvhtml',
-    version='0.0.26',
+    version='0.0.28',
     description="A Python library manipulate html",
     long_description=readme + '\n\n' + installation + '\n\n' + usage + '\n\n' + history,
     author="dli",

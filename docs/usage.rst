@@ -26,7 +26,6 @@ with color
         --------------------------
 
 
-
 .. image:: ./images/nvhtml_struct_show.0.png
 
 
