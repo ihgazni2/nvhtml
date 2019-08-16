@@ -1295,18 +1295,18 @@ class WFS():
                     pbreadth = unhandled[i]['pbreadth'] 
                     p_mkdir_pth = unhandled[i]['p_mkdir_pth']
                     d = handler(each_node,pls,i,pbreadth,root,p_mkdir_pth,drop_comment)
-                    cp_mkdir_pth = d['mkdir_pth']
-                    ######################################
-                    child_nodes = each_node.getchildren()
-                    childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i,"p_mkdir_pth":cp_mkdir_pth})
-                    ###########################
-                    #yield_d and (yield (d,i))
-                    #######
-                    if(d==None):
-                        pass
-                    else:
+                    if(d != None):
+                        cp_mkdir_pth = d['mkdir_pth']
+                        ######################################
+                        child_nodes = each_node.getchildren()
+                        childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i,"p_mkdir_pth":cp_mkdir_pth})
+                        ###########################
+                        #yield_d and (yield (d,i))
+                        #######
                         curr_level.append(d)
-                    #######
+                        #######
+                    else:
+                        childs = []
                     #yield_currlv and (yield (curr_level,i))
                     #######
                     if(childs.__len__() == 0):
