@@ -831,7 +831,7 @@ def rootnode(node):
             p = p.getparent()
     return(prev)
 
-def layer(node):
+def layer(node,**kwargs):
     '''
         | Get all the lxml.etree._Elements in the same layer(have the same pathlist lngth)
         
@@ -859,7 +859,9 @@ def layer(node):
     root = rootnode(node)
     pl = pathlist(node)
     lngth = pl.__len__()
-    wfs = WFS(root,handler=layer_wfs_handler,until=lngth)
+    kwargs['handler'] = layer_wfs_handler
+    kwargs['until'] = lngth
+    wfs = WFS(root,**kwargs)
     lyr = wfs.mat[lngth-1]
     lyr = elel.mapv(lyr,lambda ele:ele['node'],[])
     return(lyr)
@@ -1143,7 +1145,7 @@ def layer_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
 
 
 
-def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
+def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth,drop_comment):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
@@ -1167,7 +1169,10 @@ def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
     d['text_intag'] = text_intag(each_node)
     #d['node'] = each_node
     d['mkdir_pth'] = p_mkdir_pth + "/" +d['tag'] + "."+str(d['breadth'])
-    return(d)
+    if(drop_comment & (d['tag'] == "<comment>")):
+        return(None)
+    else:
+        return(d)
 
 def init_cls_wfs_arguments(**kwargs):
     if("until" in kwargs):
@@ -1190,7 +1195,11 @@ def init_cls_wfs_arguments(**kwargs):
         yield_curr_next_unhandled = kwargs['yield_curr_next_unhandled']
     else:
         yield_curr_next_unhandled = False
-    return((handler,until,yield_d,yield_currlv,yield_curr_next_unhandled))
+    if("drop_comment" in kwargs):
+        drop_comment = kwargs['drop_comment']
+    else:
+        drop_comment = False
+    return((handler,until,yield_d,yield_currlv,yield_curr_next_unhandled,drop_comment))
 
 
 class WFS():
@@ -1267,7 +1276,7 @@ class WFS():
 
     '''
     def __init__(self,root,**kwargs):
-        handler,until,yield_d,yield_currlv,yield_curr_next_unhandled = init_cls_wfs_arguments(**kwargs)
+        handler,until,yield_d,yield_currlv,yield_curr_next_unhandled,drop_comment = init_cls_wfs_arguments(**kwargs)
         self.root = root
         self.mat = []
         unhandled = [{'node':root,'pbreadth':None,'p_mkdir_pth':""}]
@@ -1285,7 +1294,7 @@ class WFS():
                     each_node = unhandled[i]['node']
                     pbreadth = unhandled[i]['pbreadth'] 
                     p_mkdir_pth = unhandled[i]['p_mkdir_pth']
-                    d = handler(each_node,pls,i,pbreadth,root,p_mkdir_pth)
+                    d = handler(each_node,pls,i,pbreadth,root,p_mkdir_pth,drop_comment)
                     cp_mkdir_pth = d['mkdir_pth']
                     ######################################
                     child_nodes = each_node.getchildren()
@@ -1293,7 +1302,10 @@ class WFS():
                     ###########################
                     #yield_d and (yield (d,i))
                     #######
-                    curr_level.append(d)
+                    if(d==None):
+                        pass
+                    else:
+                        curr_level.append(d)
                     #######
                     #yield_currlv and (yield (curr_level,i))
                     #######
@@ -1316,15 +1328,15 @@ class WFS():
                 break
 
 
-def wfs_traverse(root):
+def wfs_traverse(root,**kwargs):
     '''
         | Same as class WFS ,just return the object(include .mat and .root)
         | using default_wfs_handler
     '''
-    rslt = WFS(root)
+    rslt = WFS(root,**kwargs)
     return(rslt)
 
-def wfspls(root):
+def wfspls(root,**kwargs):
     '''
         | pathlist-sequence of  width-first-traverse  
           
@@ -1365,7 +1377,7 @@ def wfspls(root):
         ['html', 'body', 'div', 'div', 'div', 'table', 'tr', 'td', 'span']
         
     '''
-    wfs = wfs_traverse(root)
+    wfs = wfs_traverse(root,**kwargs)
     m = wfs.mat
     pls = []
     for i in range(m.__len__()):
@@ -1377,7 +1389,7 @@ def wfspls(root):
     return(pls)
 
 
-def loc2node(root,*args):
+def loc2node(root,*args,**kwargs):
     '''
         | Get node Via breadth,depth
 
@@ -1404,7 +1416,7 @@ def loc2node(root,*args):
     else:
         x = args[0]
         y = args[1]
-    handler = WFS(root)
+    handler = WFS(root,**kwargs)
     mat = handler.mat
     return(mat[x][y]['node'])
     
