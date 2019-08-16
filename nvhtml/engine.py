@@ -1422,7 +1422,7 @@ def loc2node(root,*args,**kwargs):
     
 #sax
 
-class DFS(ContentHandler):
+class EDFS(ContentHandler):
     '''
         | Get sax-style deep-first-traverse  of a lxml.etree._Element root
           
@@ -1443,16 +1443,16 @@ class DFS(ContentHandler):
             import lxml.sax
             html_str = fs.rfile("./test.html")
             root = LXHTML(html_str)
-            dfs = engine.DFS()
-            lxml.sax.saxify(root, dfs)
-            utils.parr(dfs.pls[:5])
+            edfs = engine.EDFS()
+            lxml.sax.saxify(root, edfs)
+            utils.parr(edfs.pls[:5])
             >>>
             ['html', 'head', 'script']
             ['html', 'head', 'script']
             ['html', 'head', 'meta']
             ['html', 'head', 'meta']
             ['html', 'head', 'meta']
-            utils.parr(dfs.pls[-10:])
+            utils.parr(edfs.pls[-10:])
             ['html', 'body', 'div', 'div', 'div', 'script']
             ['html', 'body', 'div', 'div', 'div']
             ['html', 'body', 'div', 'div']
@@ -1464,23 +1464,23 @@ class DFS(ContentHandler):
             ['html', 'body']
             ['html']
             >>>
-            utils.parr(dfs.datas[-5:])
+            utils.parr(edfs.datas[-5:])
             [(['html', 'body', 'div', 'div', 'p'], '\\r\\n使用条款和隐私条款。版权所有，保留一切权利。\\r\\n赞助商：'), (['html', 'body', 'div', 'div', 'p'], '。\\r\\n蒙ICP备06004630号\\r\\n')]
             [(['html', 'body', 'div', 'div'], '\\r\\n'), (['html', 'body', 'div', 'div'], '\\r\\n\\r\\n'), (['html', 'body', 'div', 'div'], '\\r\\n')]
             [(['html', 'body', 'div'], '\\r\\n\\r\\n'), (['html', 'body', 'div'], '\\r\\n\\r\\n'), (['html', 'body', 'div'], '\\r\\n\\r\\n'), (['html', 'body', 'div'], '\\r\\n\\r\\n'), (['html', 'body', 'div'], '\\r\\n'), (['html', 'body', 'div'], '\\r\\n\\r\\n'), (['html', 'body', 'div'], '\\r\\n\\r\\n'), (['html', 'body', 'div'], '\\r\\n\\r\\n\\r\\n')]
             [(['html', 'body'], '\\r\\n\\r\\n'), (['html', 'body'], '\\r\\n'), (['html', 'body'], '\\r\\n\\r\\n')]
             [(['html'], '\\r\\n'), (['html'], '\\r\\n\\r\\n'), (['html'], '\\r\\n\\r\\n')]
             >>>
-            utils.parr(dfs.attribs[-5:])
+            utils.parr(edfs.attribs[-5:])
             {'id': 'p2'}
             {'id': 'footer'}
             {'id': 'wrapper'}
             {'class': 'html'}
             {'lang': 'zh-cn'}
             >>>
-            dfs = engine.DFS(full_attrib=True)
-            lxml.sax.saxify(root, dfs)
-            utils.parr(dfs.attribs[-5:])
+            edfs = engine.EDFS(full_attrib=True)
+            lxml.sax.saxify(root, edfs)
+            utils.parr(edfs.attribs[-5:])
             >>>
             [('lang', 'zh-cn'), ('class', 'html'), ('id', 'wrapper'), ('id', 'footer'), ('id', 'p2')]
             [('lang', 'zh-cn'), ('class', 'html'), ('id', 'wrapper'), ('id', 'footer')]
@@ -1557,16 +1557,16 @@ class DFS(ContentHandler):
         self.texts_inseq.append((pl,data))
 
 
-def dfs_traverse(root):
+def edfs_traverse(root):
     '''
-        | Same as class DFS ,just return the object(include .pls , .attribs ,.datas, .texts_inseq, .tags......)
+        | Same as class EDFS ,just return the object(include .pls , .attribs ,.datas, .texts_inseq, .tags......)
         | using default_wfs_handler
     '''
-    rslt = DFS()
+    rslt = EDFS()
     lxml.sax.saxify(root, rslt)
     return(rslt)
 
-def dfspls(root):
+def edfspls(root):
     '''
         | pathlist-sequence of  depth-first-traverse  
           
@@ -1580,7 +1580,7 @@ def dfspls(root):
     
         html_str = fs.rfile("./test.html")
         root = LXHTML(html_str)
-        pls = engine.dfspls(root)
+        pls = engine.edfspls(root)
         utils.parr(pls[:10])
         >>>
         ['html', 'head', 'script']
@@ -1608,7 +1608,7 @@ def dfspls(root):
         >>>
         
     '''
-    return(dfs_traverse(root).pls)
+    return(edfs_traverse(root).pls)
 #
 
 

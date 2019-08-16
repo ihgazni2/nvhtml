@@ -86,14 +86,14 @@ def wfspls(s,**kwargs):
     pls = engine.wfspls(root)
     return(pls)
 
-def dfs_traverse(s,**kwargs):
+def edfs_traverse(s,**kwargs):
     root = rootize(s,**kwargs)
-    handler = engine.DFS()
+    handler = engine.EDFS()
     lxml.sax.saxify(root, handler)
     return(handler)
 
-def dfspls(s,**kwargs):
-    return(dfs_traverse(s,**kwargs).pls)
+def edfspls(s,**kwargs):
+    return(edfs_traverse(s,**kwargs).pls)
 
 def textizenone(s):
     if(s == None):
