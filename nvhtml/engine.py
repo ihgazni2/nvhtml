@@ -1431,7 +1431,7 @@ def init_attr(mat,attr,value):
         for j in range(layer.__len__()):
             ele = layer[j]
             ele[attr] = value
-     return(mat)
+    return(mat)
 
 ##
 
