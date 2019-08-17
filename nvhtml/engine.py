@@ -1761,3 +1761,122 @@ def beautify(root,**kwargs):
     lxml.sax.saxify(root, handler)
     return(handler.s.strip("\n"))
 
+
+######
+
+def diff_value_pls(pls0,pls1):
+    rslt = []
+    lngth = pls0.__len__()
+    for i in range(lngth):
+        ele = pls0[i]
+        cond = (ele in pls1)
+        if(cond):
+            pass
+        else:
+            rslt.append(ele)
+    return(rslt)
+
+
+def group_by_length(pls):
+    d = {}
+    lngth = len(pls)
+    for i in range(lngth):
+        pl = pls[i]
+        pl_len = len(pl)
+        if(pl_len in d):
+            d[pl_len].append(pl)
+        else:
+            d[pl_len] = [pl]
+    return(d)
+
+
+#####
+
+def new_edfs_ele():
+    d = {}
+    d["edfs_seq"] = None
+    d["parent_edfs_seq"] = None
+    d["pl"] = None
+    d["depth"] = None
+    return(d)
+
+def edfspls2edfs_ele_list(edfspls,root_pl_len=1):
+    rslt = []
+    lngth= len(edfspls)
+    for i in range(lngth):
+        d = new_edfs_ele()
+        d["edfs_seq"] = i
+        d["pl"] = edfspls[i]
+        d["depth"] = len(d["pl"]) - root_pl_len
+        rslt.append(d)
+    return(rslt)
+
+
+
+def group_by_length_edfs_ele_list(edfs_ele_list):
+    d = {}
+    lngth = len(edfs_ele_list)
+    for i in range(lngth):
+        pl = edfs_ele_list[i]['pl']
+        pl_len = len(pl)
+        if(pl_len in d):
+            d[pl_len].append(pl)
+        else:
+            d[pl_len] = [pl]
+    return(d)    
+
+
+
+def fill_parent_edfs_seq(edfs_ele_list):
+    '''
+        一个元素的parent一定在前一层
+        end深度优先搜索,一个元素的parent一定是第一个序号大于子节点的元素
+    '''
+    groups = group_by_length_edfs_ele_list(edfs_ele_list)
+    kl =list(groups.keys())
+    kl.sort()
+    kl.reverse()
+    for i in range(len(kl)-1):
+        k = kl[i]
+        layer = groups[k]
+        prev_layer = groups[kl[i+1]]
+        for each in layer:
+            edfs_seq = each['edfs_seq']
+            each_plen = len(each['pl']) 
+            lngth = len(prev_layer)
+            si = 0
+            for j in range(si,lngth):
+                prev_each = prev_layer[j]
+                prev_edfs_seq = prev_each['edfs_seq']
+                if(prev_edfs_seq > edfs_seq):
+                    prev_each_plen = len(prev_each['pl'])
+                    if(prev_each_plen == each_plen - 1):
+                        each['parent_edfs_seq'] = prev_edfs_seq
+                        si = j
+                        break
+                    else:
+                        pass
+                else:
+                    pass
+    return((edfs_ele_list,groups))
+
+
+#####
+
+def edfspls2plmat(edfspls,root_pl_len=1):
+    edfs_ele_list = edfspls2edfs_ele_list(edfspls,root_pl_len=root_pl_len)
+    edfs_ele_list,groups = fill_parent_edfs_seq(edfs_ele_list)
+    mat =[]
+    size = max(list(groups.keys()))
+    mat = elel.init(size,[])
+    for k in groups:
+        depth = k - 1
+        layer = groups[k]
+        mat[depth].extend(layer)
+    return(mat)
+
+#####
+
+
+
+############
