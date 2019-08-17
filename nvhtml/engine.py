@@ -1921,4 +1921,75 @@ def edfspls2plmat(edfspls,root_pl_len=1):
 
 
 
-############
+#####
+
+def is_sibling_via_locs(mat,loc1,loc2):
+    if(loc1 == loc2):
+        return(False)
+    else:
+        pbreadth1 = mat[loc1[0]][loc1[1]]['pbreadth']
+        pbreadth2 = mat[loc2[0]][loc2[1]]['pbreadth']
+        cond = (pbreadth1 == pbreadth2)
+        return(cond)
+
+
+
+def get_rsib_loc(mat,curr_loc):
+    depth,breadth = curr_loc
+    rsib_breadth = breadth + 1
+    layer = mat[depth]
+    lngth = len(layer)
+    if(rsib_breadth>= lngth):
+        return(None)
+    else:
+        cond = is_sibling_via_locs(mat,curr_loc,[depth,rsib_breadth])
+        if(cond):
+            return((depth,rsib_breadth))
+        else:
+            return(None)
+
+
+
+
+def get_parent_loc(mat,curr_loc):
+    depth,breadth = curr_loc
+    if(curr_loc ==  (0,0)):
+        return(None)
+    else:
+        pbreadth = mat[depth][breadth]['pbreadth']
+        return((depth-1,pbreadth))
+
+def find_first_ancestor_rsibloc(mat,curr_loc):
+    rsib_loc = get_rsib_loc(mat,curr_loc)
+    while(rsib_loc  == None):
+        if(curr_loc ==  (0,0)):
+            return(None)
+        else:
+            ploc = get_parent_loc(mat,curr_loc)
+            rsib_loc = get_rsib_loc(mat,ploc)
+            curr_loc = ploc
+    return(rsib_loc)
+
+####################
+
+def sdfsl_from_mat(mat):
+    sdfsl = []
+    curr_loc = (0,0)
+    count = elel.mat2wfs(mat).__len__()
+    visited = 0
+    while(visited<count-1):
+        sdfsl.append(curr_loc)
+        x = curr_loc[0]
+        y = curr_loc[1]
+        children = mat[x][y]['children']
+        if(children.__len__() === 0):
+            curr_loc = find_first_ancestor_rsibloc(mat,curr_loc)
+        else:
+            curr_loc = children[0]
+        visited = visited + 1
+    return(sdfsl)
+
+
+#############################
+
+
