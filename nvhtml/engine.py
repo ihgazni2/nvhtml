@@ -1977,7 +1977,7 @@ def sdfsl_from_mat(mat):
     curr_loc = (0,0)
     count = elel.mat2wfs(mat).__len__()
     visited = 0
-    while(visited<count-1):
+    while(visited<count):
         sdfsl.append(curr_loc)
         x = curr_loc[0]
         y = curr_loc[1]
