@@ -1424,6 +1424,17 @@ def loc2node(root,*args,**kwargs):
 ########################################################
 #fill attr
 
+def init_attr(mat,attr,value):
+    lngth = len(mat)
+    for i in range(lngth):
+        layer = mat[i]
+        for j in range(layer.__len__()):
+            ele = layer[j]
+            ele[attr] = value
+     return(mat)
+
+##
+
 def fill_children_attr(mat):
     depth = len(mat)
     for i in range(depth-1,0,-1):
