@@ -1444,7 +1444,7 @@ def init_attr(mat,attr,value):
         layer = mat[i]
         for j in range(layer.__len__()):
             ele = layer[j]
-            ele[attr] = value
+            ele[attr] = copy.deepcopy(value)
     return(mat)
 
 ##
