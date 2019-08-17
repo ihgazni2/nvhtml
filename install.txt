@@ -1,4 +1,4 @@
-/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.29-py3.6.egg
+/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.30-py3.6.egg
 /usr/local/bin/nvhtml_beauty
 /usr/local/bin/nvhtml_dir
 /usr/local/bin/nvhtml_find_all
