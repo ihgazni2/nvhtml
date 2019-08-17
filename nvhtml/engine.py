@@ -1820,11 +1820,10 @@ def group_by_length_edfs_ele_list(edfs_ele_list):
         pl = edfs_ele_list[i]['pl']
         pl_len = len(pl)
         if(pl_len in d):
-            d[pl_len].append(pl)
+            d[pl_len].append(edfs_ele_list[i])
         else:
-            d[pl_len] = [pl]
-    return(d)    
-
+            d[pl_len] = [edfs_ele_list[i]]
+    return(d)
 
 
 def fill_parent_edfs_seq(edfs_ele_list):
