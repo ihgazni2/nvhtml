@@ -1982,7 +1982,7 @@ def sdfsl_from_mat(mat):
         x = curr_loc[0]
         y = curr_loc[1]
         children = mat[x][y]['children']
-        if(children.__len__() === 0):
+        if(children.__len__() == 0):
             curr_loc = find_first_ancestor_rsibloc(mat,curr_loc)
         else:
             curr_loc = children[0]
