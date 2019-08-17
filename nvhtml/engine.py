@@ -1145,7 +1145,7 @@ def layer_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
 
 
 
-def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth,drop_comment):
+def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth):
     pl = pathlist(each_node)
     which = pls.count(pl)
     pls.append(pl)
@@ -1169,10 +1169,10 @@ def default_wfs_handler(each_node,pls,breadth,pbreadth,root,p_mkdir_pth,drop_com
     d['text_intag'] = text_intag(each_node)
     #d['node'] = each_node
     d['mkdir_pth'] = p_mkdir_pth + "/" +d['tag'] + "."+str(d['breadth'])
-    if(drop_comment & (d['tag'] == "<comment>")):
-        return(None)
-    else:
-        return(d)
+    #if(drop_comment & (d['tag'] == "<comment>")):
+    #    return(None)
+    #else:
+    return(d)
 
 def init_cls_wfs_arguments(**kwargs):
     if("until" in kwargs):
@@ -1199,7 +1199,11 @@ def init_cls_wfs_arguments(**kwargs):
         drop_comment = kwargs['drop_comment']
     else:
         drop_comment = False
-    return((handler,until,yield_d,yield_currlv,yield_curr_next_unhandled,drop_comment))
+    if("drop_cdata" in kwargs):
+        drop_cdata = kwargs['drop_cdata']
+    else:
+        drop_cdata = False
+    return((handler,until,yield_d,yield_currlv,yield_curr_next_unhandled,drop_comment,drop_cdata))
 
 
 class WFS():
@@ -1276,7 +1280,17 @@ class WFS():
 
     '''
     def __init__(self,root,**kwargs):
-        handler,until,yield_d,yield_currlv,yield_curr_next_unhandled,drop_comment = init_cls_wfs_arguments(**kwargs)
+        handler,until,yield_d,yield_currlv,yield_curr_next_unhandled,drop_comment,drop_cdata = init_cls_wfs_arguments(**kwargs)
+        ######
+        if(drop_comment):
+            lxml.etree.strip_tags(root,lxml.etree.Comment)
+        else:
+            pass
+        if(drop_cdata):
+            lxml.etree.strip_tags(root,lxml.etree.CDATA)
+        else:
+            pass
+        ######
         self.root = root
         self.mat = []
         unhandled = [{'node':root,'pbreadth':None,'p_mkdir_pth':""}]
@@ -1294,19 +1308,19 @@ class WFS():
                     each_node = unhandled[i]['node']
                     pbreadth = unhandled[i]['pbreadth'] 
                     p_mkdir_pth = unhandled[i]['p_mkdir_pth']
-                    d = handler(each_node,pls,i,pbreadth,root,p_mkdir_pth,drop_comment)
-                    if(d != None):
-                        cp_mkdir_pth = d['mkdir_pth']
+                    d = handler(each_node,pls,i,pbreadth,root,p_mkdir_pth)
+                    #if(d != None):
+                    cp_mkdir_pth = d['mkdir_pth']
                         ######################################
-                        child_nodes = each_node.getchildren()
-                        childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i,"p_mkdir_pth":cp_mkdir_pth})
+                    child_nodes = each_node.getchildren()
+                    childs = elel.mapv(child_nodes,lambda nd:{'node':nd,'pbreadth':i,"p_mkdir_pth":cp_mkdir_pth})
                         ###########################
                         #yield_d and (yield (d,i))
                         #######
-                        curr_level.append(d)
+                    curr_level.append(d)
                         #######
-                    else:
-                        childs = []
+                    #else:
+                    #    childs = []
                     #yield_currlv and (yield (curr_level,i))
                     #######
                     if(childs.__len__() == 0):
