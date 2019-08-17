@@ -58,23 +58,11 @@ def del_unecessary(ele):
     return(ele)
 
 
-def fill_children_attr(mat):
-    depth = len(mat)
-    for i in range(depth-1,0,-1):
-        layer = mat[i]
-        breadth = len(layer)
-        for j in range(breadth):
-            ele = layer[j]
-            pbreadth = ele['pbreadth']
-            pchildren = mat[i-1][pbreadth]['children']
-            pchildren.append((i,j))
-    return(mat)
-
 
 def scan_s0(mat):
     mat = elel.mat_mapv(mat,modi_children_s0)
     mat = elel.mat_mapv(mat,del_unecessary)
-    mat = fill_children_attr(mat)
+    mat = engine.fill_children_attr(mat)
     return(mat)
 
 # 先不调整宽度

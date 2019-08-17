@@ -1419,10 +1419,28 @@ def loc2node(root,*args,**kwargs):
     handler = WFS(root,**kwargs)
     mat = handler.mat
     return(mat[x][y]['node'])
-    
+
+
+########################################################
+#fill attr
+
+def fill_children_attr(mat):
+    depth = len(mat)
+    for i in range(depth-1,0,-1):
+        layer = mat[i]
+        breadth = len(layer)
+        for j in range(breadth):
+            ele = layer[j]
+            pbreadth = ele['pbreadth']
+            pchildren = mat[i-1][pbreadth]['children']
+            pchildren.append((i,j))
+    return(mat)
+
+########################################################
+
 #sax
 
-class EDFS(ContentHandler):
+class EDFS_SAX(ContentHandler):
     '''
         | Get sax-style deep-first-traverse  of a lxml.etree._Element root
           
@@ -1443,7 +1461,7 @@ class EDFS(ContentHandler):
             import lxml.sax
             html_str = fs.rfile("./test.html")
             root = LXHTML(html_str)
-            edfs = engine.EDFS()
+            edfs = engine.EDFS_SAX()
             lxml.sax.saxify(root, edfs)
             utils.parr(edfs.pls[:5])
             >>>
@@ -1478,7 +1496,7 @@ class EDFS(ContentHandler):
             {'class': 'html'}
             {'lang': 'zh-cn'}
             >>>
-            edfs = engine.EDFS(full_attrib=True)
+            edfs = engine.EDFS_SAX(full_attrib=True)
             lxml.sax.saxify(root, edfs)
             utils.parr(edfs.attribs[-5:])
             >>>
@@ -1557,16 +1575,16 @@ class EDFS(ContentHandler):
         self.texts_inseq.append((pl,data))
 
 
-def edfs_traverse(root):
+def edfs_traverse_sax(root):
     '''
-        | Same as class EDFS ,just return the object(include .pls , .attribs ,.datas, .texts_inseq, .tags......)
+        | Same as class EDFS_SAX ,just return the object(include .pls , .attribs ,.datas, .texts_inseq, .tags......)
         | using default_wfs_handler
     '''
-    rslt = EDFS()
+    rslt = EDFS_SAX()
     lxml.sax.saxify(root, rslt)
     return(rslt)
 
-def edfspls(root):
+def edfspls_sax(root):
     '''
         | pathlist-sequence of  depth-first-traverse  
           
@@ -1608,7 +1626,7 @@ def edfspls(root):
         >>>
         
     '''
-    return(edfs_traverse(root).pls)
+    return(edfs_traverse_sax(root).pls)
 #
 
 
