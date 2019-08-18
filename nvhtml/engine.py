@@ -1919,8 +1919,9 @@ def edfspls2plmat(edfspls,root_pl_len=1):
 
 def edfspls2wfspls(edfspls):
     eplmat = edfspls2plmat(edfspls)
-    edfspls = elel.mat2wfs(eplmat)
-    return(edfspls)
+    edfsl = elel.mat2wfs(eplmat)
+    wfspls =  elel.mapv(edfsl,lambda ele:ele['pl'])
+    return(wfspls)
 
 #####
 
