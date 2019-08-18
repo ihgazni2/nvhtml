@@ -2067,7 +2067,7 @@ def sdfspls2sdfs_ele_list(sdfspls,root_pl_len=1):
     rslt = []
     lngth= len(sdfspls)
     for i in range(lngth):
-        d = new_edfs_ele()
+        d = new_sdfs_ele()
         d["sdfs_seq"] = i
         d["pl"] = sdfspls[i]
         d["depth"] = len(d["pl"]) - root_pl_len
