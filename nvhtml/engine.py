@@ -2112,7 +2112,7 @@ def fill_parent_sdfs_seq(sdfs_ele_list):
     return((sdfs_ele_list,groups))
 
 
-def sdfspls2plsmat(sdfspls,root_pl_len=1):
+def sdfspls2plmat(sdfspls,root_pl_len=1):
     sdfs_ele_list = sdfspls2sdfs_ele_list(sdfspls,root_pl_len=root_pl_len)
     sdfs_ele_list,groups = fill_parent_sdfs_seq(sdfs_ele_list)
     mat =[]
