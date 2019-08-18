@@ -2039,7 +2039,7 @@ def sdfspls_etree(root,**kwargs):
     m = init_attr(m,"children",[])
     m = fill_children_attr(m)
     sdfsl = sdfsl_from_mat(m)
-    sdfspls = elel.mapv(sdfsl,lambda ele:ele['pl'])
+    sdfspls = elel.mapv(sdfsl,lambda ele:m[ele[0]][ele[1]]['pl'])
     return(sdfspls)
 
 def edfspls_etree(root,**kwargs):
@@ -2048,7 +2048,7 @@ def edfspls_etree(root,**kwargs):
     m = init_attr(m,"children",[])
     m = fill_children_attr(m)
     edfsl = sdfsl_from_mat(m)
-    edfspls = elel.mapv(edfsl,lambda ele:ele['pl'])
+    edfspls = elel.mapv(edfsl,lambda ele:m[ele[0]][ele[1]]['pl'])
     return(edfspls)
 
 ##########################################
