@@ -2126,7 +2126,7 @@ def sdfspls2plmat(sdfspls,root_pl_len=1):
 
 
 def sdfspls2wfspls(sdfspls):
-    splmat = sdfspls2plsmat(sdfspls)
+    splmat = sdfspls2plmat(sdfspls)
     sdfsl = elel.mat2wfs(splmat)
     wfspls =  elel.mapv(sdfsl,lambda ele:ele['pl'])
     return(wfspls)
