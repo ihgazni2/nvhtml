@@ -2048,10 +2048,87 @@ def edfspls_etree(root,**kwargs):
     m = wfs.mat
     m = init_attr(m,"children",[])
     m = fill_children_attr(m)
-    edfsl = sdfsl_from_mat(m)
+    edfsl = edfsl_from_mat(m)
     edfspls = elel.mapv(edfsl,lambda ele:m[ele[0]][ele[1]]['pl'])
     return(edfspls)
 
 ##########################################
 
+def new_sdfs_ele():
+    d = {}
+    d["sdfs_seq"] = None
+    d["parent_sdfs_seq"] = None
+    d["pl"] = None
+    d["depth"] = None
+    return(d)
 
+
+def sdfspls2sdfs_ele_list(sdfspls,root_pl_len=1):
+    rslt = []
+    lngth= len(sdfspls)
+    for i in range(lngth):
+        d = new_edfs_ele()
+        d["sdfs_seq"] = i
+        d["pl"] = sdfspls[i]
+        d["depth"] = len(d["pl"]) - root_pl_len
+        rslt.append(d)
+    return(rslt)
+
+
+group_by_length_sdfs_ele_list = group_by_length_edfs_ele_list
+
+
+def fill_parent_sdfs_seq(sdfs_ele_list):
+    '''
+        一个元素的parent一定在前一层
+        start深度优先搜索,一个元素的parent一定是第一个序号小于子节点的元素
+    '''
+    groups = group_by_length_sdfs_ele_list(sdfs_ele_list)
+    kl =list(groups.keys())
+    kl.sort()
+    kl.reverse()
+    for i in range(len(kl)-1):
+        k = kl[i]
+        layer = groups[k]
+        prev_layer = groups[kl[i+1]]
+        for each in layer:
+            sdfs_seq = each['sdfs_seq']
+            each_plen = len(each['pl'])
+            lngth = len(prev_layer)
+            si = 0
+            for j in range(lngth-1,si-1,-1):
+                prev_each = prev_layer[j]
+                prev_sdfs_seq = prev_each['sdfs_seq']
+                if(prev_sdfs_seq < sdfs_seq):
+                    prev_each_plen = len(prev_each['pl'])
+                    if(prev_each_plen == each_plen - 1):
+                        each['parent_sdfs_seq'] = prev_sdfs_seq
+                        si = j
+                        break
+                    else:
+                        pass
+                else:
+                    pass
+    return((sdfs_ele_list,groups))
+
+
+def sdfspls2plsmat(sdfspls,root_pl_len=1):
+    sdfs_ele_list = sdfspls2sdfs_ele_list(sdfspls,root_pl_len=root_pl_len)
+    sdfs_ele_list,groups = fill_parent_sdfs_seq(sdfs_ele_list)
+    mat =[]
+    size = max(list(groups.keys()))
+    mat = elel.init(size,[])
+    for k in groups:
+        depth = k - 1
+        layer = groups[k]
+        mat[depth].extend(layer)
+    return(mat)
+
+
+def sdfspls2wfspls(sdfspls):
+    splmat = sdfspls2plsmat(sdfspls)
+    sdfsl = elel.mat2wfs(splmat)
+    wfspls =  elel.mapv(sdfsl,lambda ele:ele['pl'])
+    return(wfspls)
+
+###############################################
