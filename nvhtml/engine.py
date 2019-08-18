@@ -1884,20 +1884,20 @@ def fill_parent_edfs_seq(edfs_ele_list):
         prev_layer = groups[kl[i+1]]
         for each in layer:
             edfs_seq = each['edfs_seq']
-            each_plen = len(each['pl']) 
+            #each_plen = len(each['pl']) 
             lngth = len(prev_layer)
             si = 0
             for j in range(si,lngth):
                 prev_each = prev_layer[j]
                 prev_edfs_seq = prev_each['edfs_seq']
                 if(prev_edfs_seq > edfs_seq):
-                    prev_each_plen = len(prev_each['pl'])
-                    if(prev_each_plen == each_plen - 1):
-                        each['parent_edfs_seq'] = prev_edfs_seq
-                        si = j
-                        break
-                    else:
-                        pass
+                    #prev_each_plen = len(prev_each['pl'])
+                    #if(prev_each_plen == each_plen - 1):
+                    each['parent_edfs_seq'] = prev_edfs_seq
+                    si = j
+                    break
+                    #else:
+                    #    pass
                 else:
                     pass
     return((edfs_ele_list,groups))
@@ -2093,20 +2093,20 @@ def fill_parent_sdfs_seq(sdfs_ele_list):
         prev_layer = groups[kl[i+1]]
         for each in layer:
             sdfs_seq = each['sdfs_seq']
-            each_plen = len(each['pl'])
+            #each_plen = len(each['pl'])
             lngth = len(prev_layer)
             si = 0
             for j in range(lngth-1,si-1,-1):
                 prev_each = prev_layer[j]
                 prev_sdfs_seq = prev_each['sdfs_seq']
                 if(prev_sdfs_seq < sdfs_seq):
-                    prev_each_plen = len(prev_each['pl'])
-                    if(prev_each_plen == each_plen - 1):
-                        each['parent_sdfs_seq'] = prev_sdfs_seq
-                        si = j
-                        break
-                    else:
-                        pass
+                    #prev_each_plen = len(prev_each['pl'])
+                    #if(prev_each_plen == each_plen - 1):
+                    each['parent_sdfs_seq'] = prev_sdfs_seq
+                    si = j
+                    break
+                    #else:
+                    #    pass
                 else:
                     pass
     return((sdfs_ele_list,groups))
