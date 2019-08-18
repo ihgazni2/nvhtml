@@ -1917,6 +1917,11 @@ def edfspls2plmat(edfspls,root_pl_len=1):
         mat[depth].extend(layer)
     return(mat)
 
+def edfspls2wfspls(edfspls):
+    eplmat = edfspls2plmat(edfspls)
+    edfspls = elel.mat2wfs(eplmat)
+    return(edfspls)
+
 #####
 
 
@@ -1991,5 +1996,57 @@ def sdfsl_from_mat(mat):
 
 
 #############################
+
+def edfsl_find_first_ancestor_rsibloc(mat,curr_loc,edfsl):
+    rsib_loc = get_rsib_loc(mat,curr_loc)
+    while(rsib_loc  == None):
+        if(curr_loc ==  (0,0)):
+            return(None)
+        else:
+            ploc = get_parent_loc(mat,curr_loc)
+            edfsl.append(ploc)
+            rsib_loc = get_rsib_loc(mat,ploc)
+            curr_loc = ploc
+    return(rsib_loc)
+
+#######################################################
+
+def edfsl_from_mat(mat):
+    edfsl = []
+    curr_loc = (0,0)
+    count = elel.mat2wfs(mat).__len__()
+    visited = 0
+    while(visited<count):
+        x = curr_loc[0]
+        y = curr_loc[1]
+        children = mat[x][y]['children']
+        leaf = children.__len__() == 0
+        if(leaf):
+            # leaf first 
+            edfsl.append(curr_loc)
+            curr_loc = edfsl_find_first_ancestor_rsibloc(mat,curr_loc,edfsl)
+        else:
+            curr_loc = children[0]
+        visited = visited + 1
+    return(edfsl)
+
+###################################
+
+
+def sdfspls_etree(root,**kwargs):
+    wfs = wfs_traverse(root,**kwargs)
+    m = wfs.mat
+    sdfsl = sdfsl_from_mat(m)
+    sdfspls = elel.mapv(sdfsl,lambda ele:ele['pl'])
+    return(sdfspls)
+
+def edfspls_etree(root,**kwargs):
+    wfs = wfs_traverse(root,**kwargs)
+    m = wfs.mat
+    edfsl = sdfsl_from_mat(m)
+    edfspls = elel.mapv(edfsl,lambda ele:ele['pl'])
+    return(edfspls)
+
+##########################################
 
 
