@@ -2132,3 +2132,119 @@ def sdfspls2wfspls(sdfspls):
     return(wfspls)
 
 ###############################################
+
+
+def eplmat2dmat(eplmat):
+    '''
+        #对于每个eplmat  转化成虚拟的dmat
+    '''
+    dmat = copy.deepcopy(eplmat)
+    dmat = init_attr(dmat,"children",[])
+    lngth = len(dmat)
+    #######root 
+    dmat[0][0]['pbreadth'] = None
+    #### fill children  via   edfs_seq
+    for i in range(0,lngth-1):
+        layer = dmat[i]
+        next_layer = dmat[i+1]
+        si = 0
+        for j in range(len(layer)):
+            ele = layer[j]
+            ele_edfs_seq = ele['edfs_seq']
+            for k in range(si,len(next_layer)):
+                child_ele = next_layer[k]
+                child_ele_parent_edfs_seq = child_ele['parent_edfs_seq']
+                if(child_ele_parent_edfs_seq == ele_edfs_seq):
+                    ele['children'].append((i+1,k))
+                    child_ele['pbreadth'] = j
+                else:
+                    #eplmat children 是连续的 ,添加完毕
+                    si = k
+                    break
+    ################last layer
+    layer = dmat[lngth-1]
+    prev_layer = dmat[lngth-2]
+    for j in range(len(layer)):
+        child_ele = layer[j]
+        child_ele_parent_edfs_seq = child_ele['parent_edfs_seq']
+        for k in range(0,len(next_layer)):
+            ele = prev_layer[k]
+            ele_edfs_seq = ele['edfs_seq']
+            if(child_ele_parent_edfs_seq == ele_edfs_seq):
+                child_ele['pbreadth'] = k
+                break
+            else:
+                pass
+    ################
+    return(dmat)
+
+
+
+
+def splmat2dmat(splmat):
+    dmat = copy.deepcopy(splmat)
+    dmat = init_attr(dmat,"children",[])
+    lngth = len(dmat)
+    #######root 
+    dmat[0][0]['pbreadth'] = None
+    #### fill children  via   sdfs_seq
+    for i in range(0,lngth-1):
+        layer = dmat[i]
+        next_layer = dmat[i+1]
+        si = 0
+        for j in range(len(layer)):
+            ele = layer[j]
+            ele_sdfs_seq = ele['sdfs_seq']
+            for k in range(si,len(next_layer)):
+                child_ele = next_layer[k]
+                child_ele_parent_sdfs_seq = child_ele['parent_sdfs_seq']
+                if(child_ele_parent_sdfs_seq == ele_sdfs_seq):
+                    ele['children'].append((i+1,k))
+                    child_ele['pbreadth'] = j
+                else:
+                    #splmat children 是连续的 ,添加完毕
+                    si = k
+                    break
+    ################last layer
+    layer = dmat[lngth-1]
+    prev_layer = dmat[lngth-2]
+    for j in range(len(layer)):
+        child_ele = layer[j]
+        child_ele_parent_sdfs_seq = child_ele['parent_sdfs_seq']
+        for k in range(0,len(next_layer)):
+            ele = prev_layer[k]
+            ele_sdfs_seq = ele['sdfs_seq']
+            if(child_ele_parent_sdfs_seq == ele_sdfs_seq):
+                child_ele['pbreadth'] = k
+                break
+            else:
+                pass
+    ################
+    return(dmat)
+
+
+
+
+
+
+
+
+
+#####################################################################
+
+def edfspls2sdfspls(edfspls):
+    eplmat = edfspls2plmat(edfspls)
+    dmat = eplmat2dmat(eplmat)
+    sdfsl = sdfsl_from_mat(dmat)
+    sdfspls = elel.mapv(sdfsl,lambda loc:dmat[loc[0]][loc[1]]['pl'])
+    return(sdfspls)
+
+
+def sdfspls2edfspls(sdfspls):
+    splmat = sdfspls2plmat(sdfspls)
+    dmat = splmat2dmat(splmat)
+    edfsl = edfsl_from_mat(dmat)
+    edfspls = elel.mapv(edfsl,lambda loc:dmat[loc[0]][loc[1]]['pl'])
+    return(edfspls)
+
+#####################################################################
