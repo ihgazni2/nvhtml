@@ -1856,12 +1856,15 @@ def edfspls2edfs_ele_list(edfspls,root_pl_len=1):
 
 
 
-def group_by_length_edfs_ele_list(edfs_ele_list):
+def group_by_length_edfs_ele_list(edfs_ele_list,root_pl_len=1):
     d = {}
     lngth = len(edfs_ele_list)
     for i in range(lngth):
         pl = edfs_ele_list[i]['pl']
-        pl_len = len(pl)
+        if(pl == None):
+            pl_len = edfs_ele_list[i]["depth"]+1
+        else:
+            pl_len = len(pl)
         if(pl_len in d):
             d[pl_len].append(edfs_ele_list[i])
         else:
