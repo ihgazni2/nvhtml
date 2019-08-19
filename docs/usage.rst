@@ -5,10 +5,10 @@ Usage
 Command Line
 ------------
 
-rshtml
-^^^^^^
+rshtml write rule
+^^^^^^^^^^^^^^^^^
 :\#:     comment
-:\-:     attrib     属性有两种写法,直接跟或者当作子元素,换行的话会用空格连接
+:\-:    attrib
 :\.:     text and tail
 :\|:     text and tail content can multiline
 
