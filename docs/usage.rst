@@ -41,7 +41,7 @@ rshtml
                 div
                     li
                 div
-            comment
+            #comment
                 .text
                     |this is acomment
         NVHTML-BENCH#
