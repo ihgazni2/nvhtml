@@ -5,6 +5,88 @@ Usage
 Command Line
 ------------
 
+rshtml
+^^^^^^
+- \\#     comment
+- \\-     attrib     属性有两种写法,直接跟或者当作子元素,换行的话会用空格连接
+- \\.     text and tail
+- \\|     text and tail content can multiline
+    
+    ::
+
+        NVHTML-BENCH# cat tstrs.rshtml
+        html
+            head
+                meta
+                    -http-equiv X-UA-Compatible
+                    -content IE=edge,chrome=1
+                meta
+                    -name viewport
+                    -content user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0
+                link
+            body
+                div
+                    -id menu-item-27961
+                    -class qtranxs-lang-menu-item menu-item-object-custom
+                    .text
+                        |hello
+                        |hihihi
+                    .tail
+                        |this is a tail
+                    li
+                div
+                    li
+                div
+            comment
+                .text
+                    |this is acomment
+        NVHTML-BENCH#
+
+
+        NVHTML-BENCH# nvhtml_rsh2html -input tstrs.rshtml
+        
+        NVHTML-BENCH# ls -l | egrep tstrs.rshtml
+        -rw-r--r-- 1 root root    597 Aug 19 11:36 tstrs.rshtml
+        -rw-r--r-- 1 root root    658 Aug 19 11:56 tstrs.rshtml.html
+        
+        
+        
+        NVHTML-BENCH# cat  tstrs.rshtml.html
+        <html>
+            <head>
+                <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+                </meta>
+                <meta name="viewport" content="user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0">
+                </meta>
+                <link>
+                </link>
+            </head>
+            <body>
+                <div id="menu-item-27961" class="qtranxs-lang-menu-item menu-item-object-custom">
+                    hello
+                    hihihi
+                    <li>
+                    </li>
+                </div>
+                this is a tail
+                <div>
+                    <li>
+                    </li>
+                </div>
+                <div>
+                </div>
+            </body>
+            <!--
+                this is acomment
+            -->
+        </html>
+        NVHTML-BENCH#
+        
+        
+        
+        vice versa
+        NVHTML-BENCH# nvhtml_html2rsh -input tstrs.html
+
 vertical show
 ^^^^^^^^^^^^^
  
