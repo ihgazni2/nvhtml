@@ -20,7 +20,7 @@ def fill_dmat_child_nd(ele,dmat,comment_as_normal=True):
         chele = dmat[loc[0]][loc[1]]
         chtag = chele['tag']
         if(chtag  == "<comment>"):
-            chtag = "comment@"
+            chtag = "comment"
         else:
             pass
         if(not(comment_as_normal)):
@@ -63,8 +63,8 @@ def dmat2html(dmat,comment_as_normal=True):
     r = dmat2etree(dmat,comment_as_normal=comment_as_normal)
     if(comment_as_normal):
         html_str = engine.beautify(r)
-        html_str = html_str.replace("<@comment@>","<!--")
-        html_str = html_str.replace("</@comment@>","-->")
+        html_str = html_str.replace("<comment>","<!--")
+        html_str = html_str.replace("</comment>","-->")
     else:
         html_str = lxml.etree.tostring(r).decode('utf-8')
     return(html_str)
