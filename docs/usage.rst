@@ -13,6 +13,9 @@ rshtml
 :\|:     text and tail content can multiline
 
 
+rshtml
+^^^^^^
+
     ::
 
         NVHTML-BENCH# cat tstrs.rshtml
