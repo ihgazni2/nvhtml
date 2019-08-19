@@ -52,6 +52,6 @@ def dmat2etree(dmat):
     ######
     return(root)
 
-def dmat2html(damt):
+def dmat2html(dmat):
     r = dmat2etree(dmat)
     return(engine.beautify(r))
