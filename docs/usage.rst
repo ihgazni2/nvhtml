@@ -7,10 +7,10 @@ Command Line
 
 rshtml write rule
 ^^^^^^^^^^^^^^^^^
-: \#  :     `comment`
-: \-  :     `attrib`
-: \.  :     `text and tail`
-: \|  :     `text and tail content can multiline`
+:\# pound:     `comment`
+:\- dash:     `attrib`
+:\. dot:     `text and tail`
+:\| vbar:     `text and tail content can multiline`
 
 
 rshtml
