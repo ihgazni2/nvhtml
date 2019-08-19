@@ -28,7 +28,7 @@ def fill_dmat_child_nd(ele,dmat):
         chele['nd'] = chnd
 
 
-def creat_root_nd(root_ele):
+def creat_root_nd(root_ele,dmat):
     tag = root_ele['tag']
     root = lxml.etree.Element(tag)
     root,root_ele = fill_nd(root,root_ele)
@@ -40,7 +40,7 @@ def dmat2etree(dmat):
     lngth = len(dmat)
     ######
     root_ele = dmat[0][0]
-    root = creat_root_nd(root_ele)
+    root = creat_root_nd(root_ele,dmat)
     ######
     for i in range(1,lngth):
         layer = dmat[i]
