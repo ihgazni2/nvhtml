@@ -2045,6 +2045,15 @@ def sdfsl_from_root(root,**kwargs):
     sdfsl = sdfsl_from_mat(m)
     return(sdfsl)
 
+def sdfsl_from_root2(root,**kwargs):
+    wfs = wfs_traverse(root,**kwargs)
+    m = wfs.mat
+    m = init_attr(m,"children",[])
+    m = fill_children_attr(m)
+    sdfsl = sdfsl_from_mat(m)
+    return((sdfsl,m))
+
+
 
 def sdfspls_etree(root,**kwargs):
     sdfsl = sdfsl_from_root(root,**kwargs)
