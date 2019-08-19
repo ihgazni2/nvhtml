@@ -20,7 +20,7 @@ def fill_dmat_child_nd(ele,dmat,comment_as_normal=True):
         chele = dmat[loc[0]][loc[1]]
         chtag = chele['tag']
         if(chtag  == "<comment>"):
-            chtag = "@comment@"
+            chtag = "comment@"
         else:
             pass
         if(not(comment_as_normal)):
