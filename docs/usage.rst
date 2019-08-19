@@ -7,10 +7,10 @@ Command Line
 
 rshtml
 ^^^^^^
-- \\#     comment
-- \\-     attrib     属性有两种写法,直接跟或者当作子元素,换行的话会用空格连接
-- \\.     text and tail
-- \\|     text and tail content can multiline
+- \#     comment
+- \-     attrib     属性有两种写法,直接跟或者当作子元素,换行的话会用空格连接
+- \.     text and tail
+- \|     text and tail content can multiline
     
     ::
 
