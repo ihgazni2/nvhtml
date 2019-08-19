@@ -2037,21 +2037,32 @@ def edfsl_from_mat(mat):
 ###################################
 
 
-def sdfspls_etree(root,**kwargs):
+def sdfsl_from_root(root,**kwargs):
     wfs = wfs_traverse(root,**kwargs)
     m = wfs.mat
     m = init_attr(m,"children",[])
     m = fill_children_attr(m)
     sdfsl = sdfsl_from_mat(m)
+    return(sdfsl)
+
+
+def sdfspls_etree(root,**kwargs):
+    sdfsl = sdfsl_from_root(root,**kwargs)
     sdfspls = elel.mapv(sdfsl,lambda ele:m[ele[0]][ele[1]]['pl'])
     return(sdfspls)
 
-def edfspls_etree(root,**kwargs):
+
+def edfsl_from_root(root,**kwargs):
     wfs = wfs_traverse(root,**kwargs)
     m = wfs.mat
     m = init_attr(m,"children",[])
     m = fill_children_attr(m)
     edfsl = edfsl_from_mat(m)
+    return(edfsl)
+
+
+def edfspls_etree(root,**kwargs):
+    edfsl = edfsl_from_root(root,**kwargs)
     edfspls = elel.mapv(edfsl,lambda ele:m[ele[0]][ele[1]]['pl'])
     return(edfspls)
 
@@ -2226,11 +2237,17 @@ def splmat2dmat(splmat):
     return(dmat)
 
 
+####################################################################
 
-
-
-
-
+def depth_groups_to_plmat(groups):
+    mat =[]
+    size = max(list(groups.keys()))
+    mat = elel.init(size,[])
+    for k in groups:
+        depth = k - 1
+        layer = groups[k]
+        mat[depth].extend(layer)
+    return(mat)
 
 
 #####################################################################
