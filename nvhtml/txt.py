@@ -152,3 +152,34 @@ def todirs(s,**kwargs):
         unhandled = next_unhandled
         next_unhandled = []
 
+
+def iter_text(ele):
+    '''     <Why need itertext? >
+        >>>html_text = '<html><body>TEXT<br/>TAIL</body></html>'
+        >>>root = etree.HTML(html_text)
+        >>>eles = root.xpath("//html/body")
+        >>>eles[0].text
+        'TEXT'
+        >>>eles[0].tail == None
+        True
+        >>> nvbody.etree_get_text(eles[0])
+        'TEXTTAIL'
+        >>>
+        >>>
+        >>> eles = root.xpath("//html/body/br")
+        >>> eles[0].text == None
+        True
+        >>> eles[0].tail
+        'TAIL'
+        >>> nvbody.etree_get_text(eles[0])
+        ''
+    >>>
+    '''
+    it = ele.itertext()
+    texts = list(it)
+    text = ''
+    for i in range(0,texts.__len__()):
+        text = text + texts[i]
+    return(text)
+
+
