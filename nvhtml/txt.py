@@ -133,7 +133,9 @@ def todirs(s,**kwargs):
             pl = engine.pathlist(each_node)
             which = pls.count(pl)
             pls.append(pl)
-            dummy_pl = copy.deepcopy(ppl)
+            #dummy_pl = copy.deepcopy(ppl)
+            dummy_pl = copy.copy(ppl)
+            ###########################
             d = {}
             d['tag'] = str(each_node.tag)
             d['sibseq'] = engine.sibseq(each_node)

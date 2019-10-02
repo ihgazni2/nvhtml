@@ -1398,7 +1398,8 @@ def wfspls(root,**kwargs):
         desc_lyr = m[i]
         for j in range(desc_lyr.__len__()):
             desc = desc_lyr[j]
-            pl = copy.deepcopy(desc['pl'])
+            #pl = copy.deepcopy(desc['pl'])
+            pl = copy.copy(desc['pl'])
             pls.append(pl)
     return(pls)
 
@@ -1581,7 +1582,9 @@ class EDFS_SAX(ContentHandler):
         self.datas.append(data)
         self.currdatal = copy.deepcopy(self.currdatal[:index])
         #####
-        pl = copy.deepcopy(self.currpl)
+        #pl = copy.deepcopy(self.currpl)
+        pl = copy.copy(self.currpl)
+        ####
         self.pls.append(pl)
         self.currpl.pop(-1)
         #####
@@ -1595,7 +1598,8 @@ class EDFS_SAX(ContentHandler):
         self.currattribl.pop(-1)
         #####
     def characters(self, data):
-        pl = copy.deepcopy(self.currpl)
+        #pl = copy.deepcopy(self.currpl)
+        pl = copy.copy(self.currpl)
         self.currdatal.append((pl,data))
         self.texts_inseq.append((pl,data))
 
