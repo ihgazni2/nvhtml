@@ -128,7 +128,9 @@ no color
 
 nvrsh_struct_show
 ~~~~~~~~~~~~~~~~~~
-
+    
+    ::
+        
         TEST# nvrsh_struct_show -input jobj2.rshtml
         color:  True
         -------------------------------
