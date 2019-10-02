@@ -1,4 +1,4 @@
-/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.35-py3.6.egg
+/usr/local/lib/python3.6/dist-packages/nvhtml-0.0.37-py3.6.egg
 /usr/local/bin/nvhtml_beauty
 /usr/local/bin/nvhtml_dir
 /usr/local/bin/nvhtml_find_all
@@ -10,3 +10,4 @@
 /usr/local/bin/nvhtml_tag
 /usr/local/bin/nvhtml_tgpth
 /usr/local/bin/nvhtml_wfs_json
+/usr/local/bin/nvrsh_struct_show
