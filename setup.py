@@ -32,7 +32,7 @@ setup_requirements = [
 
 setup(
     name='nvhtml',
-    version='0.0.35',
+    version='0.0.37',
     description="A Python library manipulate html",
     long_description=readme + '\n\n' + installation + '\n\n' + usage + '\n\n' + history,
     author="dli",
@@ -50,7 +50,8 @@ setup(
                                 'nvhtml_find_all=nvhtml.WFS.bin_nvhtml_find_all:main',
                                 'nvhtml_struct_show=nvhtml.WFS.bin_nvhtml_struct_show:main',
                                 'nvhtml_html2rsh=nvhtml.WFS.bin_nvhtml_html2rsh:main',
-                                'nvhtml_rsh2html=nvhtml.WFS.bin_nvhtml_rsh2html:main'
+                                'nvhtml_rsh2html=nvhtml.WFS.bin_nvhtml_rsh2html:main',
+                                'nvrsh_struct_show=nvhtml.WFS.bin_nvrsh_struct_show:main'
                             ]
     },
     packages=find_packages(),
