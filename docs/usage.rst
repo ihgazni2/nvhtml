@@ -126,8 +126,45 @@ no color
 .. image:: ./images/nvhtml_struct_show.1.png
 
 
+nvrsh_struct_show
+~~~~~~~~~~~~~~~~~~
+
+        TEST# nvrsh_struct_show -input jobj2.rshtml
+        color:  True
+        -------------------------------
+        |            html             |
+        -------------------------------
+        |            body             |
+        -------------------------------
+        |        im-dict-root         |
+        -------------------------------
+        |    l    |    t    |    s    |
+        -------------------------------
+        | o0 | o1 | o0 | o1 | u0 | u1 |
+        -------------------------------
+        | a0 | a1 | t0 | t1 | s0 | s1 |
+        -------------------------------
 
 
+        NVHTML# cat TEST/jobj2.rshtml
+        im-dict-root
+            l
+                o0
+                    a0
+                o1
+                    a1
+            t
+                o0
+                    t0
+                o1
+                    t1
+            s
+                u0
+                    s0
+                u1
+                    s1
+        NVHTML#       
+ 
 
 beautify
 ^^^^^^^^
@@ -145,6 +182,9 @@ beautify
           -input        --input_html_file           input html file name
           -output       --output_html_file          output html file name
           -codec        --input_codec               input html file codec
+
+
+
 
 
 search with loc
