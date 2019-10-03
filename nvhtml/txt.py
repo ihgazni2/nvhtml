@@ -1,5 +1,4 @@
 import os
-import copy
 from io import StringIO
 import lxml.etree as lxe
 import elist.elist as elel
@@ -133,8 +132,8 @@ def todirs(s,**kwargs):
             pl = engine.pathlist(each_node)
             which = pls.count(pl)
             pls.append(pl)
-            #dummy_pl = copy.deepcopy(ppl)
-            dummy_pl = copy.copy(ppl)
+            #dummy_pl = copy.copy(ppl)
+            dummy_pl = elel.fcp(ppl)
             ###########################
             d = {}
             d['tag'] = str(each_node.tag)
