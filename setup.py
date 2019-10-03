@@ -32,7 +32,7 @@ setup_requirements = [
 
 setup(
     name='nvhtml',
-    version='0.0.37',
+    version='0.0.38',
     description="A Python library manipulate html",
     long_description=readme + '\n\n' + installation + '\n\n' + usage + '\n\n' + history,
     author="dli",
