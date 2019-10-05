@@ -49,5 +49,5 @@ def main():
         pls = elel.remove_all(pls,[])
     pbmat = emem.mapv(m,map_func=lambda v:v['pbreadth'],inplace=False)
     plmat = emem.mapv(m,map_func=lambda v:v['pl'],inplace=False)
-    plgroups = elel.mapivo(plmat,map_func=lambda i,pl,*o:groupby_refl(pl,o),map_func_args_array=pbmat)
+    plgroups = elel.mapivo(plmat,map_func=lambda i,pl,*o:elel.groupby_refl(pl,o),map_func_args_array=pbmat)
     elel.for_each(plgroups,print)
