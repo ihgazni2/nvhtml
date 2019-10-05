@@ -43,11 +43,14 @@ def main():
     root = LXHTML(html_str)
     wfs = engine.WFS(root)
     m = wfs.mat 
-    pls = engine.dulr_wfspls(m)
-    if(args.rm_html):
-        pls = elel.mapv(pls,fmt)
-        pls = elel.remove_all(pls,[])
     pbmat = emem.mapv(m,map_func=lambda v:v['pbreadth'],inplace=False)
     plmat = emem.mapv(m,map_func=lambda v:v['pl'],inplace=False)
-    plgroups = elel.mapivo(plmat,map_func=lambda i,pl,*o:elel.groupby_refl(pl,o),map_func_args_array=pbmat)
-    elel.for_each(plgroups,print)
+    if(args.rm_html):
+        plmat = emem.mapv(plmat,map_func=fmt)
+        plmat = elel.remove_all(plmat,[[]])
+        pbmat = pbmat[2:]
+    dirmat = emem.mapv(plmat,map_func=lambda pl:elel.join(pl,"/"))
+    plgroups = elel.mapivo(dirmat,map_func=lambda i,pl,*o:elel.groupby_refl(pl,o),map_func_args_array=pbmat)
+    for i in range(len(plgroups)-1,-1,-1):
+        print(plgroups[i])
+        print("------")
