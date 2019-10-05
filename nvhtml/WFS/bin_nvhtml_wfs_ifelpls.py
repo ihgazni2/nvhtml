@@ -13,6 +13,7 @@ from efdir import fs
 import elist.elist as elel
 import estring.estring as eses
 import spaint.spaint as spaint
+import ematmap.ematmap as emem
 
 
 
@@ -34,6 +35,9 @@ def fmt(pl):
         rslt = pl
     return(rslt)
 
+
+
+
 def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
@@ -43,5 +47,7 @@ def main():
     if(args.rm_html):
         pls = elel.mapv(pls,fmt)
         pls = elel.remove_all(pls,[])
-    plses = elel.divide(pls,2)
-    elel.for_each(pls,print)
+    pbmat = emem.mapv(m,map_func=lambda v:v['pbreadth'],inplace=False)
+    plmat = emem.mapv(m,map_func=lambda v:v['pl'],inplace=False)
+    plgroups = elel.mapivo(plmat,map_func=lambda i,pl,*o:groupby_refl(pl,o),map_func_args_array=pbmat)
+    elel.for_each(plgroups,print)
