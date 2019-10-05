@@ -32,7 +32,7 @@ setup_requirements = [
 
 setup(
     name='nvhtml',
-    version='0.0.38',
+    version='0.0.39',
     description="A Python library manipulate html",
     long_description=readme + '\n\n' + installation + '\n\n' + usage + '\n\n' + history,
     author="dli",
@@ -46,6 +46,7 @@ setup(
                                 'nvhtml_wfs_json=nvhtml.WFS.bin_nvhtml_wfs_json:main',
                                 'nvhtml_wfs_udlrpls=nvhtml.WFS.bin_nvhtml_wfs_udlrpls:main',
                                 'nvhtml_wfs_dulrpls=nvhtml.WFS.bin_nvhtml_wfs_dulrpls:main',
+                                'nvhtml_wfs_durlpls=nvhtml.WFS.bin_nvhtml_wfs_durlpls:main',
                                 'nvhtml_wfs_ifelpls=nvhtml.WFS.bin_nvhtml_wfs_ifelpls:main',
                                 'nvhtml_loc=nvhtml.WFS.bin_nvhtml_loc:main',
                                 'nvhtml_dir=nvhtml.WFS.bin_nvhtml_dir:main',

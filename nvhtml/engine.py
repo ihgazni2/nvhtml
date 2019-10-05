@@ -1393,6 +1393,11 @@ def wfspls(root,**kwargs):
     '''
     wfs = wfs_traverse(root,**kwargs)
     m = wfs.mat
+    pls = udlr_wfspls(m)
+    return(pls)
+
+
+def udlr_wfspls(m):
     pls = []
     for i in range(m.__len__()):
         desc_lyr = m[i]
@@ -1402,6 +1407,45 @@ def wfspls(root,**kwargs):
             pl = elel.fcp(desc['pl'])
             pls.append(pl)
     return(pls)
+
+
+def udrl_wfspls(m):
+    pls = []
+    for i in range(m.__len__()):
+        desc_lyr = m[i]
+        for j in range(desc_lyr.__len__()-1,-1,-1):
+            desc = desc_lyr[j]
+            #pl = copy.copy(desc['pl'])
+            pl = elel.fcp(desc['pl'])
+            pls.append(pl)
+    return(pls)
+
+
+def dulr_wfspls(m):
+    pls = []
+    for i in range(m.__len__()-1,-1,-1):
+        desc_lyr = m[i]
+        for j in range(desc_lyr.__len__()):
+            desc = desc_lyr[j]
+            #pl = copy.copy(desc['pl'])
+            pl = elel.fcp(desc['pl'])
+            pls.append(pl)
+    return(pls)
+
+
+def durl_wfspls(m):
+    pls = []
+    for i in range(m.__len__()-1,-1,-1):
+        desc_lyr = m[i]
+        for j in range(desc_lyr.__len__(),-1,-1):
+            desc = desc_lyr[j]
+            #pl = copy.copy(desc['pl'])
+            pl = elel.fcp(desc['pl'])
+            pls.append(pl)
+    return(pls)
+
+
+
 
 
 def loc2node(root,*args,**kwargs):

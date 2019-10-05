@@ -649,6 +649,23 @@ find all
         NVHTML-BENCH#
 
 
+nvhtml_wfs_udlrpls
+^^^^^^^^^^^^^^^^^^
+    
+    ::
+        
+        NVHTML-BENCH#nvhtml_wfs_udlrpls -input xxx.html
+
+
+nvhtml_wfs_dulrpls
+^^^^^^^^^^^^^^^^^^
+
+    ::
+
+        NVHTML-BENCH#nvhtml_wfs_dulrpls -input xxx.html
+
+
+
 
 
 Examples
