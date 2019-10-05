@@ -42,8 +42,8 @@ def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
     wfs = engine.WFS(root)
-    mat = wfs.mat 
-    pls = engine.dulr_wfspls(mat)
+    m = wfs.mat 
+    pls = engine.dulr_wfspls(m)
     if(args.rm_html):
         pls = elel.mapv(pls,fmt)
         pls = elel.remove_all(pls,[])
