@@ -1791,6 +1791,15 @@ class BEAUTIFY(ContentHandler):
             s = elel.join(allms,"")
             self.s = self.s + html.escape(s)
 
+def s2root(html_str):
+    root = LXHTML(html_str)
+    return(root)
+
+def f2root(fn):
+    html_str = fs.rfile(fn)
+    root = LXHTML(html_str)
+    return(root)
+
 
 def sbeautify(html_str,**kwargs):
     root = LXHTML(html_str)
