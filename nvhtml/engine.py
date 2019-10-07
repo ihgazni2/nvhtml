@@ -25,7 +25,7 @@ from xml.sax.handler import ContentHandler
 import html
 import re
 from nvhtml import utils
-
+from efdir import fs
 
 
 
@@ -1792,6 +1792,15 @@ class BEAUTIFY(ContentHandler):
             self.s = self.s + html.escape(s)
 
 
+def sbeautify(html_str,**kwargs):
+    root = LXHTML(html_str)
+    return(beautify(root,**kwargs))
+
+def fbeautify(fn,**kwargs):
+    html_str = fs.rfile(fn)
+    root = LXHTML(html_str)
+    return(beautify(root,**kwargs))
+
 def beautify(root,**kwargs):
     '''
         | Beautity html output
@@ -1851,6 +1860,8 @@ def beautify(root,**kwargs):
     handler = BEAUTIFY(**kwargs)
     lxml.sax.saxify(root, handler)
     return(handler.s.strip("\n"))
+
+
 
 
 ######
