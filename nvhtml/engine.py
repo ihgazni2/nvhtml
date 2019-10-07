@@ -26,7 +26,7 @@ import html
 import re
 from nvhtml import utils
 from efdir import fs
-
+from lxml.etree import HTML as LXHTML
 
 
 
