@@ -14,25 +14,24 @@ import elist.elist as elel
 import estring.estring as eses
 import spaint.spaint as spaint
 
-
-
 parser = argparse.ArgumentParser()
 parser.add_argument('-input','--input_html_file', default="",help="input html file name")
 parser.add_argument('-codec','--input_codec', default="utf-8",help="input html file codec")
-parser.add_argument('-rmhtml','--rm_html', default=True,help="remove html body heads  when html head is empty")
-
+parser.add_argument('-rmhtml','--rm_html', default=False,help="remove html body heads  when html head is empty")
 
 args = parser.parse_args()
 
-
 def fmt(pl):
-    if(len(pl) >=2 and pl[:2]==['html', 'body']):
-        rslt = pl[2:]
-    elif(pl==['html']):
-        rslt = []
+    if(args.rm_html):
+        return(pl)
     else:
-        rslt = pl
-    return(rslt)
+        if(len(pl) >=2 and pl[:2]==['html', 'body']):
+            rslt = pl[2:]
+        elif(pl==['html']):
+            rslt = []
+        else:
+            rslt = pl
+        return(rslt)
 
 def main():
     html_str = fs.rfile(args.input_html_file)
