@@ -22,21 +22,22 @@ parser.add_argument('-rmhtml','--rm_html', default=False,help="remove html body 
 args = parser.parse_args()
 
 def fmt(pl):
-    if(args.rm_html):
-        return(pl)
+    #if(args.rm_html):
+    #    return(pl)
+    #else:
+    if(len(pl) >=2 and pl[:2]==['html', 'body']):
+        rslt = pl[2:]
+    elif(pl==['html']):
+        rslt = []
     else:
-        if(len(pl) >=2 and pl[:2]==['html', 'body']):
-            rslt = pl[2:]
-        elif(pl==['html']):
-            rslt = []
-        else:
-            rslt = pl
-        return(rslt)
+        rslt = pl
+    return(rslt)
 
 def main():
     html_str = fs.rfile(args.input_html_file)
     root = LXHTML(html_str)
     pls = engine.wfspls(root)
+    print('args.rm_html',args.rm_html)
     if(args.rm_html):
         pls = elel.mapv(pls,fmt)
         pls = elel.remove_all(pls,[])
