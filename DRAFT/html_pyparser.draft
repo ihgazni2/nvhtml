@@ -1,0 +1,448 @@
+
+
+from efdir import fs
+import elist.elist as elel
+import estring.estring as eses
+import re 
+
+html_txt = fs.rfile('tst.html')
+
+WS=[' ','\t','\n','\r']
+
+WS_REGEX = re.compile("["+elel.join(WS,"")+"]+")
+
+QUOTES=['"',"'"]
+
+HTML_SELF_CLOSING_TAGS=['meta','base','br','hr','img','input','col','frame','link','area','param','object','embed','keygen','source']
+
+class TOK:
+    def __repr__(self):
+        if(hasattr(self,'txt')):
+            return(self.txt)
+        elif(hasattr(self,'subtoks')):
+            return(self.subtoks.__repr__())
+        else:
+            if(hasattr(self,'attrib')):
+                return(self.tag + " " +self.attrib.__repr__()+" "+self.type)
+            elif(hasattr(self,'text')):
+                return(self.text + " " +self.type)
+            elif(hasattr(self,'tail')):
+                return(self.tail + " " +self.type)
+            else:
+                return(self.tag + " " +self.type)
+
+def handle_angle_brackets(s):
+    states = ['tag-open','notag-open','close']
+    toks = []
+    cache = ""
+    tok = TOK()
+    if(s[0] == '<'):
+        tok.type="tag"
+        cache=s[0]
+        state = "tag-open"
+    else:
+        tok.type="raw"
+        cache = s[0]
+        state = "notag-open"
+    for i in range(1,len(s)):
+        ch = s[i]
+        if(state=='notag-open'):
+            if(ch == '<'):
+                tok.txt=cache
+                toks.append(tok)
+                #
+                cache = "<"
+                tok = TOK()
+                tok.type="tag"
+                state = "tag-open"
+            else:
+                cache = cache + ch
+        elif(state=='tag-open'):
+            if(ch == '>'):
+                tok.txt=cache +">"
+                toks.append(tok)
+                #
+                cache = ""
+                tok = TOK()
+                state = "close"
+            else:
+                cache = cache + ch
+        else:
+            if(ch == '<'):
+                tok.type="tag"
+                cache = "<"
+                state = "tag-open"
+                #
+            else:
+                cache = ch
+                tok = TOK()
+                tok.type="raw"
+                state = "notag-open"
+    if(cache == ""):
+        pass
+    else:
+        tok.txt = cache
+        toks.append(tok)
+    return(toks)
+
+def handle_ws(toks):
+    new_toks = []
+    for i in range(len(toks)):
+        tok = toks[i]
+        tok.txt = eses.trim(tok.txt)
+        if(tok.txt==""):
+            pass
+        else:
+            new_toks.append(tok)
+    return(new_toks)
+
+def handle_one_quotes(s):
+    states = ['noq-open','q-open','close']
+    arr = []
+    cache = ""
+    quote = ""
+    tok = TOK()
+    if(s[0] in QUOTES):
+        tok.type="quoted"
+        quote=s[0]
+        state = "q-open"
+    else:
+        tok.type="raw"
+        cache = cache+s[0]
+        state = "noq-open"
+    for i in range(1,len(s)):
+        ch = s[i]
+        if(state == 'noq-open'):
+            if(ch in QUOTES):
+                #close ->q-open
+                #旧的tok
+                tok.txt = cache if(tok.type=="quoted") else eses.trim(eses.replace(cache,WS_REGEX," "))
+                cache = ""
+                arr.append(tok)
+                #新的tok
+                tok = TOK()
+                tok.type="quoted"
+                quote = ch
+                state="q-open"
+            else:
+                cache = cache + ch
+        elif(state == 'q-open'):
+            if(ch == quote):
+                #q-open -> q-close
+                tok.txt = cache if(tok.type=="quoted") else eses.trim(eses.replace(cache,WS_REGEX," "))
+                cache = ""
+                arr.append(tok)
+                #新的tok 类型未知
+                tok = TOK()
+                quote = ""
+                state = "close"
+            else:
+                cache = cache + ch
+        else:
+            #close 状态
+            if(ch in QUOTES):
+                #close ->q-open
+                tok = TOK()
+                tok.type="quoted"
+                quote = ch
+                state="q-open"
+            else:
+                #close ->noq-open
+                #新的tok
+                tok = TOK()
+                tok.type="raw"
+                cache=ch
+                state="noq-open"
+    if(cache == ""):
+        pass
+    else:
+        tok.txt = cache if(tok.type=="quoted") else eses.trim(eses.replace(cache,WS_REGEX," "))
+        arr.append(tok)
+    return(arr)
+
+def handle_quotes(toks):
+    for i in range(len(toks)):
+        tok = toks[i]
+        if(tok.type=='raw'):
+            pass
+        else:
+            tok.subtoks = handle_one_quotes(tok.txt)
+            del tok.txt
+    return(toks)
+
+def get_tag_type_s0(head,foot):
+    if(foot == "/>"):
+        return("self-close")
+    elif(head== "</"):
+        return("close")
+    else:
+        return("maybe-open")
+
+def split_angle(s):
+    cache = ""
+    arr = []
+    slbl = None
+    elbl = None
+    if(s[:2] == '</'):
+        arr = ['</']
+        slbl = 2
+    elif(s[:1] == '<'):
+        arr = ['<']
+        slbl = 1
+    else:
+        slbl = 0
+    if(s[-2:] == "/>"):
+        arr = arr+[s[slbl:-2]] + ["/>"]
+    elif(s[-1] == ">"):
+        arr = arr+[s[slbl:-1]] + [">"]
+    else:
+        arr = arr+[s[slbl:]]
+    arr = elel.filter(arr,lambda r:(r!=""))
+    arr = elel.mapv(arr,lambda r:r.split(" "))
+    arr = elel.concat(*arr)
+    return(arr)
+
+def attr_have_value(s):
+    return(s[-1] == '=')
+
+def handle_one_attrib(attrib):
+    d = {}
+    if(len(attrib) == 0):
+        return(d)
+    else:
+        c = 0
+        while(c<attrib.__len__()):
+            lst = attrib[c]
+            lst_have_value = attr_have_value(lst)
+            if(lst_have_value):
+                k = lst[:-1]
+                d[k] = attrib[c+1]
+                c=c+2
+            else:
+                k = lst
+                d[k]=None
+                c=c+1
+    return(d)
+
+def handle_one_entry(tok):
+    subtoks = tok.subtoks
+    arr = []
+    for i in range(len(subtoks)):
+        subtok = subtoks[i]
+        if(subtok.type == "quoted"):
+            arr.append(subtok.txt)
+        else:
+            subtok.txt = eses.replace(subtok.txt,WS_REGEX," ")
+            subtok.txt = subtok.txt.replace("/ >","/>")
+            subtok.txt = subtok.txt.replace("< /","</")
+            tmp = split_angle(subtok.txt)
+            arr = arr + tmp
+    del tok.subtoks
+    head = arr[0]
+    foot = arr[-1]
+    tok.type = get_tag_type_s0(head,foot)
+    tok.tag = arr[1]
+    attrib = arr[2:-1]
+    tok.attrib = handle_one_attrib(attrib)
+    return(tok)
+
+def handle_entries(toks):
+    for i in range(len(toks)):
+        tok = toks[i]
+        if(tok.type=='raw'):
+            tok.type='txt'
+        else:
+            toks[i] = handle_one_entry(tok)
+    return(toks)
+
+
+def handle_one_tag(tok,ntok):
+    tok.tag = tok.tag.lower()
+    tag= tok.tag
+    if(tag.upper() == "!DOCTYPE"):
+        tok.type = "doctype"
+        tok.doctype = list(tok.attrib.keys())[0]
+        del tok.attrib
+    elif(tag[:3] == "!--"):
+        tok.type = 'comment'
+        tok.comment = list(tok.attrib.keys())[0]
+        del tok.attrib
+    elif(tag == 'br'):
+        tok.type = 'no-end'
+        del tok.attrib
+    else:
+        if(tok.type=="maybe-open"):
+            if(tag in HTML_SELF_CLOSING_TAGS):
+                if(ntok.tag == tag and ntok.type == 'close'):
+                    tok.type = 'open'
+                else:
+                    tok.type = 'no-end'
+            else:
+                tok.type = "open"
+        elif(tok.type=="close"):
+            del tok.attrib
+        else:
+            pass
+    return(tok)
+
+def handle_types(toks):
+    for i in range(len(toks)-1):
+        tok = toks[i]
+        if(tok.type=='txt'):
+            prev_tok = toks[i-1]
+            if(prev_tok.type == 'open'):
+                tok.type = 'text'
+                tok.text = tok.txt
+            else:
+                tok.type = 'tail'
+                tok.tail = tok.txt
+            del tok.txt
+        else:
+            next_tok = toks[i+1]
+            toks[i] = handle_one_tag(tok,next_tok)
+    return(toks)
+
+def init_root():
+    root = TOK()
+    root.tag ="@root@"
+    root.type='root'
+    root._id = 0
+    root._curr_id = 1
+    return(root)
+
+def get_orig_toks(html_txt):
+    toks = handle_angle_brackets(html_txt)
+    toks = handle_ws(toks)
+    toks = handle_quotes(toks)
+    toks = handle_entries(toks)
+    toks = handle_types(toks)
+    return(toks)
+
+
+#def is_ele(tok):
+    
+
+
+
+#root = init_root()
+#s = ""
+#for i in range(len(toks)):
+#    
+
+
+from lxml import etree
+from xdict.jprint import pobj,pdir,parr
+
+r = etree.HTML(html_txt)
+
+def shnd(nd):
+    d = {}
+    d['tag'] = nd.tag
+    d['attrib'] = nd.attrib
+    d['text'] = nd.text
+    d['tail'] = nd.tail
+    pobj(d)
+
+
+
+def get_fstch(nd):
+    children = nd.getchildren()
+    return(None if(children.__len__() == 0) else children[0])
+
+def get_rsib(nd):
+    return(nd.getnext())
+
+def is_root(nd):
+    return(nd.getparent() == None)
+
+def is_leaf(nd):
+    return(nd.getchildren().__len__() == 0)
+
+def get_rsib_of_fst_ances_with_rsib_including_self(nd):
+    rsib = get_rsib(nd)
+    while(rsib  == None):
+        if(is_root(nd)):
+            return(None)
+        else:
+            pnd = nd.getparent()
+            rsib = get_rsib(pnd)
+            nd = pnd
+    return(rsib)
+
+
+def get_sdfs_next(nd):
+    fstch = get_fstch(nd)
+    if(fstch != None):
+        return(fstch)
+    else:
+        rsib = get_rsib_of_fst_ances_with_rsib_including_self(nd)
+        return(rsib)
+
+def get_sdfsndl2(nd):
+    sdfsndl = [nd]
+    while(nd!= None):
+        nd = get_sdfs_next(nd)
+        sdfsndl.append(nd)
+    return(sdfsndl[:-1])
+
+
+def get_sdfsndl(nd):
+    sdfsndl = ([nd] +list(r.iterdescendants()))
+    return(sdfsndl)
+
+
+
+
+######################################
+import copy
+#AttributeError: 'lxml.etree._Element' object has no attribute 'type'
+
+
+def get_sedfs_next(nd):
+    if(nd.type == 'open'):
+        fstch = get_fstch(nd)
+        if(fstch == None):
+            next = copy.deepcopy(nd)
+            next.type = 'close'
+            next._nd = nd
+        else:
+            next = fstch
+            next.type = 'open'
+    if(nd.type == 'close'):
+        rsib = get_rsib(nd._nd)
+        if(rsib == None):
+            pnd = nd._nd.getparent()
+            if(pnd == None):
+                next = None
+            else:
+                next = copy.deepcopy(pnd)
+                next.type = 'close'
+                next._nd = pnd
+        else:
+            next = rsib
+            next.type = 'open'
+    return(next)
+
+def get_sedfsndl(nd):
+    
+
+
+sdfsndl = get_sdfsndl(r)
+
+
+
+
+    
+
+
+
+
+
+
+yy = elel.mapv(sdfsndl,lambda r:r.tag)
+
+x = list(r.iterdescendants())
+xx = elel.mapv(x,lambda r:r.tag)
+
+
+
