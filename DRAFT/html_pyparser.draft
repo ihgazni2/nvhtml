@@ -432,7 +432,29 @@ sdfsndl = get_sdfsndl(r)
 
 
 
-    
+#numba increasing speed
+import timeit
+from numba import jit
+
+st1 = timeit.default_timer()
+
+@jit(nopython=True, cache=True)
+def f1():
+
+    a = range(0, 10000000)
+
+    result = []
+    append = result.append
+
+    for i in a:
+        append( i**2 )
+
+    return result
+
+f1()
+
+st2 = timeit.default_timer()
+print("RUN TIME : {0}".format(st2-st1))
 
 
 
