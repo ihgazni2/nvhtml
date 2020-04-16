@@ -1,0 +1,58 @@
+# wfsmat 要加属性  wfsl_seq 
+# wfsmat 要加属性  dfsl_seq
+
+# 怎样从wfsmat  找出dfs路径 参考js
+
+# 怎样从dfsmat  找出wfs位置
+
+
+# 直接以dfs的方法构建mat
+# 怎样从dfsmat  找出wfs位置
+
+
+
+# *     comment
+# -     attrib     属性有两种写法,直接跟或者当作子元素,换行的话会用空格连接
+# .     text and tail
+# |     text and tail can multiline 
+
+html
+    head
+        -id menu-item-27961
+        -class 
+            qtranxs-lang-menu-item 
+            qtranxs-lang-menu-item-ca 
+            menu-item 
+            menu-item-type-custom 
+            menu-item-object-custom 
+            menu-item-27961
+        .text 
+            hello
+            hi
+            hao
+            hihihi
+        .tail
+            this is a tail
+        meta
+            -http-equiv X-UA-Compatible
+            -content IE=edge,chrome=1
+        meta
+            -name viewport
+            -content width=device-width, user-scalable=yes, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0
+        meta
+            -http-equiv Content-Type
+            -content text/html; charset=UTF-8
+        link
+        link
+    body
+        div
+            li
+            li
+            li
+        div
+            li
+            li
+        div
+    *comment
+        .text
+    
